@@ -36,4 +36,16 @@ public class Member {
     public String getEmail() {
         return email;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getDayOfCreation() {
+        return dayOfCreation;
+    }
+
+    public int getCredit() {
+        return credit;
+    }
 }
