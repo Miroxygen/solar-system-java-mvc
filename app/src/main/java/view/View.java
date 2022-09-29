@@ -2,6 +2,8 @@ package view;
 
 import java.util.Scanner;
 
+import model.Member;
+
 
 public class View {
     Scanner userInput = new Scanner(System.in, "utf-8");
@@ -25,5 +27,19 @@ public class View {
             default: 
             return menuChoices.Quit;
         }
+    }
+
+    public model.Member createMember () {
+        System.out.println("=== Please enter a name.");
+        String name = userInput.nextLine();
+        System.out.println("=== Please enter a phone-number.");
+        String phoneNumber = userInput.nextLine();
+        System.out.println("=== Please enter an e-mail.");
+        String email = userInput.nextLine();
+        return new Member(name, phoneNumber, email);
+    }
+
+    public void showMember (model.Member m) {
+        System.out.println("Name : " + m.getName() + " Email : " + m.getEmail() + " Phone-number : " + m.getPhoneNumber());
     }
 }

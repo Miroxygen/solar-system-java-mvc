@@ -26,7 +26,7 @@ public class Controller  {
     }
 
     public void createMember() {
-        model.Member newMember = new model.Member("Allan Turing", "123456", "allan@enigma.com", 0, 0, 0);
-        memberList.addMember(newMember);
+        model.Member newMember = view.createMember();
+        view.showMember(newMember);
     }
 }
