@@ -1,11 +1,10 @@
 package controller;
-import org.checkerframework.checker.units.qual.m;
-
 import model.Member;
 import model.MemberList;
 import view.View;
 import view.View.memberMenuChoices;
 import view.View.menuChoices;
+
 
 
 public class Controller  {
@@ -38,6 +37,8 @@ public class Controller  {
             case ListMembers:
                 view.showMemberList(memberList);
                 break;
+            case DeleteMember:
+                deleteMember();
             case Back:
                 return;
             default:
@@ -64,8 +65,28 @@ public class Controller  {
     }
 
     public void createMember() {
-        model.Member newMember = view.createMember();
-        memberList.addMember(newMember);
-        view.showMember(newMember);
+        try {
+            model.Member newMember = view.createMember();
+            checkForDuplicateMemberData(newMember.getPhoneNumber(), newMember.getEmail());
+            memberList.addMember(newMember);
+            view.showMember(newMember);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            createMember();
+        }
+    }
+
+    public void checkForDuplicateMemberData(String phoneNumber, String email) throws Exception {
+        for(Member m : memberList.getMembers()) {
+            if(m.getPhoneNumber().equals(phoneNumber)) {
+                throw new Exception("Invalid phonenumber");
+            } else if(m.getEmail().equals(email)) {
+                throw new Exception("Invalid email");
+            } 
+        }
+    }
+
+    public void deleteMember() {
+        inspectMember();
     }
 }

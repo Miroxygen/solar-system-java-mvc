@@ -43,7 +43,8 @@ public class View {
         System.out.println("=== 1. Create a new member");
         System.out.println("=== 2. Look at full member details");
         System.out.println("=== 3. Look at all members");
-        System.out.println("=== 4. Back to main menu");
+        System.out.println("=== 4. Delete a member");
+        System.out.println("=== 5. Back to main menu");
         String inputKey = userInput.nextLine();
         switch (inputKey) {
             case "1":
@@ -53,6 +54,8 @@ public class View {
             case "3":
             return memberMenuChoices.ListMembers;
             case "4":
+                return memberMenuChoices.DeleteMember;
+            case "5":
                 return memberMenuChoices.Back;
             default:
                 return memberMenuChoices.Back;
@@ -87,5 +90,9 @@ public class View {
 
     public void resourceNotFound() {
         System.out.println("The requested resource was not found.");
+    }
+
+    public void deleteMember() {
+
     }
 }
