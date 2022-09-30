@@ -10,37 +10,48 @@ import view.View.menuChoices;
 public class Controller  {
     view.View view = new View();
     model.MemberList memberList = new MemberList();
+    model.Member selectedMember = null;
     
     public void startMenu() {
         Boolean running = true;
         while(running) {
-            menuChoices action = view.showMenu();
-            switch (action) {
-                case MemberMenu:
-                    memberMenu();
-                    break;
-                case Quit:
-                    running = false;
-            }
+            if(selectedMember == null) {
+                menuChoices action = view.loginMenu();
+                switch (action) {
+                    case Login:
+                       selectedMember = login();
+                        break;
+                    case CreateMember:
+                        createMember();
+                        break;
+                    case Quit:
+                        running = false;
+                }
+            } else {
+                memberMenu();
+            }    
         }
     }
 
+    public Member login() {
+        String name = view.login(memberList);
+        return findMember(name);
+    }
+
     public void memberMenu() {
-        memberMenuChoices action = view.showMemberMenu();
+        memberMenuChoices action = view.showMemberMenu(selectedMember);
         switch (action) {
-            case AddMember:
-                createMember();
-                break;
             case InspectMember:
-                inspectMember();
+                view.showMember(selectedMember);
                 break;
             case ListMembers:
                 view.showMemberList(memberList);
                 break;
             case DeleteMember:
                 deleteMember();
-            case Back:
-                return;
+                break;
+            case Logout:
+                selectedMember = null;
             default:
                 return;
         }
@@ -87,6 +98,13 @@ public class Controller  {
     }
 
     public void deleteMember() {
-        inspectMember();
+        String deleteAnswer = view.deleteMember(selectedMember);
+        if(deleteAnswer.equals("Y") || deleteAnswer.equals("y")) {
+            memberList.deleteMember(selectedMember);
+            selectedMember = null;
+            view.succesfulAction();
+        } else {
+            return;
+        }
     }
 }

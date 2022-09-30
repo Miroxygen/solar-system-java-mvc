@@ -21,4 +21,8 @@ public class MemberList {
         Random radomnumber = new Random();
         return radomnumber.nextInt();
     }
+
+    public void deleteMember(model.Member member) {
+        members.remove(member);
+    }
 }

@@ -10,55 +10,62 @@ public class View {
     Scanner userInput = new Scanner(System.in, "utf-8");
 
     public static enum menuChoices {
-        MemberMenu,
+        Login,
+        CreateMember,
         Quit,
     }
 
     public static enum memberMenuChoices {
-        AddMember,
         ListMembers,
         InspectMember,
         ChangeMember,
         DeleteMember,
-        Back,
+        Logout,
     }
     
 
-    public menuChoices showMenu () {
+    public menuChoices loginMenu () {
         System.out.println("=== Welcome to the Stuff Lending Club! ===");
-        System.out.println("=== 1. Go to member menu");
-        System.out.println("=== 2. Quit application.");
+        System.out.println("=== 1. Login with existing member");
+        System.out.println("=== 2. Create a new member");
+        System.out.println("=== 3. Quit application.");
         String inputKey = userInput.nextLine();
-        switch (inputKey) {
-            case "1":
-                return menuChoices.MemberMenu;
-            case "2":
-                return menuChoices.Quit;
-            default: 
+        if(inputKey.equals("1")) {
+            return menuChoices.Login;
+        } else if(inputKey.equals("2")) {
+            return menuChoices.CreateMember;
+        } else if(inputKey.equals("3")) {
+            return menuChoices.Quit;
+        } else {
             return menuChoices.Quit;
         }
     }
 
-    public memberMenuChoices showMemberMenu () {
-        System.out.println("=== 1. Create a new member");
-        System.out.println("=== 2. Look at full member details");
-        System.out.println("=== 3. Look at all members");
-        System.out.println("=== 4. Delete a member");
-        System.out.println("=== 5. Back to main menu");
+    public String login(model.MemberList ml) {
+        showMemberList(ml);
+        System.out.println("Please enter the name of the member you wish to login as");
+        String inputKey = userInput.nextLine();
+        return inputKey;
+    }
+
+    public memberMenuChoices showMemberMenu (model.Member member) {
+        System.out.println("  ~ Welcome! You are logged in as : " + member.getName());
+        System.out.println("=== 1. Look at this members details.");
+        System.out.println("=== 2. Look at all members.");
+        System.out.println("=== 3. Delete this member.");
+        System.out.println("=== 4. Logout.");
         String inputKey = userInput.nextLine();
         switch (inputKey) {
             case "1":
-                return memberMenuChoices.AddMember;
-            case "2":
                 return memberMenuChoices.InspectMember;
-            case "3":
+            case "2":
             return memberMenuChoices.ListMembers;
-            case "4":
+            case "3":
                 return memberMenuChoices.DeleteMember;
-            case "5":
-                return memberMenuChoices.Back;
+            case "4":
+                return memberMenuChoices.Logout;
             default:
-                return memberMenuChoices.Back;
+                return memberMenuChoices.Logout;
         }
     }
 
@@ -92,7 +99,15 @@ public class View {
         System.out.println("The requested resource was not found.");
     }
 
-    public void deleteMember() {
+    public void succesfulAction() {
+        System.out.println("Your action was succesful.");
+    }
 
+    public String deleteMember(model.Member member) {
+        System.out.println("Are you sure you want to delete the logged in member?");
+        showMember(member);
+        System.out.println("Y/N");
+        String inputKey = userInput.nextLine();
+        return inputKey;
     }
 }
