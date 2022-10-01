@@ -10,7 +10,7 @@ public class App {
    * @param args command line arguments.
    */
   public static void main(String[] args) {
-    Controller controller = new Controller();
+    MainController controller = new MainController();
     controller.startMenu();
   }
 }

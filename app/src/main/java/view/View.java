@@ -9,10 +9,15 @@ import model.MemberList;
 public class View {
     Scanner userInput = new Scanner(System.in, "utf-8");
 
-    public static enum menuChoices {
+    public static enum loginChoices {
         Login,
         CreateMember,
         Quit,
+    }
+
+    public static enum mainMenuChoices {
+        MemberMenu,
+        Logout,
     }
 
     public static enum memberMenuChoices {
@@ -20,24 +25,45 @@ public class View {
         InspectMember,
         ChangeMember,
         DeleteMember,
-        Logout,
+        EditMember,
+        Return,
+    }
+
+    public static enum editMemberChoices {
+        Name,
+        PhoneNumber,
+        Email,
     }
     
 
-    public menuChoices loginMenu () {
+    public loginChoices loginMenu () {
         System.out.println("=== Welcome to the Stuff Lending Club! ===");
         System.out.println("=== 1. Login with existing member");
         System.out.println("=== 2. Create a new member");
         System.out.println("=== 3. Quit application.");
         String inputKey = userInput.nextLine();
         if(inputKey.equals("1")) {
-            return menuChoices.Login;
+            return loginChoices.Login;
         } else if(inputKey.equals("2")) {
-            return menuChoices.CreateMember;
+            return loginChoices.CreateMember;
         } else if(inputKey.equals("3")) {
-            return menuChoices.Quit;
+            return loginChoices.Quit;
         } else {
-            return menuChoices.Quit;
+            return loginChoices.Quit;
+        }
+    }
+
+    public mainMenuChoices mainMenu (model.Member member) {
+        System.out.println("  ~ Welcome! You are logged in as : " + member.getName());
+        System.out.println("=== 1. View membermenu");
+        System.out.println("=== 2. Logout");
+        String inputKey = userInput.nextLine();
+        if(inputKey.equals("1")) {
+            return mainMenuChoices.MemberMenu;
+        } else if(inputKey.equals("2")) {
+            return mainMenuChoices.Logout;
+        } else {
+            return mainMenuChoices.MemberMenu;
         }
     }
 
@@ -52,8 +78,9 @@ public class View {
         System.out.println("  ~ Welcome! You are logged in as : " + member.getName());
         System.out.println("=== 1. Look at this members details.");
         System.out.println("=== 2. Look at all members.");
-        System.out.println("=== 3. Delete this member.");
-        System.out.println("=== 4. Logout.");
+        System.out.println("=== 3. Edit this member.");
+        System.out.println("=== 4. Delete this member.");
+        System.out.println("=== 5. Logout.");
         String inputKey = userInput.nextLine();
         switch (inputKey) {
             case "1":
@@ -61,11 +88,13 @@ public class View {
             case "2":
             return memberMenuChoices.ListMembers;
             case "3":
-                return memberMenuChoices.DeleteMember;
+                return memberMenuChoices.EditMember;
             case "4":
-                return memberMenuChoices.Logout;
+                return memberMenuChoices.DeleteMember;
+            case "5":
+                return memberMenuChoices.Return;
             default:
-                return memberMenuChoices.Logout;
+                return memberMenuChoices.Return;
         }
     }
 
@@ -93,6 +122,41 @@ public class View {
         for(Member m : memberList.getMembers()) {
             System.out.println("Name : " + m.getName() + " Email : " + m.getEmail() + " Phone-number : " + m.getPhoneNumber());
         }
+    }
+
+    public editMemberChoices editMember() {
+        System.out.println("Please enter what you would like to change : ");
+        System.out.println("N for name.");
+        System.out.println("P for phone-number.");
+        System.out.println("E for e-mail.");
+        String inputKey = userInput.nextLine();
+        if(inputKey.equals("N")) {
+            return editMemberChoices.Name;
+        } else if(inputKey.equals("P")) {
+            return editMemberChoices.PhoneNumber;
+        } else if(inputKey.equals("E")) {
+            return editMemberChoices.Email;
+        } else {
+            return editMemberChoices.Name;
+        }
+    }
+
+    public String newName() {
+        System.out.println("Please enter the new name you wish to have :");
+        String newName = userInput.nextLine();
+        return newName;
+    }
+
+    public String newPhoneNumber() {
+        System.out.println("Please enter the new phone-number you wish to have :");
+        String newPhoneNumber = userInput.nextLine();
+        return newPhoneNumber;
+    }
+
+    public String newEmail() {
+        System.out.println("Please enter the new e-mail you wish to have :");
+        String newEmail = userInput.nextLine();
+        return newEmail;
     }
 
     public void resourceNotFound() {
