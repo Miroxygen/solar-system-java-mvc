@@ -22,4 +22,12 @@ public class MembersItemList {
     public Iterable<Item> getItems() {
         return items;
     }
+
+    public int getNumberOfItems() {
+        return items.size();
+    }
+
+    public void deleteItem(Item selectedItem) {
+       items.remove(selectedItem);
+    }
 }

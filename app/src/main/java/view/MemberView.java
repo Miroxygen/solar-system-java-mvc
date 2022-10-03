@@ -9,7 +9,6 @@ public class MemberView {
     private Scanner userInput = new Scanner(System.in, "utf-8");
 
     public static enum memberMenuChoices {
-        ListMembers,
         InspectMember,
         ChangeMember,
         DeleteMember,
@@ -25,22 +24,19 @@ public class MemberView {
 
     public memberMenuChoices showMemberMenu (model.Member member) {
         System.out.println("  ~ Welcome! You are logged in as : " + member.getName());
-        System.out.println("=== 1. Look at this members details.");
-        System.out.println("=== 2. Look at all members.");
-        System.out.println("=== 3. Edit this member.");
-        System.out.println("=== 4. Delete this member.");
-        System.out.println("=== 5. Back to main menu.");
+        System.out.println("=== 1. Look at members details.");
+        System.out.println("=== 2. Edit this member.");
+        System.out.println("=== 3. Delete this member.");
+        System.out.println("=== 4. Back to main menu.");
         String inputKey = userInput.nextLine();
         switch (inputKey) {
             case "1":
                 return memberMenuChoices.InspectMember;
             case "2":
-            return memberMenuChoices.ListMembers;
-            case "3":
                 return memberMenuChoices.EditMember;
-            case "4":
+            case "3":
                 return memberMenuChoices.DeleteMember;
-            case "5":
+            case "4":
                 return memberMenuChoices.Return;
             default:
                 return memberMenuChoices.Return;

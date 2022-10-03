@@ -2,6 +2,7 @@ package controller;
 
 import model.Member;
 import model.MemberList;
+import model.MembersItemList;
 import view.MemberView.memberMenuChoices;
 import view.MemberView.editMemberChoices;
 
@@ -23,15 +24,16 @@ public class MemberController {
         selectedMember = null;
     }
 
+    public MemberList getMemberList() {
+        return memberList;
+    }
+
 
     public void MemberMenu() {
         memberMenuChoices action = memberUI.showMemberMenu(selectedMember);
         switch (action) {
             case InspectMember:
                 memberUI.showMember(selectedMember);
-                break;
-            case ListMembers:
-                showMemberList();
                 break;
             case EditMember:
                 editMemberMenu();
@@ -81,6 +83,9 @@ public class MemberController {
             model.Member newMember = memberUI.createMember();
             duplicatePhoneNumberCheck(newMember.getPhoneNumber());
             duplicateEmailCheck(newMember.getEmail());
+            model.MembersItemList itemList = new MembersItemList();
+            itemList.setOwner(newMember);
+            newMember.setItemList(itemList);
             memberList.addMember(newMember);
             memberUI.showMember(newMember);
         } catch (Exception e) {

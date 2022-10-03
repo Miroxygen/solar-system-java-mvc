@@ -8,6 +8,7 @@ public class Member {
     private int id;
     private int dayOfCreation;
     public int credit;
+    public MembersItemList itemList;
 
 
     public Member(String name, String phoneNumber, String email) {
@@ -16,13 +17,17 @@ public class Member {
         this.email = email;
     }
 
+    public void setItemList(MembersItemList itemList) {
+        this.itemList = itemList;
+    }
+
     public void setStaticData(int id, int dayOfCreation) {
         this.id = id;
         this.dayOfCreation = dayOfCreation;
     }
 
-    public void setCredit(int credit) {
-        this.credit = credit;
+    public void addCredit(int credit) {
+        this.credit += credit;
     }
 
     public String getName() {
@@ -59,5 +64,9 @@ public class Member {
 
     public int getCredit() {
         return credit;
+    }
+
+    public MembersItemList getItemList() {
+        return itemList;
     }
 }

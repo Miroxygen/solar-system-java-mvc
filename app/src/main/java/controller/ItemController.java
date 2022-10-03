@@ -1,9 +1,11 @@
 package controller;
 import java.util.ArrayList;
 
+import model.Item;
 import model.Member;
 import model.MembersItemList;
 import view.ItemView;
+import view.ItemView.changeItemChoices;
 import view.ItemView.itemMenuChoices;
 
 public class ItemController {
@@ -20,38 +22,81 @@ public class ItemController {
                 break;
             case ViewItems:
                 itemUI.showAllItems(allMembersItemList);
-            default:
+            case ViewOneItem:
+                itemUI.showOneItem(itemUI.selectOneItem(currentMembersItemlist));
+                break;
+            case ChangeItem:
+                changeItemMenu();
+                break;
+            case DeleteItem:
+                deleteItem();
+                break;
+            case Back:
+                return;
+        }
+    }
+
+    public void changeItemMenu() {
+        Item itemToChange = itemUI.selectOneItem(currentMembersItemlist);
+        changeItemChoices action = itemUI.changeItem();
+        switch (action) {
+            case Category:
+                changeCategory(itemToChange);
+                break;
+            case Name:
+            changeName(itemToChange);
+                break;
+            case Description:
+                changeDescription(itemToChange);
+                break;
+            case Cost:
+                changeCostPerDay(itemToChange);
                 break;
         }
     }
 
+    public void changeCategory(Item itemToChange) {
+        String category = itemUI.newStringValue();
+        itemToChange.setCategory(category);
+    }
 
+    public void changeName(Item itemToChange) {
+        String name = itemUI.newStringValue();
+        itemToChange.setName(name);
+    }
+
+    public void changeDescription(Item itemToChange) {
+        String description = itemUI.newStringValue();
+        itemToChange.setDescription(description);
+    }
+
+    public void changeCostPerDay(Item itemToChange) {
+        int costPerDay = itemUI.newIntValue();
+        itemToChange.setCostPerDay(costPerDay);
+    }
 
     public void addItem(Member selectedMember) {
-        if(currentMembersItemlist == null) {
-            if(getMembersItemList(selectedMember) == (null)) {
-                createNewMembersItemList(selectedMember);
-            }
-            currentMembersItemlist = getMembersItemList(selectedMember);
-        }
+        setCurrentItemList(selectedMember);
         model.Item newItem = itemUI.createItem();
-        selectedMember.setCredit(+ 100);
+        selectedMember.addCredit(100);
         currentMembersItemlist.addItem(newItem);
     }
 
-    public MembersItemList getMembersItemList(Member selectedMember) {
-        for(MembersItemList mil : allMembersItemList) {
-            if(mil.getOwner() == selectedMember) {
-                return mil;
-            }    
-        }
-        return null;
+
+    public void deleteItem() {
+        Item selectedItem = itemUI.selectOneItem(currentMembersItemlist);
+        currentMembersItemlist.deleteItem(selectedItem);
     }
 
-    public void createNewMembersItemList(Member selectedMember) {
-        MembersItemList newMembersItemList = new MembersItemList();
-        allMembersItemList.add(newMembersItemList);
-        newMembersItemList.setOwner(selectedMember);
+    public void setCurrentItemList(Member selectedMember) {
+        currentMembersItemlist = selectedMember.getItemList();
+        addCurrentListIfItHasntBeenAdded();
+    }
+
+    public void addCurrentListIfItHasntBeenAdded() {
+        if(!allMembersItemList.contains(currentMembersItemlist)) {
+            allMembersItemList.add(currentMembersItemlist);
+        }
     }
 
     public void removeCurrentMembersItemlist() {

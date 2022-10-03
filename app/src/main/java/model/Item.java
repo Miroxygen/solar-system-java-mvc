@@ -20,6 +20,22 @@ public class Item {
         this.rented = ifRented;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCostPerDay(int costPerDay) {
+        this.costPerDay = costPerDay;
+    }
+
     public Boolean getRented() {
         return this.rented;
     }

@@ -1,5 +1,6 @@
 package controller;
 import view.MainUI;
+import view.MainUI.listChoices;
 import view.MainUI.loginChoices;
 import view.MainUI.mainMenuChoices;
 
@@ -29,10 +30,13 @@ public class MainController  {
                 mainMenuChoices action = view.mainMenu(memberController.getSelectedMember());
                 switch (action) {
                     case MemberMenu:
-                        MemberMenu();
+                        memberMenu();
                         break;
                     case ItemMenu:
                         itemController.ItemMenu(memberController.getSelectedMember());
+                        break;
+                    case ListEverything:
+                        listMenu();
                         break;
                     case Logout:
                         memberController.removeSelectedMember();
@@ -44,7 +48,19 @@ public class MainController  {
         }
     }
 
-    public void MemberMenu() {
+    public void listMenu() {
+        listChoices action = view.listChoices(memberController.getSelectedMember());
+        switch (action) {
+            case Simple:
+                view.ListAllSimpleWay(memberController.getMemberList());
+                break;
+            case Verbose:
+                view.ListAllVerboseWay(memberController.getMemberList());
+                break;
+        }
+    }
+
+    public void memberMenu() {
         memberController.MemberMenu();
     }
 
