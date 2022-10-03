@@ -59,11 +59,11 @@ public class ItemView {
 
     public  void showAllItems(ArrayList<MembersItemList> arrayList) {
         for(MembersItemList mil : arrayList) {
-            System.out.println(" Owner : " + mil.getOwner());
+            System.out.println(" Owner : " + mil.getOwner().getName());
+            System.out.println(" Items ");
             for(Item i : mil.getItems()) {
-                System.out.println(" Items : ");
                 System.out.println("Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription()
-                + " Cost per day : " +  i.getCostPerday() + " Day of ceation : " + i.getDayOfCreation() + " Is it rented?" + i.getRented());
+                + " Cost per day : " +  i.getCostPerday() + " Day of ceation : " + i.getDayOfCreation() + " Is it rented? " + i.getRented());
             }
         }
     }

@@ -35,6 +35,7 @@ public class ItemController {
             currentMembersItemlist = getMembersItemList(selectedMember);
         }
         model.Item newItem = itemUI.createItem();
+        selectedMember.setCredit(+ 100);
         currentMembersItemlist.addItem(newItem);
     }
 
@@ -51,5 +52,9 @@ public class ItemController {
         MembersItemList newMembersItemList = new MembersItemList();
         allMembersItemList.add(newMembersItemList);
         newMembersItemList.setOwner(selectedMember);
+    }
+
+    public void removeCurrentMembersItemlist() {
+        this.currentMembersItemlist = null;
     }
 }

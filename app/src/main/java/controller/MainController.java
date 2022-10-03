@@ -36,6 +36,7 @@ public class MainController  {
                         break;
                     case Logout:
                         memberController.removeSelectedMember();
+                        itemController.removeCurrentMembersItemlist();
                         break;
                 }
             }    
