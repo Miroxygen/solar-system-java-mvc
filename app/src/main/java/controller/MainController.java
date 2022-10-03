@@ -1,28 +1,22 @@
 package controller;
-import model.Member;
-import model.MemberList;
-import view.View;
-import view.View.memberMenuChoices;
-import view.View.editMemberChoices;
-import view.View.loginChoices;
-import view.View.mainMenuChoices;
+import view.MainUI;
+import view.MainUI.loginChoices;
+import view.MainUI.mainMenuChoices;
 
 
 
 public class MainController  {
-    view.View view = new View();
+    view.MainUI view = new MainUI();
     MemberController memberController = new MemberController();
-    model.MemberList memberList = new MemberList();
-    model.Member selectedMember = null;
     
     public void startMenu() {
         Boolean running = true;
         while(running) {
-            if(selectedMember == null) {
+            if(memberController.getSelectedMember() == null) {
                 loginChoices action = view.loginMenu();
                 switch (action) {
                     case Login:
-                       selectedMember = login();
+                       memberController.selectMemberToActAs();
                         break;
                     case CreateMember:
                         memberController.createMember();
@@ -31,13 +25,13 @@ public class MainController  {
                         running = false;
                 }
             } else {
-                mainMenuChoices action = view.mainMenu(selectedMember);
+                mainMenuChoices action = view.mainMenu(memberController.getSelectedMember());
                 switch (action) {
                     case MemberMenu:
                         MemberMenu();
                         break;
                     case Logout:
-                        selectedMember = null;
+                        memberController.removeSelectedMember();
                         break;
                 }
             }    
@@ -46,47 +40,10 @@ public class MainController  {
     }
 
     public void MemberMenu() {
-        memberMenuChoices action = view.showMemberMenu(selectedMember);
-        switch (action) {
-            case InspectMember:
-                view.showMember(selectedMember);
-                break;
-            case ListMembers:
-                memberController.showMemberList();
-                break;
-            case EditMember:
-                editMemberMenu();
-                break;
-            case DeleteMember:
-                memberController.deleteMember(selectedMember);
-                selectedMember = null;
-                break;
-            case Return:
-                return;
-            default:
-                return;
-            
-        }
+        memberController.MemberMenu();
     }
 
     public void editMemberMenu() {
-        editMemberChoices action = view.editMember();
-        switch (action) {
-            case Name:
-                memberController.editName(selectedMember);
-                break;
-            case PhoneNumber:
-                memberController.editPhoneNumber(selectedMember);
-                break;
-            case Email:
-                memberController.editEmail(selectedMember);
-                break;
-        }
-    }
-
-    public Member login() {
-        String name = view.login(memberList);
-        selectedMember = memberController.findMemberByname(name);
-        return selectedMember;
+        memberController.editMemberMenu();
     }
 }

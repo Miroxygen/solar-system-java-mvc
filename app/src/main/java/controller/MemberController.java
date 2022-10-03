@@ -2,11 +2,65 @@ package controller;
 
 import model.Member;
 import model.MemberList;
-import view.View.editMemberChoices;
+import view.MemberView.memberMenuChoices;
+import view.MemberView.editMemberChoices;
 
 public class MemberController {
-    private view.View memberUI = new view.View();
+    private view.MemberView memberUI = new view.MemberView();
     private model.MemberList memberList = new MemberList();
+    model.Member selectedMember = null;
+
+    public void selectMemberToActAs() {
+        String name = memberUI.enterNameToSelectMember(memberList);
+        selectedMember = findMemberByname(name);
+    }
+
+    public Member getSelectedMember() {
+        return selectedMember;
+    }
+
+    public void removeSelectedMember() {
+        selectedMember = null;
+    }
+
+
+    public void MemberMenu() {
+        memberMenuChoices action = memberUI.showMemberMenu(selectedMember);
+        switch (action) {
+            case InspectMember:
+                memberUI.showMember(selectedMember);
+                break;
+            case ListMembers:
+                showMemberList();
+                break;
+            case EditMember:
+                editMemberMenu();
+                break;
+            case DeleteMember:
+                deleteMember(selectedMember);
+                break;
+            case Return:
+                return;
+            default:
+                return;
+            
+        }
+    }
+
+    public void editMemberMenu() {
+        editMemberChoices action = memberUI.editMember();
+        switch (action) {
+            case Name:
+                editName(selectedMember);
+                break;
+            case PhoneNumber:
+                editPhoneNumber(selectedMember);
+                break;
+            case Email:
+                editEmail(selectedMember);
+                break;
+        }
+    }
 
 
     public model.Member findMemberByname(String memberName) {
@@ -55,7 +109,7 @@ public class MemberController {
         String deleteAnswer = memberUI.deleteMember(selectedMember);
         if(deleteAnswer.equals("Y") || deleteAnswer.equals("y")) {
             memberList.deleteMember(selectedMember);
-            selectedMember = null;
+            removeSelectedMember();
             memberUI.succesfulAction();
         } else {
             return;
