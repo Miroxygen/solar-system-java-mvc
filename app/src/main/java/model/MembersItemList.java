@@ -18,4 +18,8 @@ public class MembersItemList {
         items.add(item);
         return items.get(items.size() - 1);
     }
+
+    public Iterable<Item> getItems() {
+        return items;
+    }
 }

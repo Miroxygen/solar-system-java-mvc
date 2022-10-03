@@ -14,6 +14,7 @@ public class MainUI {
 
     public static enum mainMenuChoices {
         MemberMenu,
+        ItemMenu,
         Logout,
     }
     
@@ -38,13 +39,16 @@ public class MainUI {
     public mainMenuChoices mainMenu (model.Member member) {
         System.out.println("  ~ Welcome! You are logged in as : " + member.getName());
         System.out.println("=== 1. View membermenu");
-        System.out.println("=== 2. Logout");
+        System.out.println("=== 2. View itemmenu.");
+        System.out.println("=== 3. Logout");
         String inputKey = userInput.nextLine();
         if(inputKey.equals("1")) {
             return mainMenuChoices.MemberMenu;
         } else if(inputKey.equals("2")) {
+            return mainMenuChoices.ItemMenu;
+        } else if(inputKey.equals("3")) {
             return mainMenuChoices.Logout;
-        } else {
+        } else  {
             return mainMenuChoices.MemberMenu;
         }
     }

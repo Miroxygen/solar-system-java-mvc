@@ -8,6 +8,7 @@ import view.MainUI.mainMenuChoices;
 public class MainController  {
     view.MainUI view = new MainUI();
     MemberController memberController = new MemberController();
+    ItemController  itemController = new ItemController();
     
     public void startMenu() {
         Boolean running = true;
@@ -29,6 +30,9 @@ public class MainController  {
                 switch (action) {
                     case MemberMenu:
                         MemberMenu();
+                        break;
+                    case ItemMenu:
+                        itemController.ItemMenu(memberController.getSelectedMember());
                         break;
                     case Logout:
                         memberController.removeSelectedMember();
