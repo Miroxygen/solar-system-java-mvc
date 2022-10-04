@@ -98,23 +98,45 @@ public class ItemUI {
     public void showOneItem(Item item) {
         System.out.println("Category : " + item.getCategory() + " Name : " + item.getName() + " Description : " + item.getDescription()
         + " Cost per day : " +  item.getCostPerday() + " Day of ceation : " + item.getDayOfCreation());
-    }
-
-    public Item selectItemFromCurrentMember(MembersItemList itemList) {
         int index = 0;
-        for(Item i : itemList.getItems()) {
-            System.out.println("Index : " + index + " Item : " + i.getName());
+        for(model.Contract c : item.getOldContracts()) {
+            System.out.println("Old contracts : ");
+            System.out.println(" Lender : " + c.getLender() + " Startday : " + c.getStartDay() + " Endday :" + c.getEndDay());
             index++;
         }
-        System.out.println("=== Please enter the index of item you want to select :");
-        int selectedIndex = userInput.nextInt();
-        userInput.nextLine();
+        if(index == 0) {
+            System.out.println("No old contracts.");
+        }
         index = 0;
-        for(Item i : itemList.getItems()) {
-            if(index == selectedIndex) {
-                return i;
-            }
+        for(model.Contract c : item.getFutureContracts()) {
+            System.out.println("Future contracts : ");
+            System.out.println(" Lender : " + c.getLender() + " Startday : " + c.getStartDay() + " Endday :" + c.getEndDay());
             index++;
+        }
+        if(index == 0) {
+            System.out.println("No future contracts.");
+        }
+    }
+
+    public Item selectItemFromCurrentMember(MembersItemList itemList) throws Exception {
+        if(itemList == null || itemList.getNumberOfItems() == 0) {
+            throw new Exception("No items.");
+        } else {
+            int index = 0;
+            for(Item i : itemList.getItems()) {
+                System.out.println("Index : " + index + " Item : " + i.getName());
+                index++;
+            }
+            System.out.println("=== Please enter the index of item you want to select :");
+            int selectedIndex = userInput.nextInt();
+            userInput.nextLine();
+            index = 0;
+            for(Item i : itemList.getItems()) {
+                if(index == selectedIndex) {
+                    return i;
+                }
+                index++;
+            }
         }
         return null;
     }   

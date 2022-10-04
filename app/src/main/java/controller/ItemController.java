@@ -40,27 +40,32 @@ public class ItemController {
                 return;
         }
         } catch (Exception e) {
-            throw e;
+            System.out.println(e.getMessage());
         }
     }
 
     public void changeItemMenu() {
-        Item itemToChange = itemUI.selectItemFromCurrentMember(currentMembersItemlist);
-        changeItemChoices action = itemUI.changeItem();
-        switch (action) {
-            case Category:
-                changeCategory(itemToChange);
-                break;
-            case Name:
-                changeName(itemToChange);
-                break;
-            case Description:
-                changeDescription(itemToChange);
-                break;
-            case Cost:
-                changeCostPerDay(itemToChange);
-                break;
+        try {
+            Item itemToChange = itemUI.selectItemFromCurrentMember(currentMembersItemlist);
+            changeItemChoices action = itemUI.changeItem();
+            switch (action) {
+                case Category:
+                    changeCategory(itemToChange);
+                    break;
+                case Name:
+                    changeName(itemToChange);
+                    break;
+                case Description:
+                    changeDescription(itemToChange);
+                    break;
+                case Cost:
+                    changeCostPerDay(itemToChange);
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        
     }
 
     public void changeCategory(Item itemToChange) {
@@ -98,8 +103,13 @@ public class ItemController {
 
 
     public void deleteItem() {
-        Item selectedItem = itemUI.selectItemFromCurrentMember(currentMembersItemlist);
-        currentMembersItemlist.deleteItem(selectedItem);
+        try {
+            Item selectedItem;
+            selectedItem = itemUI.selectItemFromCurrentMember(currentMembersItemlist);
+            currentMembersItemlist.deleteItem(selectedItem);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setCurrentItemList(Member selectedMember) {

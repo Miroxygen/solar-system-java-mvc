@@ -97,6 +97,7 @@ public class MainController  {
             Contract newContract = contractController.establishNewContract(memberController.getSelectedMember(), lendItem);
             lendItem.addContract(newContract);
             lendItem.setCurrentContract(newContract);
+            lendItem.setRented(true);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }  

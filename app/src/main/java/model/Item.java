@@ -10,7 +10,8 @@ public class Item {
     protected int costPerDay;
     protected Boolean rented = false;
     public Contract currentContract;
-    protected ArrayList<Contract> allContracts = new ArrayList<Contract>();
+    protected ArrayList<Contract> futureContracts = new ArrayList<Contract>();
+    protected ArrayList<Contract> oldContracts = new ArrayList<Contract>();
 
     public Item(String category, String name, String description, int dayOfCreation, int costPerDay) {
         this.category = category;
@@ -71,8 +72,15 @@ public class Item {
     public Contract getCurrentContract() {
         return currentContract;
     }
+    public Iterable<Contract> getFutureContracts() {
+        return futureContracts;
+    }
+
+    public Iterable<Contract> getOldContracts() {
+        return oldContracts;
+    }
 
     public void addContract(Contract contract) {
-        this.allContracts.add(contract);
+        this.futureContracts.add(contract);
     }
 }
