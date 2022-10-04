@@ -63,7 +63,7 @@ public class MemberController {
         }
     }
 
-    public void createMember() {
+    public void createMember(model.Time time) {
         try {
             model.Member newMember = memberUI.createMember();
             duplicatePhoneNumberCheck(newMember.getPhoneNumber());
@@ -71,11 +71,12 @@ public class MemberController {
             model.MembersItemList itemList = new MembersItemList();
             itemList.setOwner(newMember);
             newMember.setItemList(itemList);
+            newMember.setDayOfCreation(time.getCurrentDay());
             memberList.addMember(newMember);
             memberUI.showMember(newMember);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            createMember();
+            createMember(time);
         }
     }
 

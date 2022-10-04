@@ -48,7 +48,7 @@ public class ItemUI {
         }
     }
 
-    public Item createItem() {
+    public Item createItem(int currentDay) {
         System.out.println("=== Please enter a category for your item : (Tool, Vehicle, Game, Toy, Sport, or Other)");
         String category = userInput.nextLine();
         System.out.println("=== Please enter a name for your item :");
@@ -58,7 +58,7 @@ public class ItemUI {
         System.out.println("=== Please enter a cost per day for your item : (10-100 credits)");
         int costPerDay = userInput.nextInt();
         userInput.nextLine();
-        return new Item(category, name, description, 0, costPerDay);
+        return new Item(category, name, description, currentDay, costPerDay);
     }
 
     public Item selectItemFromOtherMembers(ArrayList<MembersItemList> arrayList, model.Member selectedMember) throws Exception {

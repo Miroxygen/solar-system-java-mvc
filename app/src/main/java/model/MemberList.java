@@ -11,7 +11,7 @@ public class MemberList {
     }
 
     public Member addMember(Member member) {
-        member.setStaticData(generateRandomNumber(), 0);
+        member.setId(generateRandomNumber());
         member.addCredit(0);
         members.add(member);
         return members.get(members.size() - 1);

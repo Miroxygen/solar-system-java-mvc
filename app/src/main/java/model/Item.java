@@ -69,6 +69,17 @@ public class Item {
         this.currentContract = currentContract;
     }
 
+    public void removeCurrentContract() {
+        this.currentContract = null;
+    }
+
+    public void moveExpiredContract() {
+        this.futureContracts.remove(getCurrentContract());
+        this.oldContracts.add(getCurrentContract());
+        removeCurrentContract();
+        setRented(false);
+    }
+
     public Contract getCurrentContract() {
         return currentContract;
     }

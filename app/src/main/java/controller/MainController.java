@@ -10,35 +10,41 @@ import view.MainUI.mainMenuChoices;
 
 
 public class MainController  {
-    view.MainUI view = new MainUI();
+    view.MainUI mainUI = new MainUI();
     MemberController memberController = new MemberController();
     ItemController  itemController = new ItemController();
     ContractController contractController = new ContractController();
+    model.Time time = new model.Time();
     
     public void startMenu() {
         try {
+            time.advanceTime(0);
             Boolean running = true;
         while(running) {
             if(memberController.getSelectedMember() == null) {
-                loginChoices action = view.loginMenu();
+                loginChoices action = mainUI.loginMenu(time);
                 switch (action) {
                     case Login:
                         login();
                         break;
                     case CreateMember:
-                        memberController.createMember();
+                        memberController.createMember(time);
                         break;
                     case Quit:
                         running = false;
+                        break;
+                    case Time:
+                        advanceTime();
+                        break;
                 }
             } else {
-                mainMenuChoices action = view.mainMenu(memberController.getSelectedMember());
+                mainMenuChoices action = mainUI.mainMenu(memberController.getSelectedMember(), time);
                 switch (action) {
                     case MemberMenu:
                         memberMenu();
                         break;
                     case ItemMenu:
-                        itemController.ItemMenu(memberController.getSelectedMember());
+                        itemController.ItemMenu(memberController.getSelectedMember(), time);
                         break;
                     case ListEverything:
                         listMenu();
@@ -50,6 +56,9 @@ public class MainController  {
                         memberController.removeSelectedMember();
                         itemController.removeCurrentMembersItemlist();
                         break;
+                    case Time:
+                        advanceTime();
+                        break;
                     }
                 }    
             }
@@ -59,13 +68,13 @@ public class MainController  {
     }
 
     public void listMenu() {
-        listChoices action = view.listChoices(memberController.getSelectedMember());
+        listChoices action = mainUI.listChoices(memberController.getSelectedMember(), time);
         switch (action) {
             case Simple:
-                view.ListAllSimpleWay(memberController.getMemberList());
+                mainUI.ListAllSimpleWay(memberController.getMemberList());
                 break;
             case Verbose:
-                view.ListAllVerboseWay(memberController.getMemberList());
+                mainUI.ListAllVerboseWay(memberController.getMemberList());
                 break;
         }
     }
@@ -101,5 +110,10 @@ public class MainController  {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }  
+    }
+
+    public void advanceTime() {
+        int daysToAdvance = mainUI.advanceTime(time);
+        time.advanceTime(daysToAdvance);
     }
 }

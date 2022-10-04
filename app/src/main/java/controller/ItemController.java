@@ -20,12 +20,12 @@ public class ItemController {
     private MembersItemList currentMembersItemlist = null;
     
     
-    public void ItemMenu(Member selectedMember) throws Exception {
+    public void ItemMenu(Member selectedMember, model.Time time) throws Exception {
         try {
             itemMenuChoices action = itemUI.showItemMenu(selectedMember);
         switch (action) {
             case AddItem:
-                addItem(selectedMember);
+                addItem(selectedMember, time);
                 break;
             case ViewOneItem:
                 itemUI.showOneItem(itemUI.selectItemFromCurrentMember(currentMembersItemlist));
@@ -88,10 +88,10 @@ public class ItemController {
         itemToChange.setCostPerDay(costPerDay);
     }
 
-    public void addItem(Member selectedMember) {
+    public void addItem(Member selectedMember, model.Time time) {
         try {
         setCurrentItemList(selectedMember);
-        model.Item newItem = itemUI.createItem();
+        model.Item newItem = itemUI.createItem(time.getCurrentDay());
         handleCategoryErrors(newItem.getCategory());
         handleCostError(newItem.getCostPerday());
         selectedMember.addCredit(100);

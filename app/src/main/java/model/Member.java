@@ -21,9 +21,12 @@ public class Member {
         this.itemList = itemList;
     }
 
-    public void setStaticData(int id, int dayOfCreation) {
-        this.id = id;
+    public void setDayOfCreation(int dayOfCreation) {
         this.dayOfCreation = dayOfCreation;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void addCredit(int credit) {
