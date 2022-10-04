@@ -63,8 +63,4 @@ public class MainController  {
     public void memberMenu() {
         memberController.MemberMenu();
     }
-
-    public void editMemberMenu() {
-        memberController.editMemberMenu();
-    }
 }

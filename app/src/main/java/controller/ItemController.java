@@ -1,6 +1,12 @@
 package controller;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import model.Item;
 import model.Member;
 import model.MembersItemList;
@@ -76,10 +82,16 @@ public class ItemController {
     }
 
     public void addItem(Member selectedMember) {
+        try {
         setCurrentItemList(selectedMember);
         model.Item newItem = itemUI.createItem();
+        handleCategoryErrors(newItem.getCategory());
+        handleCostError(newItem.getCostPerday());
         selectedMember.addCredit(100);
         currentMembersItemlist.addItem(newItem);
+        } catch (Exception e) {
+           System.out.println(e.getMessage() + "| Your item was NOT created.");
+        }  
     }
 
 
@@ -101,5 +113,28 @@ public class ItemController {
 
     public void removeCurrentMembersItemlist() {
         this.currentMembersItemlist = null;
+    }
+
+    public boolean handleStringErrors(String input)  {
+        List<String> categories = Arrays.asList("tool", "vehicle", "game", "toy", "sport", "other");
+        boolean ifCategory = Iterables.any(categories, new Predicate<String>() {
+            @Override
+            public boolean apply(@Nullable String categories) {
+                return categories.equalsIgnoreCase(input);
+            }
+        });
+        return ifCategory;
+    }
+
+    public void handleCategoryErrors(String category) throws Exception {
+        if(handleStringErrors(category) == false) {
+            throw new Exception(" Wrong category.");
+        }
+    }
+
+    public void handleCostError(Integer cost) throws Exception {
+        if(cost < 10 || cost > 100) {
+            throw new Exception("Faulty cost per day.");
+        }
     }
 }

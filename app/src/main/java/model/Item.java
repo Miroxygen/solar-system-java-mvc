@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Item {
     protected String category;
     protected String name;
@@ -7,6 +9,8 @@ public class Item {
     protected int dayOfCreation;
     protected int costPerDay;
     protected Boolean rented = false;
+    public Contract currentContract;
+    protected ArrayList<Contract> allContracts;
 
     public Item(String category, String name, String description, int dayOfCreation, int costPerDay) {
         this.category = category;
@@ -58,5 +62,17 @@ public class Item {
 
     public int getCostPerday() {
         return this.costPerDay;
+    }
+
+    public void setCurrentContract(Contract currentContract) {
+        this.currentContract = currentContract;
+    }
+
+    public Contract getCurrentContract() {
+        return currentContract;
+    }
+
+    public void addContract(Contract contract) {
+        this.allContracts.add(contract);
     }
 }

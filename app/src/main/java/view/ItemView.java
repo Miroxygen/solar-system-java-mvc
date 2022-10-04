@@ -53,7 +53,7 @@ public class ItemView {
     }
 
     public Item createItem() {
-        System.out.println("=== Please enter a category for your item : (Tool, vehicle, Game, Toy, Sport, or Other)");
+        System.out.println("=== Please enter a category for your item : (Tool, Vehicle, Game, Toy, Sport, or Other)");
         String category = userInput.nextLine();
         System.out.println("=== Please enter a name for your item :");
         String name = userInput.nextLine();
