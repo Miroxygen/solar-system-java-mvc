@@ -6,12 +6,11 @@ import java.util.Scanner;
 import model.Item;
 import model.MembersItemList;
 
-public class ItemView {
+public class ItemUI {
     private Scanner userInput = new Scanner(System.in, "utf-8");
 
     public static enum itemMenuChoices {
         AddItem,
-        ViewItems,
         ViewOneItem,
         ChangeItem,
         DeleteItem,
@@ -28,24 +27,21 @@ public class ItemView {
     public itemMenuChoices showItemMenu(model.Member member) {
         System.out.println("  ~ Welcome! You are logged in as : " + member.getName());
         System.out.println("=== 1. Add item to this member.");
-        System.out.println("=== 2. Look at all available items.");
-        System.out.println("=== 3. Look at detailed information about one item.");
-        System.out.println("=== 4. Change one item.");
-        System.out.println("=== 5. Delete one item.");
-        System.out.println("=== 6. Back to main menu.");
+        System.out.println("=== 2. Look at detailed information about one item.");
+        System.out.println("=== 3. Change one item.");
+        System.out.println("=== 4. Delete one item.");
+        System.out.println("=== 5. Back to main menu.");
         String inputKey = userInput.nextLine();
         switch (inputKey) {
             case "1":
                 return itemMenuChoices.AddItem;
             case "2":
-                return itemMenuChoices.ViewItems;
-            case "3":
                 return itemMenuChoices.ViewOneItem;
-            case "4":
+            case "3":
                 return itemMenuChoices.ChangeItem;
-            case "5":
+            case "4":
                 return itemMenuChoices.DeleteItem;
-            case "6":
+            case "5":
                 return itemMenuChoices.Back;
             default:
                 return itemMenuChoices.Back;
@@ -65,15 +61,38 @@ public class ItemView {
         return new Item(category, name, description, 0, costPerDay);
     }
 
-    public  void showAllItems(ArrayList<MembersItemList> arrayList) {
+    public Item selectItemFromOtherMembers(ArrayList<MembersItemList> arrayList, model.Member selectedMember) throws Exception {
+        int index = 0;
         for(MembersItemList mil : arrayList) {
-            System.out.println(" Owner : " + mil.getOwner().getName());
-            System.out.println(" Items ");
-            for(Item i : mil.getItems()) {
-                System.out.println("Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription()
-                + " Cost per day : " +  i.getCostPerday() + " Day of ceation : " + i.getDayOfCreation() + " Is it rented? " + i.getRented());
+            if(mil.getOwner() != selectedMember) {
+                for(Item i : mil.getItems()) {
+                    if(i.getRented() == false) {
+                        System.out.println(index +" | Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription()
+                        + " Cost per day : " +  i.getCostPerday());
+                        index++;
+                    }    
+                }
             }
         }
+        if(index == 0) {
+            System.out.println("No available items.");
+            throw new Exception("No items.");
+        }
+        System.out.println("=== Please enter the index of item you want to select :");
+        int selectedIndex = userInput.nextInt();
+        userInput.nextLine();
+        index = 0;
+        for(MembersItemList mil : arrayList) {
+            for(Item i : mil.getItems()) {
+                if(index == selectedIndex) {
+                    return i;
+                }
+                if(i.getRented() == false) {
+                    index++;
+                }   
+            }
+        }
+        return null;
     }
 
     public void showOneItem(Item item) {
@@ -81,7 +100,7 @@ public class ItemView {
         + " Cost per day : " +  item.getCostPerday() + " Day of ceation : " + item.getDayOfCreation());
     }
 
-    public Item selectOneItem(MembersItemList itemList) {
+    public Item selectItemFromCurrentMember(MembersItemList itemList) {
         int index = 0;
         for(Item i : itemList.getItems()) {
             System.out.println("Index : " + index + " Item : " + i.getName());

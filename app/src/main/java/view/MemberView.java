@@ -53,27 +53,27 @@ public class MemberView {
         return new Member(name, phoneNumber, email);
     }
 
-    public String enterNameToSelectMember(MemberList memberList) {
-        showMemberList(memberList);
-        System.out.println("Please enter the name of the member you wish to login as");
-        String name = userInput.nextLine();
-        return name;
-    }
-
-    public String inspectMember() {
-        System.out.println("=== Please enter name of member");
-        String name = userInput.nextLine();
-        return name;
+    public Member selectMember(MemberList memberList) {
+        int index = 0;
+        for(Member m : memberList.getMembers()) {
+            System.out.println(index + ". | Name : " + m.getName() + " Email : " + m.getEmail());
+            index++;
+        }
+        System.out.println("Please enter the index of the member you wish to login as");
+        String stringIndex = userInput.nextLine();
+        int selectedIndex = Integer.parseInt(stringIndex);
+        index = 0;
+        for(Member m : memberList.getMembers()) {
+            if(index == selectedIndex) {
+                return m;
+            }
+            index++;
+        }
+        return null;
     }
 
     public void showMember (model.Member m) {  
         System.out.println("Name : " + m.getName() + " Email : " + m.getEmail() + " Phone-number : " + m.getPhoneNumber() + " Id : " + m.getId() + " Day of Creation : " + m.getDayOfCreation() + " Credits : " + m.getCredit()); 
-    }
-
-    public void showMemberList(model.MemberList memberList) {
-        for(Member m : memberList.getMembers()) {
-            System.out.println("Name : " + m.getName() + " Email : " + m.getEmail() + " Phone-number : " + m.getPhoneNumber());
-        }
     }
 
     public editMemberChoices editMember() {

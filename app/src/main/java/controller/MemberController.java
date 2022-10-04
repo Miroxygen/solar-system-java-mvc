@@ -12,8 +12,7 @@ public class MemberController {
     model.Member selectedMember = null;
 
     public void selectMemberToActAs() {
-        String name = memberUI.enterNameToSelectMember(memberList);
-        selectedMember = findMemberByname(name);
+        selectedMember = memberUI.selectMember(memberList);
     }
 
     public Member getSelectedMember() {
@@ -62,20 +61,6 @@ public class MemberController {
                 editEmail(selectedMember);
                 break;
         }
-    }
-
-
-    public model.Member findMemberByname(String memberName) {
-        for(Member m : memberList.getMembers()) {
-            if(m.getName().equals(memberName)) {
-                return m;
-            } 
-        }
-        return null;
-    }
-
-    public void showMemberList() {
-        memberUI.showMemberList(memberList);
     }
 
     public void createMember() {

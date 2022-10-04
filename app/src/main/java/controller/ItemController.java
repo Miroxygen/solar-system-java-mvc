@@ -10,26 +10,25 @@ import com.google.common.collect.Iterables;
 import model.Item;
 import model.Member;
 import model.MembersItemList;
-import view.ItemView;
-import view.ItemView.changeItemChoices;
-import view.ItemView.itemMenuChoices;
+import view.ItemUI;
+import view.ItemUI.changeItemChoices;
+import view.ItemUI.itemMenuChoices;
 
 public class ItemController {
-    private view.ItemView itemUI = new ItemView();
+    private view.ItemUI itemUI = new ItemUI();
     private ArrayList<MembersItemList> allMembersItemList = new ArrayList<MembersItemList>();
     private MembersItemList currentMembersItemlist = null;
     
     
-    public void ItemMenu(Member selectedMember) {
-        itemMenuChoices action = itemUI.showItemMenu(selectedMember);
+    public void ItemMenu(Member selectedMember) throws Exception {
+        try {
+            itemMenuChoices action = itemUI.showItemMenu(selectedMember);
         switch (action) {
             case AddItem:
                 addItem(selectedMember);
                 break;
-            case ViewItems:
-                itemUI.showAllItems(allMembersItemList);
             case ViewOneItem:
-                itemUI.showOneItem(itemUI.selectOneItem(currentMembersItemlist));
+                itemUI.showOneItem(itemUI.selectItemFromCurrentMember(currentMembersItemlist));
                 break;
             case ChangeItem:
                 changeItemMenu();
@@ -40,17 +39,20 @@ public class ItemController {
             case Back:
                 return;
         }
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public void changeItemMenu() {
-        Item itemToChange = itemUI.selectOneItem(currentMembersItemlist);
+        Item itemToChange = itemUI.selectItemFromCurrentMember(currentMembersItemlist);
         changeItemChoices action = itemUI.changeItem();
         switch (action) {
             case Category:
                 changeCategory(itemToChange);
                 break;
             case Name:
-            changeName(itemToChange);
+                changeName(itemToChange);
                 break;
             case Description:
                 changeDescription(itemToChange);
@@ -96,7 +98,7 @@ public class ItemController {
 
 
     public void deleteItem() {
-        Item selectedItem = itemUI.selectOneItem(currentMembersItemlist);
+        Item selectedItem = itemUI.selectItemFromCurrentMember(currentMembersItemlist);
         currentMembersItemlist.deleteItem(selectedItem);
     }
 
@@ -108,6 +110,14 @@ public class ItemController {
     public void addCurrentListIfItHasntBeenAdded() {
         if(!allMembersItemList.contains(currentMembersItemlist)) {
             allMembersItemList.add(currentMembersItemlist);
+        }
+    }
+
+    public Item selectItemFromOtherMembersAvailableItems(Member selectedMember) throws Exception {
+        try {
+            return itemUI.selectItemFromOtherMembers(allMembersItemList, selectedMember);
+        } catch (Exception e) {
+            throw e;
         }
     }
 

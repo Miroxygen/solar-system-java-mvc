@@ -10,7 +10,7 @@ public class Item {
     protected int costPerDay;
     protected Boolean rented = false;
     public Contract currentContract;
-    protected ArrayList<Contract> allContracts;
+    protected ArrayList<Contract> allContracts = new ArrayList<Contract>();
 
     public Item(String category, String name, String description, int dayOfCreation, int costPerDay) {
         this.category = category;

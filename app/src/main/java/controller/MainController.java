@@ -1,4 +1,7 @@
 package controller;
+import model.Contract;
+import model.Item;
+import model.Member;
 import view.MainUI;
 import view.MainUI.listChoices;
 import view.MainUI.loginChoices;
@@ -10,15 +13,17 @@ public class MainController  {
     view.MainUI view = new MainUI();
     MemberController memberController = new MemberController();
     ItemController  itemController = new ItemController();
+    ContractController contractController = new ContractController();
     
     public void startMenu() {
-        Boolean running = true;
+        try {
+            Boolean running = true;
         while(running) {
             if(memberController.getSelectedMember() == null) {
                 loginChoices action = view.loginMenu();
                 switch (action) {
                     case Login:
-                       memberController.selectMemberToActAs();
+                        login();
                         break;
                     case CreateMember:
                         memberController.createMember();
@@ -38,13 +43,18 @@ public class MainController  {
                     case ListEverything:
                         listMenu();
                         break;
+                    case LendItem:
+                        lendItem();
+                        break;
                     case Logout:
                         memberController.removeSelectedMember();
                         itemController.removeCurrentMembersItemlist();
                         break;
-                }
-            }    
-
+                    }
+                }    
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -60,7 +70,35 @@ public class MainController  {
         }
     }
 
+    public void login() {
+        try {
+            int counter = 0;
+            for(Member m : memberController.getMemberList().getMembers()) {
+                counter++;
+            }
+            if(counter == 0) {
+                throw new Exception("No members.");
+            } else {
+                memberController.selectMemberToActAs();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+       
+    }
+
     public void memberMenu() {
         memberController.MemberMenu();
+    }
+
+    public void lendItem() {
+        try {
+            Item lendItem = itemController.selectItemFromOtherMembersAvailableItems(memberController.getSelectedMember());
+            Contract newContract = contractController.establishNewContract(memberController.getSelectedMember(), lendItem);
+            lendItem.addContract(newContract);
+            lendItem.setCurrentContract(newContract);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }  
     }
 }

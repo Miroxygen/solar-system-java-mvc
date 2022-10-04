@@ -20,6 +20,7 @@ public class MainUI {
         MemberMenu,
         ItemMenu,
         ListEverything,
+        LendItem,
         Logout,
     }
 
@@ -51,7 +52,8 @@ public class MainUI {
         System.out.println("=== 1. Edit member.");
         System.out.println("=== 2. Edit items.");
         System.out.println("=== 3. View all members and items.");
-        System.out.println("=== 4. Logout.");
+        System.out.println("=== 4. Lend an item");
+        System.out.println("=== 5. Logout.");
         String inputKey = userInput.nextLine();
         if(inputKey.equals("1")) {
             return mainMenuChoices.MemberMenu;
@@ -60,6 +62,8 @@ public class MainUI {
         } else if(inputKey.equals("3")) {
             return mainMenuChoices.ListEverything;
         } else if(inputKey.equals("4")) {
+            return mainMenuChoices.LendItem;
+        } else if(inputKey.equals("5")){
             return mainMenuChoices.Logout;
         } else {
             return mainMenuChoices.MemberMenu;
