@@ -133,6 +133,10 @@ public class MemberController {
     }
 
     public void showMembersSimple() {
-        memberUI.displayAllMembers(memberList.getMembers());
+        memberUI.displayAllMembersSimple(memberList.getMembers());
+    }
+
+    public void displayMembersVerbose() {
+        memberUI.displayAllMembersVerbose(memberList.getMembers());
     }
 }

@@ -76,16 +76,23 @@ public class MemberView {
         System.out.println("Name : " + m.getName() + " Email : " + m.getEmail() + " Phone-number : " + m.getPhoneNumber() + " Id : " + m.getId() + " Day of Creation : " + m.getDayOfCreation() + " Credits : " + m.getCredit()); 
     }
 
-    public <T extends Member> void displayAllMembers (Iterable<T> members) {
+    public <T extends Member> void displayAllMembersSimple (Iterable<T> members) {
         for(Member member : members) {
             System.out.println("Name : " + member.getName() + " Email : " + member.getEmail() + " Current credits : " + member.getCredit() + 
             " Number of owned items : " + member.getItemList().getNumberOfItems());
         }
     }
 
-    public <T extends Member> void displayAllMembersSimple (Iterable<T> members) {
+    public <T extends Member> void displayAllMembersVerbose (Iterable<T> members) {
         for(Member member : members) {
             System.out.println("Name : " + member.getName() + " Email : " + member.getEmail());
+            System.out.println(" Owned items : ");
+            for(model.Item i : member.getItemList().getItems()) {
+                System.out.println("Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription() + " Cost per day : " + i.getCostPerday());
+                if(i.getRented()) {
+                    System.out.println(" Currently lent to : " + i.getCurrentContract().getLender().getName() + " Start day : " + i.getCurrentContract().getStartDay() + " End day : " + i.getCurrentContract().getEndDay());
+                }
+            }
         }
     }
 

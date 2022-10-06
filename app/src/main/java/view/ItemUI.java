@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import model.Item;
 import model.MembersItemList;
-import model.MutableItem;
 
 public class ItemUI {
     private Scanner userInput = new Scanner(System.in, "utf-8");
@@ -65,16 +64,18 @@ public class ItemUI {
     public Item getLendableItem(ArrayList<MembersItemList> arrayList, model.Member selectedMember) throws Exception {
         int index = 0;
         for(MembersItemList mil : arrayList) {
-            if(mil.getOwner() != selectedMember) {
-                for(Item i : mil.getItems()) {
-                    System.out.println(index +" | Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription()
-                    + " Cost per day : " +  i.getCostPerday());
-                    index++;
-                }
+            if(mil.getOwner() == selectedMember) {
+                System.out.println(" These are your own item/s. You can reserve them (for free).");
+            } else {
+                System.out.println(" Other members item/s.");
+            }
+            for(Item i : mil.getItems()) {
+                System.out.println(index +" | Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription()
+                + " Cost per day : " +  i.getCostPerday());
+                index++;
             }
         }
         if(index == 0) {
-            System.out.println("No available items.");
             throw new Exception("No items.");
         }
         System.out.println("=== Please enter the index of item you want to select :");
@@ -86,30 +87,31 @@ public class ItemUI {
                 if(index == selectedIndex) {
                     return i;
                 }
-                if(i.getRented() == false) {
-                    index++;
-                }   
+                index++;
             }
         }
         return null;
     }
 
-    public void showOneItem(Item item) {
+    public <T extends Item> void showOneItem(T item) {
         System.out.println("Category : " + item.getCategory() + " Name : " + item.getName() + " Description : " + item.getDescription()
-        + " Cost per day : " +  item.getCostPerday() + " Day of ceation : " + item.getDayOfCreation());
+        + " Cost per day : " +  item.getCostPerday() + " Day of ceation : " + item.getDayOfCreation() + " Rented? " + item.getRented());
+        if(item.getRented()) {
+            System.out.println(" Currently rented to " + item.getCurrentContract().getLender().getName() + " from day " + item.getCurrentContract().getStartDay() + " to " + item.getCurrentContract().getEndDay());
+        }
         int index = 0;
+        System.out.println("Old contracts : ");
         for(model.Contract c : item.getOldContracts()) {
-            System.out.println("Old contracts : ");
-            System.out.println(" Lender : " + c.getLender() + " Startday : " + c.getStartDay() + " Endday :" + c.getEndDay());
+            System.out.println(" Lender : " + c.getLender().getName() + " Startday : " + c.getStartDay() + " Endday :" + c.getEndDay());
             index++;
         }
         if(index == 0) {
             System.out.println("No old contracts.");
         }
         index = 0;
+        System.out.println("Future contracts : ");
         for(model.Contract c : item.getFutureContracts()) {
-            System.out.println("Future contracts : ");
-            System.out.println(" Lender : " + c.getLender() + " Startday : " + c.getStartDay() + " Endday :" + c.getEndDay());
+            System.out.println(" Lender : " + c.getLender().getName() + " Startday : " + c.getStartDay() + " Endday :" + c.getEndDay());
             index++;
         }
         if(index == 0) {
@@ -117,8 +119,8 @@ public class ItemUI {
         }
     }
 
-    public <T extends Item> T selectItemFromCurrentMember(Iterable<T> itemList) throws Exception {
-        if(itemList == null) {
+    public <T extends Item> T selectItemFromCurrentMember(Iterable<T> itemList, int listLength) throws Exception {
+        if(listLength == 0) {
             throw new Exception("No items.");
         } else {
             int index = 0;

@@ -2,6 +2,7 @@ package controller;
 import model.Contract;
 import model.Item;
 import model.Member;
+import model.Item.MutableItem;
 import view.MainUI;
 import view.MainUI.listChoices;
 import view.MainUI.loginChoices;
@@ -72,10 +73,9 @@ public class MainController  {
         switch (action) {
             case Simple:
                 memberController.showMembersSimple();
-                itemController.showAllItemsVerbose();
                 break;
             case Verbose:
-                System.out.println("Test");
+                memberController.displayMembersVerbose();
                 break;
         }
     }
@@ -90,6 +90,7 @@ public class MainController  {
                 throw new Exception("No members.");
             } else {
                 memberController.selectMemberToActAs();
+                itemController.setCurrentItemList(memberController.getSelectedMember().getItemList());
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -103,27 +104,31 @@ public class MainController  {
 
     public void lendItem() {
         try {
-            Item lendItem = itemController.selectLendableItem(memberController.getSelectedMember());
-            Contract newContract = contractController.establishNewContract(memberController.getSelectedMember(), lendItem);
-            checkIfItemIsAvailable(lendItem, newContract);
-            if((lendItem.getCostPerday() * newContract.getLength()) > memberController.getSelectedMember().getCredit()) {
-                throw new Exception("Not enough credits.");
+            Item.MutableItem lendItem = (MutableItem) itemController.selectLendableItem(memberController.getSelectedMember());
+            int startDate = contractController.getStartDate();
+            int endDate = startDate + contractController.getContractLength();
+            checkIfItemIsAvailable(lendItem,startDate, endDate);
+            Contract newContract = contractController.getNewContract(memberController.getSelectedMember(), lendItem, startDate, endDate);
+            if(lendItem.getOwner() != memberController.getSelectedMember()) {
+                if((lendItem.getCostPerday() * newContract.getLength()) > memberController.getSelectedMember().getCredit()) {
+                    throw new Exception("Not enough credits.");
+                }
+                memberController.getSelectedMember().withdrawCredit(lendItem.getCostPerday() * newContract.getLength());
+                lendItem.getOwner().addCredit(lendItem.getCostPerday() * newContract.getLength());
             }
-            memberController.getSelectedMember().withdrawCredit(lendItem.getCostPerday() * newContract.getLength());
             if(newContract.getStartDay() == time.getCurrentDay()) {
                 lendItem.setCurrentContract(newContract);
                 lendItem.setAsRented();
             } else {
                 lendItem.addToFutureContracts(newContract);
             }
+            lendItem = null;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }  
     }
 
-    public void checkIfItemIsAvailable(Item lendItem, Contract contract) throws Exception {
-        int startDate = contract.getStartDay();
-        int endDate = contract.getEndDay();
+    public void checkIfItemIsAvailable(Item lendItem, int startDate , int endDate) throws Exception {
         if(lendItem.getCurrentContract() != null) {
             if(startDate <= lendItem.getCurrentContract().getEndDay()) {
                 throw new Exception("Not available");
@@ -141,9 +146,18 @@ public class MainController  {
     public void advanceTime() {
         int daysToAdvance = mainUI.advanceTime(time);
         time.advanceTime(daysToAdvance);
+        dailyContractCheck();
     }
 
     public void dailyContractCheck() {
-
+        for(Contract c : contractController.getRunningContracts()) {
+            if(c.getStartDay() <= time.getCurrentDay() && c.getEndDay() >= time.getCurrentDay()) {
+                c.getItem().setCurrentContract(c);
+                c.getItem().removeFromFutureContracts(c);
+                c.getItem().setAsRented();
+            } else if(c.getEndDay() < time.getCurrentDay()) {
+                c.getItem().moveExpiredContract();
+            }
+        }
     }
 }

@@ -11,8 +11,8 @@ public class ContractController {
     view.ContractView conractUI = new ContractView();
     ArrayList <Contract> savedContracts = new ArrayList<Contract>();
 
-    public Contract establishNewContract(Member lender, Item item) {
-        Contract newContract = new Contract(getStartDate(), getEndDate(), item, lender);
+    public Contract getNewContract(Member lender, Item item, int startDate, int endDate) {
+        Contract newContract = new Contract(startDate, endDate, item, lender);
         savedContracts.add(newContract);
         return newContract;
     }
@@ -22,17 +22,16 @@ public class ContractController {
         return startDate;
     }
 
-    public int getEndDate() {
-        int endDate = getStartDate() + conractUI.getContractLength();
-        return endDate;
+    public int getContractLength() {
+        int length = conractUI.getContractLength();
+        return length;
     }
 
-    public void moveExpiredContract(model.Time time) {
-        for(Contract c : savedContracts) {
-            if(c.getEndDay() == time.getCurrentDay()) {
-                c.getItem().moveExpiredContract();
-                savedContracts.remove(c);
-            }
-        }
+    public Iterable<Contract> getRunningContracts() {
+        return savedContracts;
+    }
+
+    public void removeExpiredContract(Contract contract) {
+        savedContracts.remove(contract);
     }
 }

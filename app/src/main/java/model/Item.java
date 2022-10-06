@@ -12,6 +12,7 @@ public class Item {
     public Contract currentContract;
     protected ArrayList<Contract> futureContracts = new ArrayList<Contract>();
     protected ArrayList<Contract> oldContracts = new ArrayList<Contract>();
+    protected Member owner;
 
     public Item(String category, String name, String description, int dayOfCreation, int costPerDay) {
         this.category = category;
@@ -22,8 +23,21 @@ public class Item {
     }
 
     public Item(Item item) {
+        this.category = item.category;
+        this.name = item.name;
+        this.description = item.description;
+        this.dayOfCreation = item.dayOfCreation;
+        this.costPerDay = item.costPerDay;
     }
 
+    public void setOwner(Member owner) {
+        this.owner = owner;
+    }
+
+    public Member getOwner() {
+        return owner;
+    }
+    
     public void setAsRented() {
         this.isRented = true;
     }
@@ -102,8 +116,28 @@ public class Item {
         this.futureContracts.add(contract);
     }
 
+    public void removeFromFutureContracts(Contract contract) {
+        this.futureContracts.remove(contract);
+    }
+
     public void addToOldContracts(Contract contract) {
         this.oldContracts.add(contract);
+    }
+
+    /**
+     * An item you can change.
+     */
+    public static class MutableItem extends Item {
+
+        public MutableItem(String category, String name, String description, int dayOfCreation, int costPerDay) {
+            super(category, name, description, dayOfCreation, costPerDay);
+        }
+
+
+        public MutableItem(Item item) {
+            super(item);
+        }
+
     }
 }
 

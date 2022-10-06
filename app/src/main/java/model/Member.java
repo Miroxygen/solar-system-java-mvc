@@ -17,6 +17,12 @@ public class Member {
         this.email = email;
     }
 
+    public Member(Member m) {
+        this.name = m.name;
+        this.phoneNumber = m.phoneNumber;
+        this.email = m.email;
+    }
+
     public void setItemList(MembersItemList itemList) {
         this.itemList = itemList;
     }
@@ -75,5 +81,17 @@ public class Member {
 
     public MembersItemList getItemList() {
         return itemList;
+    }
+
+    public static class MutableMember extends Member {
+
+        public MutableMember(String name, String phoneNumber, String email) {
+            super(name, phoneNumber, email);
+        }
+
+        public MutableMember (Member m) {
+            super(m);
+        }
+        
     }
 }

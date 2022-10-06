@@ -10,6 +10,7 @@ import com.google.common.collect.Iterables;
 import model.Item;
 import model.Member;
 import model.MembersItemList;
+import model.Item.MutableItem;
 import view.ItemUI;
 import view.ItemUI.changeItemChoices;
 import view.ItemUI.itemMenuChoices;
@@ -28,7 +29,7 @@ public class ItemController {
                 addItem(selectedMember, time);
                 break;
             case ViewOneItem:
-                itemUI.showOneItem(itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems()));
+                itemUI.showOneItem(itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems(), currentMembersItemlist.getNumberOfItems()));
                 break;
             case ChangeItem:
                 changeItemMenu();
@@ -46,7 +47,7 @@ public class ItemController {
 
     public void changeItemMenu() {
         try {
-            Item itemToChange = itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems());
+            Item itemToChange = itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems(), currentMembersItemlist.getNumberOfItems());
             changeItemChoices action = itemUI.changeItem();
             switch (action) {
                 case Category:
@@ -90,12 +91,12 @@ public class ItemController {
 
     public void addItem(Member selectedMember, model.Time time) {
         try {
-        setCurrentItemList(selectedMember);
         model.Item newItem = itemUI.createItem(time.getCurrentDay());
         handleCategoryErrors(newItem.getCategory());
         handleCostError(newItem.getCostPerday());
         selectedMember.addCredit(100);
-        currentMembersItemlist.addItem(newItem);
+        model.Item createdItem = currentMembersItemlist.addItem(newItem);
+        createdItem.setOwner(selectedMember);
         } catch (Exception e) {
            System.out.println(e.getMessage() + "| Your item was NOT created.");
         }  
@@ -104,16 +105,16 @@ public class ItemController {
 
     public void deleteItem() {
         try {
-            Item selectedItem;
-            selectedItem = itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems());
+            Item.MutableItem selectedItem;
+            selectedItem = itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems(), currentMembersItemlist.getNumberOfItems());
             currentMembersItemlist.deleteItem(selectedItem);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void setCurrentItemList(Member selectedMember) {
-        currentMembersItemlist = selectedMember.getItemList();
+    public void setCurrentItemList(MembersItemList itemList) {
+        currentMembersItemlist = itemList;
         addCurrentListIfItHasntBeenAdded();
     }
 
@@ -125,7 +126,8 @@ public class ItemController {
 
     public Item selectLendableItem(Member selectedMember) throws Exception {
         try {
-            return itemUI.getLendableItem(allMembersItemList, selectedMember);
+            Item.MutableItem selectedItem = (MutableItem) itemUI.getLendableItem(allMembersItemList, selectedMember);
+            return selectedItem;
         } catch (Exception e) {
             throw e;
         }

@@ -125,7 +125,7 @@ public class MainUI {
             if(m.getItemList().getNumberOfItems() == 0) {
                 System.out.println(" Member owns no items.");
             } else {
-                for(model.MutableItem i : m.getItemList().getItems()) {
+                for(Item.MutableItem i : m.getItemList().getItems()) {
                     System.out.println("Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription() + " Cost per day : " + i.getCostPerday() 
                     + " Day of creation : " + i.getDayOfCreation());
                 }
