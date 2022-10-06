@@ -116,19 +116,16 @@ public class MainUI {
     }
 
     public void ListAllSimpleWay(MemberList members) {
-        for(Member m : members.getMembers()) {
-            System.out.println("Name : " + m.getName() + " Email : " + m.getEmail() + " Current credits : " + m.getCredit() + 
-            " Number of owned items : " + m.getItemList().getNumberOfItems());
-        }
+        
     }
 
-    public void ListAllVerboseWay(MemberList members) {
-        for(Member m : members.getMembers()) {
+    public <T extends Member> void listAllVerboseWay(Iterable<T> memberList) {
+        for(Member m : memberList) {
             System.out.println("Name : " + m.getName() + " Email : " + m.getEmail());
             if(m.getItemList().getNumberOfItems() == 0) {
                 System.out.println(" Member owns no items.");
             } else {
-                for(Item i : m.getItemList().getItems()) {
+                for(model.MutableItem i : m.getItemList().getItems()) {
                     System.out.println("Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription() + " Cost per day : " + i.getCostPerday() 
                     + " Day of creation : " + i.getDayOfCreation());
                 }

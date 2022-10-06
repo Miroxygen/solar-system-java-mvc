@@ -12,7 +12,7 @@ public class MemberController {
     model.Member selectedMember = null;
 
     public void selectMemberToActAs() {
-        selectedMember = memberUI.selectMember(memberList);
+        selectedMember = memberUI.selectMember(memberList.getMembers());
     }
 
     public Member getSelectedMember() {
@@ -130,5 +130,9 @@ public class MemberController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void showMembersSimple() {
+        memberUI.displayAllMembers(memberList.getMembers());
     }
 }

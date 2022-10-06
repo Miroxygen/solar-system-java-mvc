@@ -28,7 +28,7 @@ public class ItemController {
                 addItem(selectedMember, time);
                 break;
             case ViewOneItem:
-                itemUI.showOneItem(itemUI.selectItemFromCurrentMember(currentMembersItemlist));
+                itemUI.showOneItem(itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems()));
                 break;
             case ChangeItem:
                 changeItemMenu();
@@ -46,7 +46,7 @@ public class ItemController {
 
     public void changeItemMenu() {
         try {
-            Item itemToChange = itemUI.selectItemFromCurrentMember(currentMembersItemlist);
+            Item itemToChange = itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems());
             changeItemChoices action = itemUI.changeItem();
             switch (action) {
                 case Category:
@@ -105,7 +105,7 @@ public class ItemController {
     public void deleteItem() {
         try {
             Item selectedItem;
-            selectedItem = itemUI.selectItemFromCurrentMember(currentMembersItemlist);
+            selectedItem = itemUI.selectItemFromCurrentMember(currentMembersItemlist.getItems());
             currentMembersItemlist.deleteItem(selectedItem);
         } catch (Exception e) {
             e.printStackTrace();
@@ -123,9 +123,9 @@ public class ItemController {
         }
     }
 
-    public Item selectItemFromOtherMembersAvailableItems(Member selectedMember) throws Exception {
+    public Item selectLendableItem(Member selectedMember) throws Exception {
         try {
-            return itemUI.selectItemFromOtherMembers(allMembersItemList, selectedMember);
+            return itemUI.getLendableItem(allMembersItemList, selectedMember);
         } catch (Exception e) {
             throw e;
         }
@@ -156,5 +156,9 @@ public class ItemController {
         if(cost < 10 || cost > 100) {
             throw new Exception("Faulty cost per day.");
         }
+    }
+
+    public void showAllItemsVerbose() {
+        itemUI.showAllItemsVerbose(allMembersItemList);
     }
 }

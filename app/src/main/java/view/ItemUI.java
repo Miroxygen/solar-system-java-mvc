@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import model.Item;
 import model.MembersItemList;
+import model.MutableItem;
 
 public class ItemUI {
     private Scanner userInput = new Scanner(System.in, "utf-8");
@@ -61,16 +62,14 @@ public class ItemUI {
         return new Item(category, name, description, currentDay, costPerDay);
     }
 
-    public Item selectItemFromOtherMembers(ArrayList<MembersItemList> arrayList, model.Member selectedMember) throws Exception {
+    public Item getLendableItem(ArrayList<MembersItemList> arrayList, model.Member selectedMember) throws Exception {
         int index = 0;
         for(MembersItemList mil : arrayList) {
             if(mil.getOwner() != selectedMember) {
                 for(Item i : mil.getItems()) {
-                    if(i.getRented() == false) {
-                        System.out.println(index +" | Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription()
-                        + " Cost per day : " +  i.getCostPerday());
-                        index++;
-                    }    
+                    System.out.println(index +" | Category : " + i.getCategory() + " Name : " + i.getName() + " Description : " + i.getDescription()
+                    + " Cost per day : " +  i.getCostPerday());
+                    index++;
                 }
             }
         }
@@ -118,12 +117,12 @@ public class ItemUI {
         }
     }
 
-    public Item selectItemFromCurrentMember(MembersItemList itemList) throws Exception {
-        if(itemList == null || itemList.getNumberOfItems() == 0) {
+    public <T extends Item> T selectItemFromCurrentMember(Iterable<T> itemList) throws Exception {
+        if(itemList == null) {
             throw new Exception("No items.");
         } else {
             int index = 0;
-            for(Item i : itemList.getItems()) {
+            for(Item i : itemList) {
                 System.out.println("Index : " + index + " Item : " + i.getName());
                 index++;
             }
@@ -131,7 +130,7 @@ public class ItemUI {
             int selectedIndex = userInput.nextInt();
             userInput.nextLine();
             index = 0;
-            for(Item i : itemList.getItems()) {
+            for(T i : itemList) {
                 if(index == selectedIndex) {
                     return i;
                 }
@@ -178,5 +177,14 @@ public class ItemUI {
         System.out.println(" Please enter the new value you want :");
         int inputKey = userInput.nextInt();
         return inputKey;
+    }
+
+    public void showAllItemsVerbose(ArrayList<MembersItemList> membersItemsList) {
+        for(MembersItemList mil : membersItemsList) {
+            System.out.println(mil.getOwner().getName());
+            for(Item i : mil.getItems()) {
+                System.out.println(i.getCategory() + i.getName() + i.getDescription() + i.getCostPerday());
+            }
+        }
     }
 }

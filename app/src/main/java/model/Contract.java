@@ -3,6 +3,7 @@ package model;
 public class Contract {
     protected int startDay;
     protected int endDay;
+    protected int length;
     public Item item;
     protected Member lender;
 
@@ -27,5 +28,9 @@ public class Contract {
 
     public Member getLender() {
         return lender;
+    }
+
+    public int getLength() {
+        return getEndDay() - getStartDay();
     }
 }

@@ -33,6 +33,10 @@ public class Member {
         this.credit += credit;
     }
 
+    public void withdrawCredit(int credit) {
+        this.credit -= credit;
+    }
+
     public String getName() {
         return name;
     }

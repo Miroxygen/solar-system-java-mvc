@@ -53,9 +53,9 @@ public class MemberView {
         return new Member(name, phoneNumber, email);
     }
 
-    public Member selectMember(MemberList memberList) {
+    public <T extends Member> T selectMember(Iterable<T> memberList) {
         int index = 0;
-        for(Member m : memberList.getMembers()) {
+        for(Member m : memberList) {
             System.out.println(index + ". | Name : " + m.getName() + " Email : " + m.getEmail());
             index++;
         }
@@ -63,7 +63,7 @@ public class MemberView {
         String stringIndex = userInput.nextLine();
         int selectedIndex = Integer.parseInt(stringIndex);
         index = 0;
-        for(Member m : memberList.getMembers()) {
+        for(T m : memberList) {
             if(index == selectedIndex) {
                 return m;
             }
@@ -75,6 +75,20 @@ public class MemberView {
     public void showMember (model.Member m) {  
         System.out.println("Name : " + m.getName() + " Email : " + m.getEmail() + " Phone-number : " + m.getPhoneNumber() + " Id : " + m.getId() + " Day of Creation : " + m.getDayOfCreation() + " Credits : " + m.getCredit()); 
     }
+
+    public <T extends Member> void displayAllMembers (Iterable<T> members) {
+        for(Member member : members) {
+            System.out.println("Name : " + member.getName() + " Email : " + member.getEmail() + " Current credits : " + member.getCredit() + 
+            " Number of owned items : " + member.getItemList().getNumberOfItems());
+        }
+    }
+
+    public <T extends Member> void displayAllMembersSimple (Iterable<T> members) {
+        for(Member member : members) {
+            System.out.println("Name : " + member.getName() + " Email : " + member.getEmail());
+        }
+    }
+
 
     public editMemberChoices editMember() {
         System.out.println("Please enter what you would like to change : ");

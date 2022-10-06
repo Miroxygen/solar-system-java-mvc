@@ -12,11 +12,19 @@ public class ContractController {
     ArrayList <Contract> savedContracts = new ArrayList<Contract>();
 
     public Contract establishNewContract(Member lender, Item item) {
-        int startDay = conractUI.getContractStartDate();
-        int lengthOfTime = conractUI.getContractLength();
-        Contract newContract = new Contract(startDay, startDay + lengthOfTime, item, lender);
+        Contract newContract = new Contract(getStartDate(), getEndDate(), item, lender);
         savedContracts.add(newContract);
         return newContract;
+    }
+
+    public int getStartDate() {
+        int startDate = conractUI.getContractStartDate();
+        return startDate;
+    }
+
+    public int getEndDate() {
+        int endDate = getStartDate() + conractUI.getContractLength();
+        return endDate;
     }
 
     public void moveExpiredContract(model.Time time) {

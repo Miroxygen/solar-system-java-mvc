@@ -8,7 +8,7 @@ public class Item {
     protected String description;
     protected int dayOfCreation;
     protected int costPerDay;
-    protected Boolean rented = false;
+    protected Boolean isRented = false;
     public Contract currentContract;
     protected ArrayList<Contract> futureContracts = new ArrayList<Contract>();
     protected ArrayList<Contract> oldContracts = new ArrayList<Contract>();
@@ -21,8 +21,15 @@ public class Item {
         this.costPerDay = costPerDay;
     }
 
-    public void setRented(Boolean ifRented) {
-        this.rented = ifRented;
+    public Item(Item item) {
+    }
+
+    public void setAsRented() {
+        this.isRented = true;
+    }
+
+    public void setAsNotRented() {
+        this.isRented = false;
     }
 
     public void setCategory(String category) {
@@ -42,7 +49,7 @@ public class Item {
     }
 
     public Boolean getRented() {
-        return this.rented;
+        return this.isRented;
     }
 
     public String getCategory() {
@@ -77,7 +84,7 @@ public class Item {
         this.futureContracts.remove(getCurrentContract());
         this.oldContracts.add(getCurrentContract());
         removeCurrentContract();
-        setRented(false);
+        setAsNotRented();
     }
 
     public Contract getCurrentContract() {
@@ -91,7 +98,12 @@ public class Item {
         return oldContracts;
     }
 
-    public void addContract(Contract contract) {
+    public void addToFutureContracts(Contract contract) {
         this.futureContracts.add(contract);
     }
+
+    public void addToOldContracts(Contract contract) {
+        this.oldContracts.add(contract);
+    }
 }
+

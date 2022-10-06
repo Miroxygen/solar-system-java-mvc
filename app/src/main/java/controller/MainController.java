@@ -71,10 +71,11 @@ public class MainController  {
         listChoices action = mainUI.listChoices(memberController.getSelectedMember(), time);
         switch (action) {
             case Simple:
-                mainUI.ListAllSimpleWay(memberController.getMemberList());
+                memberController.showMembersSimple();
+                itemController.showAllItemsVerbose();
                 break;
             case Verbose:
-                mainUI.ListAllVerboseWay(memberController.getMemberList());
+                System.out.println("Test");
                 break;
         }
     }
@@ -102,18 +103,47 @@ public class MainController  {
 
     public void lendItem() {
         try {
-            Item lendItem = itemController.selectItemFromOtherMembersAvailableItems(memberController.getSelectedMember());
+            Item lendItem = itemController.selectLendableItem(memberController.getSelectedMember());
             Contract newContract = contractController.establishNewContract(memberController.getSelectedMember(), lendItem);
-            lendItem.addContract(newContract);
-            lendItem.setCurrentContract(newContract);
-            lendItem.setRented(true);
+            checkIfItemIsAvailable(lendItem, newContract);
+            if((lendItem.getCostPerday() * newContract.getLength()) > memberController.getSelectedMember().getCredit()) {
+                throw new Exception("Not enough credits.");
+            }
+            memberController.getSelectedMember().withdrawCredit(lendItem.getCostPerday() * newContract.getLength());
+            if(newContract.getStartDay() == time.getCurrentDay()) {
+                lendItem.setCurrentContract(newContract);
+                lendItem.setAsRented();
+            } else {
+                lendItem.addToFutureContracts(newContract);
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }  
     }
 
+    public void checkIfItemIsAvailable(Item lendItem, Contract contract) throws Exception {
+        int startDate = contract.getStartDay();
+        int endDate = contract.getEndDay();
+        if(lendItem.getCurrentContract() != null) {
+            if(startDate <= lendItem.getCurrentContract().getEndDay()) {
+                throw new Exception("Not available");
+            }
+        }
+        for(Contract fC : lendItem.getFutureContracts()) {
+            if(startDate > fC.getStartDay() && startDate < fC.getEndDay() || (startDate == fC.getStartDay() || startDate == fC.getEndDay())) {
+                throw new Exception("Not available");
+            } else if(endDate > fC.getStartDay() && endDate < fC.getEndDay() || (endDate == fC.getStartDay() || endDate == fC.getEndDay())) {
+                throw new Exception("Not available");
+            }
+        }
+    }
+
     public void advanceTime() {
         int daysToAdvance = mainUI.advanceTime(time);
         time.advanceTime(daysToAdvance);
+    }
+
+    public void dailyContractCheck() {
+
     }
 }

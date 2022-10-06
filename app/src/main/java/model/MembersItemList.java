@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MembersItemList {
     private Member owner = null;
-    private ArrayList<Item> items = new ArrayList<Item>();
+    private ArrayList<MutableItem> items = new ArrayList<MutableItem>();
 
     public void setOwner(Member owner) {
         this.owner = owner;
@@ -15,11 +15,11 @@ public class MembersItemList {
     }
 
     public Item addItem(Item item) {
-        items.add(item);
+        items.add(new MutableItem(item));
         return items.get(items.size() - 1);
     }
 
-    public Iterable<Item> getItems() {
+    public Iterable<MutableItem> getItems() {
         return items;
     }
 
