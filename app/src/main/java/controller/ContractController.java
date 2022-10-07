@@ -22,8 +22,11 @@ public class ContractController {
         return startDate;
     }
 
-    public int getContractLength() {
+    public int getContractLength() throws Exception {
         int length = conractUI.getContractLength();
+        if(length < 0) {
+            throw new Exception("Can't lend negative days");
+        }
         return length;
     }
 

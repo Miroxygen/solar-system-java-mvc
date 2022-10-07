@@ -94,9 +94,9 @@ public class Item {
         this.currentContract = null;
     }
 
-    public void moveExpiredContract() {
-        this.futureContracts.remove(getCurrentContract());
-        this.oldContracts.add(getCurrentContract());
+    public void moveExpiredContract(Contract contract) {
+        this.futureContracts.remove(contract);
+        this.oldContracts.add(contract);
         removeCurrentContract();
         setAsNotRented();
     }
@@ -106,6 +106,10 @@ public class Item {
     }
     public Iterable<Contract> getFutureContracts() {
         return futureContracts;
+    }
+
+    public int getFutureContractAmount() {
+        return futureContracts.size();
     }
 
     public Iterable<Contract> getOldContracts() {
@@ -121,7 +125,9 @@ public class Item {
     }
 
     public void addToOldContracts(Contract contract) {
-        this.oldContracts.add(contract);
+        if(!this.oldContracts.contains(contract) || contract != null) {
+            this.oldContracts.add(contract);
+        }   
     }
 
     /**

@@ -102,8 +102,12 @@ public class ItemUI {
         int index = 0;
         System.out.println("Old contracts : ");
         for(model.Contract c : item.getOldContracts()) {
-            System.out.println(" Lender : " + c.getLender().getName() + " Startday : " + c.getStartDay() + " Endday :" + c.getEndDay());
-            index++;
+            if(c == null) {
+                System.out.println(" Null ");
+            } else {
+                System.out.println(" Lender : " + c.getLender().getName() + " Startday : " + c.getStartDay() + " Endday :" + c.getEndDay());
+                index++;
+            }    
         }
         if(index == 0) {
             System.out.println("No old contracts.");
@@ -178,6 +182,7 @@ public class ItemUI {
     public int newIntValue() {
         System.out.println(" Please enter the new value you want :");
         int inputKey = userInput.nextInt();
+        userInput.nextLine();
         return inputKey;
     }
 

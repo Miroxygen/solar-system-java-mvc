@@ -1,4 +1,6 @@
 package controller;
+import org.checkerframework.checker.units.qual.C;
+
 import model.Contract;
 import model.Item;
 import model.Member;
@@ -129,6 +131,9 @@ public class MainController  {
     }
 
     public void checkIfItemIsAvailable(Item lendItem, int startDate , int endDate) throws Exception {
+        if(startDate < 0 || startDate + time.getCurrentDay() < time.getCurrentDay()) {
+            throw new Exception("Can't lend in the past.");
+        }
         if(lendItem.getCurrentContract() != null) {
             if(startDate <= lendItem.getCurrentContract().getEndDay()) {
                 throw new Exception("Not available");
@@ -144,20 +149,60 @@ public class MainController  {
     }
 
     public void advanceTime() {
-        int daysToAdvance = mainUI.advanceTime(time);
-        time.advanceTime(daysToAdvance);
-        dailyContractCheck();
+        try {
+            int daysToAdvance = mainUI.advanceTime(time);
+            if(daysToAdvance < 0) {
+                throw new Exception("Can't go back in time.");
+            }
+            time.advanceTime(daysToAdvance);
+            dailyContractCheck();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void dailyContractCheck() {
         for(Contract c : contractController.getRunningContracts()) {
-            if(c.getStartDay() <= time.getCurrentDay() && c.getEndDay() >= time.getCurrentDay()) {
-                c.getItem().setCurrentContract(c);
-                c.getItem().removeFromFutureContracts(c);
-                c.getItem().setAsRented();
-            } else if(c.getEndDay() < time.getCurrentDay()) {
-                c.getItem().moveExpiredContract();
-            }
+            System.out.println(" Im a contract");
+            setCurrentContract(c);
+            Contract oldContract = removeOldContracts(c);
+            if(oldContract != null) {
+                for(Contract fC : oldContract.getItem().getFutureContracts()) {
+                    setCurrentContract(fC);
+                }
+            }  
         }
+    }
+
+    public void setCurrentContract(Contract contract) {
+        if(contract.getStartDay() <= time.getCurrentDay() && contract.getEndDay() >= time.getCurrentDay()) {
+            contract.getItem().setCurrentContract(contract);
+            contract.getItem().removeFromFutureContracts(contract);
+            contract.getItem().setAsRented();
+        }
+    }
+
+    public Contract removeOldContracts(Contract contract) {
+        if(contract.getEndDay() < time.getCurrentDay()) {
+           /*  if(contract.getItem().getFutureContractAmount() != 0) {
+                for(Contract c : contract.getItem().getFutureContracts()) {
+                    if(!(c.getStartDay() <= time.getCurrentDay() && c.getEndDay() <= time.getCurrentDay())) {
+                        c.getItem().moveExpiredContract(contract);
+                    } else {
+                        c.getItem().setAsRented();
+                        c.getItem().setCurrentContract(c);
+                        c.getItem().removeFromFutureContracts(c);
+                        c.getItem().addToOldContracts(contract);
+                    }
+                    
+                }
+            } else {
+                contract.getItem().moveExpiredContract(contract);
+            }*/
+            contract.getItem().moveExpiredContract(contract);
+            contractController.removeExpiredContract(contract);
+            return contract;
+        }
+        else return null;
     }
 }
