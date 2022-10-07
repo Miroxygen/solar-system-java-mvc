@@ -1,10 +1,10 @@
 # Stuff Lending Test Report
 Document the results of your final system test below. You find instructions on the course homepage.
 
-| header | header |
-| ------ | ------ |
-| cell | cell |
-| cell | cell |
+| header | header | header |
+| ------ | ------ | ------ |
+| cell | cell | cell |
+| cell | cell | cell |
 
 | Case | Result | Note ||
 | ------ | ------ | ------ |
