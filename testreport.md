@@ -1,6 +1,10 @@
 # Stuff Lending Test Report
 Document the results of your final system test below. You find instructions on the course homepage.
 
+Version: [#133732](https://gitlab.lnu.se/1dv607/student/mh225wi/a2/-/pipelines/133732)
+Date: 2022.10.07
+Environment: Windows, Java Version 17.0.4.1. Perfomerd by : Miranda.
+
 | Case | Result | Note |
 | ------ | ------ | ------ |
 | 1.1 | OK |  |
