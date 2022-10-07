@@ -1,36 +1,76 @@
 package model;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
+/**
+ * Represents a contract.
+ */
 public class Contract {
-    protected int startDay;
-    protected int endDay;
-    protected int length;
-    public Item item;
-    protected Member lender;
+  protected int startDay;
+  protected int endDay;
+  public Item.MutableItem item;
+  protected Member.MutableMember lender;
 
-    public Contract(int startDay, int endDay, Item item, Member lender) {
-        this.startDay = startDay;
-        this.endDay = endDay;
-        this.item = item;
-        this.lender = lender;
-    }
+  /**
+   * Constructor.
+   *
+   * @param startDay Int.
+   * @param endDay Int.
+   * @param item Object.
+   * @param lender Object.
+   */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
+  public Contract(int startDay, int endDay, Item.MutableItem item, Member.MutableMember lender) {
+    this.startDay = startDay;
+    this.endDay = endDay;
+    this.item = item;
+    this.lender = lender;
+  }
 
-    public int getStartDay() {
-        return startDay;
-    }
+  /**
+   * Contracts startday.
+   *
+   * @return Int.
+   */
+  public int getStartDay() {
+    return startDay;
+  }
 
-    public int getEndDay() {
-        return endDay;
-    }
+  /**
+   * Contracts end day.
+   *
+   * @return Int.
+   */
+  public int getEndDay() {
+    return endDay;
+  }
 
-    public Item getItem() {
-        return item;
-    }
+  /**
+   * Contracted item.
+   *
+   * @return Object.
+   */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
+  public Item.MutableItem getItem() {
+    return item;
+  }
 
-    public Member getLender() {
-        return lender;
-    }
+  /**
+   * Contractor.
+   *
+   * @return Object.
+   */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
+  public Member.MutableMember getLender() {
+    return lender;
+  }
 
-    public int getLength() {
-        return getEndDay() - getStartDay();
-    }
+  /**
+   * Contracts length.
+   *
+   * @return Int.
+   */
+  public int getLength() {
+    return getEndDay() - getStartDay();
+  }
+
 }

@@ -1,13 +1,26 @@
 package model;
 
+/**
+ * Respresents a daycounter.
+ */
 public class Time {
-    protected int currentDay;
+  protected int currentDay;
 
-    public int getCurrentDay() {
-        return currentDay;
-    }
+  /**
+   * Returns current int for counter.
+   *
+   * @return Int.
+   */
+  public int getCurrentDay() {
+    return currentDay;
+  }
 
-    public void advanceTime(int advancement) {
-        this.currentDay += advancement;
-    }
+  /**
+   * Increases counter.
+   *
+   * @param advancement Int.
+   */
+  public void advanceTime(int advancement) {
+    this.currentDay += advancement;
+  }
 }

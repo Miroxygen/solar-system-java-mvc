@@ -2,148 +2,283 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Represents an Item.
+ */
 public class Item {
-    protected String category;
-    protected String name;
-    protected String description;
-    protected int dayOfCreation;
-    protected int costPerDay;
-    protected Boolean isRented = false;
-    public Contract currentContract;
-    protected ArrayList<Contract> futureContracts = new ArrayList<Contract>();
-    protected ArrayList<Contract> oldContracts = new ArrayList<Contract>();
-    protected Member owner;
+  protected String category;
+  protected String name;
+  protected String description;
+  protected int dayOfCreation;
+  protected int costPerDay;
+  protected Boolean isRented = false;
+  protected Contract currentContract;
+  protected ArrayList<Contract> futureContracts = new ArrayList<Contract>();
+  protected ArrayList<Contract> oldContracts = new ArrayList<Contract>();
+  protected Member.MutableMember owner;
 
-    public Item(String category, String name, String description, int dayOfCreation, int costPerDay) {
-        this.category = category;
-        this.name = name;
-        this.description = description;
-        this.dayOfCreation = dayOfCreation;
-        this.costPerDay = costPerDay;
-    }
+  /**
+   * Constructor.
+   *
+   * @param category String.
+   * @param name String.
+   * @param description String.
+   * @param dayOfCreation Int.
+   * @param costPerDay Int.
+   */
+  public Item(String category, String name, String description, int dayOfCreation, int costPerDay) {
+    this.category = category;
+    this.name = name;
+    this.description = description;
+    this.dayOfCreation = dayOfCreation;
+    this.costPerDay = costPerDay;
+  }
 
-    public Item(Item item) {
-        this.category = item.category;
-        this.name = item.name;
-        this.description = item.description;
-        this.dayOfCreation = item.dayOfCreation;
-        this.costPerDay = item.costPerDay;
-    }
+  /**
+   * For child object.
+   *
+   * @param item Object.
+   */
+  public Item(Item item) {
+    this.category = item.category;
+    this.name = item.name;
+    this.description = item.description;
+    this.dayOfCreation = item.dayOfCreation;
+    this.costPerDay = item.costPerDay;
+  }
 
-    public void setOwner(Member owner) {
-        this.owner = owner;
-    }
+  /**
+   * Itemowner.
+   *
+   * @param owner Object.
+   */
+  public void setOwner(Member.MutableMember owner) {
+    this.owner = owner;
+  }
 
-    public Member getOwner() {
-        return owner;
-    }
-    
-    public void setAsRented() {
-        this.isRented = true;
-    }
+  /**
+   * Itemowner.
+   *
+   * @return Object.
+   */
+  public Member.MutableMember getOwner() {
+    return owner;
+  }
 
-    public void setAsNotRented() {
-        this.isRented = false;
-    }
+  /**
+   * Item is unavailable.
+   */
+  public void setAsRented() {
+    this.isRented = true;
+  }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+  /**
+   * Item is available.
+   */
+  public void setAsNotRented() {
+    this.isRented = false;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  /**
+   * Itemcategory.
+   *
+   * @param category Field.
+   */
+  public void setCategory(String category) {
+    this.category = category;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  /**
+   * Itemname.
+   *
+   * @param name Field.
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setCostPerDay(int costPerDay) {
-        this.costPerDay = costPerDay;
-    }
+  /**
+   * Itemdescrition.
+   *
+   * @param description Field.
+   */
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public Boolean getRented() {
-        return this.isRented;
-    }
+  /**
+   * Itemcostperday.
+   *
+   * @param costPerDay Field.
+   */
+  public void setCostPerDay(int costPerDay) {
+    this.costPerDay = costPerDay;
+  }
 
-    public String getCategory() {
-        return this.category;
-    }
+  /**
+   * Items availablity.
+   *
+   * @return Boolean.
+   */
+  public Boolean getRented() {
+    return this.isRented;
+  }
 
-    public String getName() {
-        return this.name;
-    }
+  /**
+   * Items category.
+   *
+   * @return String.
+   */
+  public String getCategory() {
+    return this.category;
+  }
 
-    public String getDescription() {
-        return this.description;
-    }
+  /**
+   * Items name.
+   *
+   * @return String.
+   */
+  public String getName() {
+    return this.name;
+  }
 
-    public int getDayOfCreation() {
-        return this.dayOfCreation;
-    }
+  /**
+   * Items description.
+   *
+   * @return String.
+   */
+  public String getDescription() {
+    return this.description;
+  }
 
-    public int getCostPerday() {
-        return this.costPerDay;
-    }
+  /**
+   * Items dayofcreation.
+   *
+   * @return Int.
+   */
+  public int getDayOfCreation() {
+    return this.dayOfCreation;
+  }
 
-    public void setCurrentContract(Contract currentContract) {
-        this.currentContract = currentContract;
-    }
+  /**
+   * Items costperday.
+   *
+   * @return Int.
+   */
+  public int getCostPerday() {
+    return this.costPerDay;
+  }
 
-    public void removeCurrentContract() {
-        this.currentContract = null;
-    }
+  /**
+   * If item is contracted.
+   *
+   * @param currentContract Object. 
+   */
+  public void setCurrentContract(Contract currentContract) {
+    this.currentContract = currentContract;
+  }
 
-    public void moveExpiredContract(Contract contract) {
-        this.futureContracts.remove(contract);
-        this.oldContracts.add(contract);
-        removeCurrentContract();
-        setAsNotRented();
-    }
+  /**
+   * For voiding contracts.
+   */
+  public void removeCurrentContract() {
+    this.currentContract = null;
+  }
 
-    public Contract getCurrentContract() {
-        return currentContract;
-    }
-    public Iterable<Contract> getFutureContracts() {
-        return futureContracts;
-    }
+  /**
+   * For voiding contracts.
+   *
+   * @param contract Object.
+   */
+  public void moveExpiredContract(Contract contract) {
+    this.futureContracts.remove(contract);
+    this.oldContracts.add(contract);
+    removeCurrentContract();
+    setAsNotRented();
+  }
 
-    public int getFutureContractAmount() {
-        return futureContracts.size();
-    }
+  /**
+   * If contracted.
+   *
+   * @return Object.
+   */
+  public Contract getCurrentContract() {
+    return currentContract;
+  }
 
-    public Iterable<Contract> getOldContracts() {
-        return oldContracts;
-    }
+  /**
+   * To make it possible to lend for the future.
+   *
+   * @return List.
+   */
+  public Iterable<Contract> getFutureContracts() {
+    return futureContracts;
+  }
 
-    public void addToFutureContracts(Contract contract) {
-        this.futureContracts.add(contract);
-    }
+  /**
+   * To show old conracts.
+   *
+   * @return List.
+   */
+  public Iterable<Contract> getOldContracts() {
+    return oldContracts;
+  }
 
-    public void removeFromFutureContracts(Contract contract) {
-        this.futureContracts.remove(contract);
-    }
+  /**
+   * Storing for future.
+   *
+   * @param contract Object.
+   */
+  public void addToFutureContracts(Contract contract) {
+    this.futureContracts.add(contract);
+  }
 
-    public void addToOldContracts(Contract contract) {
-        if(!this.oldContracts.contains(contract) || contract != null) {
-            this.oldContracts.add(contract);
-        }   
+  /**
+   * To set as current.
+   *
+   * @param contract Object.
+   */
+  public void removeFromFutureContracts(Contract contract) {
+    this.futureContracts.remove(contract);
+  }
+
+  /**
+   * To avoid duplication, checks first.
+   *
+   * @param contract Object.
+   */
+  public void addToOldContracts(Contract contract) {
+    if (!this.oldContracts.contains(contract) || contract != null) {
+      this.oldContracts.add(contract);
+    }   
+  }
+
+  /**
+  * An item you can change.
+  */
+  public static class MutableItem extends Item {
+
+    /**
+     * Constructor.
+     *
+     * @param category String.
+     * @param name String.
+     * @param description String.
+     * @param dayOfCreation Int.
+     * @param costPerDay Int.
+     */
+    public MutableItem(String category, String name, String description, int dayOfCreation, int costPerDay) {
+      super(category, name, description, dayOfCreation, costPerDay);
     }
 
     /**
-     * An item you can change.
-     */
-    public static class MutableItem extends Item {
-
-        public MutableItem(String category, String name, String description, int dayOfCreation, int costPerDay) {
-            super(category, name, description, dayOfCreation, costPerDay);
-        }
-
-
-        public MutableItem(Item item) {
-            super(item);
-        }
-
+    * For making a mutable version.
+    *
+    * @param item Parent object.
+    */
+    public MutableItem(Item item) {
+      super(item);
     }
+  }
 }
 

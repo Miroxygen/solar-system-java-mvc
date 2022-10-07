@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.38">
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\App.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\ContractController.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\ItemController.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\MainController.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\MemberController.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Contract.java">
+<error line="2" column="1" severity="warning" message="&apos;import&apos; should be separated from previous statement." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Item.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Member.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\MemberList.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\MembersItemList.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Time.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\view\ContractView.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\view\ItemUi.java">
+<error line="73" column="5" severity="warning" message="Distance between variable &apos;category&apos; declaration and its first usage is 5, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
+<error line="75" column="5" severity="warning" message="Distance between variable &apos;name&apos; declaration and its first usage is 4, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\view\MainUi.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\view\MemberView.java">
+</file>
+</checkstyle>

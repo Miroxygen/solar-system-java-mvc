@@ -1,143 +1,216 @@
 package controller;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import model.Member;
+import model.Member.MutableMember;
 import model.MemberList;
 import model.MembersItemList;
-import model.Member.MutableMember;
-import view.MemberView.memberMenuChoices;
-import view.MemberView.editMemberChoices;
+import view.MemberView.EditMemberChoices;
+import view.MemberView.MemberMenuChoices;
 
+/**
+ * Representing a controller for Member.
+ */
 public class MemberController {
-    private view.MemberView memberUI = new view.MemberView();
-    private model.MemberList memberList = new MemberList();
-    model.Member selectedMember = null;
+  private view.MemberView memberUi = new view.MemberView();
+  private model.MemberList memberList = new MemberList();
+  model.Member.MutableMember selectedMember = null;
 
-    public void selectMemberToActAs() {
-        selectedMember = memberUI.selectMember(memberList.getMembers());
-    }
+  /**
+  * For changing, deleting, adding and representing.
+  */
+  public void selectMemberToActAs() {
+    selectedMember = memberUi.selectMember(memberList.getMembers());
+  }
 
-    public Member getSelectedMember() {
-        return selectedMember;
-    }
+  /**
+  * For referencing.
+  *
+  * @return Object.
+  * 
+  */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
+  public Member.MutableMember getSelectedMember() {
+    return selectedMember;
+  }
 
-    public void removeSelectedMember() {
-        selectedMember = null;
-    }
+  /**
+  * For logging out.
+  */
+  public void removeSelectedMember() {
+    selectedMember = null;
+  }
 
-    public MemberList getMemberList() {
-        return memberList;
-    }
+  /**
+  * For referencing members.
+  *
+  * @return Object.
+  */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning an abstraction.")
+  public MemberList getMemberList() {
+    return memberList;
+  }
 
 
-    public void MemberMenu() {
-        memberMenuChoices action = memberUI.showMemberMenu(selectedMember);
-        switch (action) {
-            case InspectMember:
-                memberUI.showMember(selectedMember);
-                break;
-            case EditMember:
-                editMemberMenu();
-                break;
-            case DeleteMember:
-                deleteMember(selectedMember);
-                break;
-            case Return:
-                return;
-            default:
-                return;
-            
-        }
+  /**
+  * For editing member.
+  */
+  public void memberMenu() {
+    MemberMenuChoices action = memberUi.showMemberMenu(selectedMember);
+    switch (action) {
+      case InspectMember:
+        memberUi.showMember(selectedMember);
+        break;
+      case EditMember:
+        editMemberMenu();
+        break;
+      case DeleteMember:
+        deleteMember(selectedMember);
+        break;
+      case Return:
+        return;
+      default:
+        return;
     }
+  }
 
-    public void editMemberMenu() {
-        editMemberChoices action = memberUI.editMember();
-        switch (action) {
-            case Name:
-                editName(selectedMember);
-                break;
-            case PhoneNumber:
-                editPhoneNumber(selectedMember);
-                break;
-            case Email:
-                editEmail(selectedMember);
-                break;
-        }
+  /**
+  * Edit fields of member.
+  */
+  public void editMemberMenu() {
+    EditMemberChoices action = memberUi.editMember();
+    switch (action) {
+      case Name:
+        editName(selectedMember);
+        break;
+      case PhoneNumber:
+        editPhoneNumber(selectedMember);
+        break;
+      case Email:
+        editEmail(selectedMember);
+        break;
+      default:
+        editName(selectedMember);
     }
+  }
 
-    public void createMember(model.Time time) {
-        try {
-            model.Member newMember = memberUI.createMember();
-            duplicatePhoneNumberCheck(newMember.getPhoneNumber());
-            duplicateEmailCheck(newMember.getEmail());
-            newMember.setDayOfCreation(time.getCurrentDay());
-            model.Member createdMember = memberList.addMember(newMember);
-            model.MembersItemList itemList = new MembersItemList();
-            itemList.setOwner((MutableMember) createdMember);
-            createdMember.setItemList(itemList);
-            memberUI.showMember(createdMember);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            createMember(time);
-        }
+  /**
+  * New object.
+  *
+  * @param time Object.
+  */
+  public void createMember(model.Time time) {
+    try {
+      model.Member newMember = memberUi.createMember();
+      duplicatePhoneNumberCheck(newMember.getPhoneNumber());
+      duplicateEmailCheck(newMember.getEmail());
+      newMember.setDayOfCreation(time.getCurrentDay());
+      model.Member createdMember = memberList.addMember(newMember);
+      model.MembersItemList itemList = new MembersItemList();
+      itemList.setOwner((MutableMember) createdMember);
+      createdMember.setItemList(itemList);
+      memberUi.showMember(createdMember);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      createMember(time);
     }
+  }
 
-    public void duplicatePhoneNumberCheck(String phoneNumber) throws Exception {
-        for(Member m : memberList.getMembers()) {
-            if(m.getPhoneNumber().equals(phoneNumber)) {
-                throw new Exception("Invalid phonenumber");
-            } 
-        }
+  /**
+  * To make phoneNumber unique.
+  *
+  * @param phoneNumber String.
+  * @throws Exception If duplicate.
+  */
+  public void duplicatePhoneNumberCheck(String phoneNumber) throws Exception {
+    for (Member m : memberList.getMembers()) {
+      if (m.getPhoneNumber().equals(phoneNumber)) {
+        throw new Exception("Invalid phonenumber");
+      } 
     }
-    
-    public void duplicateEmailCheck(String email) throws Exception {
-        for(Member m : memberList.getMembers()) {
-            if(m.getEmail().equals(email)) {
-                throw new Exception("Invalid email");
-            } 
-        }
-    }
+  }
 
-    public void deleteMember(Member selectedMember) {
-        String deleteAnswer = memberUI.deleteMember(selectedMember);
-        if(deleteAnswer.equals("Y") || deleteAnswer.equals("y")) {
-            memberList.deleteMember(selectedMember);
-            removeSelectedMember();
-            memberUI.succesfulAction();
-        } else {
-            return;
-        }
+  /**
+  * To make email unique.
+  *
+  * @param email String
+  * @throws Exception If duplicate.
+  */
+  public void duplicateEmailCheck(String email) throws Exception {
+    for (Member m : memberList.getMembers()) {
+      if (m.getEmail().equals(email)) {
+        throw new Exception("Invalid email");
+      } 
     }
+  }
 
-    public void editName(Member selectedMember) {
-        String newName = memberUI.newName();
-        selectedMember.setName(newName);
+  /**
+  * Removes reference to MutableMember.
+  *
+  * @param selectedMember Object.
+  */
+  public void deleteMember(Member.MutableMember selectedMember) {
+    String deleteAnswer = memberUi.deleteMember(selectedMember);
+    if (deleteAnswer.equals("Y") || deleteAnswer.equals("y")) {
+      memberList.deleteMember(selectedMember);
+      removeSelectedMember();
+      memberUi.succesfulAction();
+    } else {
+      return;
     }
+  }
 
-    public void editPhoneNumber(Member selectedMember) {
-        String newPhoneNumber = memberUI.newPhoneNumber();
-        try {
-            duplicatePhoneNumberCheck(newPhoneNumber);
-            selectedMember.setPhoneNumber(newPhoneNumber);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+  /**
+  * Edit namefield.
+  *
+  * @param selectedMember Object.
+  */
+  public void editName(Member.MutableMember selectedMember) {
+    String newName = memberUi.newName();
+    selectedMember.setName(newName);
+  }
 
-    public void editEmail(Member selectedMember) {
-        String newEmail = memberUI.newEmail();
-        try {
-            duplicateEmailCheck(newEmail);
-            selectedMember.setEmail(newEmail);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+  /**
+  * Edit phoneNumberfield.
+  *
+  * @param selectedMember Object.
+  */
+  public void editPhoneNumber(Member.MutableMember selectedMember) {
+    String newPhoneNumber = memberUi.newPhoneNumber();
+    try {
+      duplicatePhoneNumberCheck(newPhoneNumber);
+      selectedMember.setPhoneNumber(newPhoneNumber);
+    } catch (Exception e) {
+      e.printStackTrace();
     }
+  }
 
-    public void showMembersSimple() {
-        memberUI.displayAllMembersSimple(memberList.getMembers());
+  /**
+  * Edit emailfield.
+  *
+  * @param selectedMember Object.
+  */
+  public void editEmail(Member.MutableMember selectedMember) {
+    String newEmail = memberUi.newEmail();
+    try {
+      duplicateEmailCheck(newEmail);
+      selectedMember.setEmail(newEmail);
+    } catch (Exception e) {
+      e.printStackTrace();
     }
+  }
 
-    public void displayMembersVerbose() {
-        memberUI.displayAllMembersVerbose(memberList.getMembers());
-    }
+  /**
+  * More member info, no item info.
+  */
+  public void showMembersSimple() {
+    memberUi.displayAllMembersSimple(memberList.getMembers());
+  }
+
+  /**
+  * Less member info, all item info.
+  */
+  public void displayMembersVerbose() {
+    memberUi.displayAllMembersVerbose(memberList.getMembers());
+  }
 }

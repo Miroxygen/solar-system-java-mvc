@@ -1,0 +1,160 @@
+a0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/App.java
+p0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/ContractController.java
+l0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/ItemController.java
+l0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/MainController.java
+n0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/MemberController.java
+a1 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/Contract.java
+ text:line: 2 column: column:1 
+7'import' should be separated from previous statement.
+
+]0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/Item.java
+_0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/Member.java
+c0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/MemberList.java
+h0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/MembersItemList.java
+]0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/Time.java
+d0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/view/ContractView.java
+^2 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/view/ItemUi.java
+!text:line: 73 column: column:5 
+fDistance between variable 'category' declaration and its first usage is 5, but allowed 3.  Consider 
+d  making that variable final if you still need to store its value in advance (before method calls 
+8  that might have side effects on the original value).
+
+!text:line: 75 column: column:5 
+bDistance between variable 'name' declaration and its first usage is 4, but allowed 3.  Consider 
+d  making that variable final if you still need to store its value in advance (before method calls 
+8  that might have side effects on the original value).
+
+^0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/view/MainUi.java
+b0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/view/MemberView.java
+&0 FindBugs Issues in model/Time.java
+*1 FindBugs Issues in model/Contract.java
+text:lines: 21-72 
+[new model.Contract(int, int, Item$MutableItem, Member$MutableMember) may expose internal 
+P  representation by storing an externally mutable object into Contract.lender 
+RMay expose internal representation by incorporating reference to mutable object 
+gThis code stores a reference to an externally mutable object into the internal representation of the 
+e  object. If instances are accessed by untrusted code, and unchecked changes to the mutable object 
+f  would compromise security or other important properties, you will need to do something different. 
+G  Storing a copy of the object is better approach in many situations.
+
+-0 FindBugs Issues in view/ContractView.java
+'0 FindBugs Issues in view/ItemUi.java
+50 FindBugs Issues in controller/MainController.java
+,1 FindBugs Issues in model/MemberList.java
+text:lines: 9-76 
+RgetMembers() may expose internal representation by returning MemberList.members 
+NMay expose internal representation by returning reference to mutable object 
+cReturning a reference to a mutable object value stored in one of the object's fields exposes the 
+f  internal representation of the object. If instances are accessed by untrusted code, and unchecked 
+d  changes to the mutable object would compromise security or other important properties, you will 
+b  need to do something different. Returning a new copy of the object is better approach in many 
+  situations.
+
+72 FindBugs Issues in controller/MemberController.java
+text:lines: 13-212 
+^getMemberList() may expose internal representation by returning MemberController.memberList 
+NMay expose internal representation by returning reference to mutable object 
+cReturning a reference to a mutable object value stored in one of the object's fields exposes the 
+f  internal representation of the object. If instances are accessed by untrusted code, and unchecked 
+d  changes to the mutable object would compromise security or other important properties, you will 
+b  need to do something different. Returning a new copy of the object is better approach in many 
+  situations.
+
+text:lines: 13-212 
+fgetSelectedMember() may expose internal representation by returning MemberController.selectedMember 
+NMay expose internal representation by returning reference to mutable object 
+cReturning a reference to a mutable object value stored in one of the object's fields exposes the 
+f  internal representation of the object. If instances are accessed by untrusted code, and unchecked 
+d  changes to the mutable object would compromise security or other important properties, you will 
+b  need to do something different. Returning a new copy of the object is better approach in many 
+  situations.
+
+(0 FindBugs Issues in model/Member.java
+'0 FindBugs Issues in view/MainUi.java
+*0 FindBugs Issues in controller/App.java
+91 FindBugs Issues in controller/ContractController.java
+text:lines: 12-73 
+HgetRunningContracts() may expose internal representation by returning 
+&  ContractController.savedContracts 
+NMay expose internal representation by returning reference to mutable object 
+cReturning a reference to a mutable object value stored in one of the object's fields exposes the 
+f  internal representation of the object. If instances are accessed by untrusted code, and unchecked 
+d  changes to the mutable object would compromise security or other important properties, you will 
+b  need to do something different. Returning a new copy of the object is better approach in many 
+  situations.
+
+&4 FindBugs Issues in model/Item.java
+text:lines: 14-254 
+\getFutureContracts() may expose internal representation by returning Item.futureContracts 
+NMay expose internal representation by returning reference to mutable object 
+cReturning a reference to a mutable object value stored in one of the object's fields exposes the 
+f  internal representation of the object. If instances are accessed by untrusted code, and unchecked 
+d  changes to the mutable object would compromise security or other important properties, you will 
+b  need to do something different. Returning a new copy of the object is better approach in many 
+  situations.
+
+text:lines: 14-254 
+VgetOldContracts() may expose internal representation by returning Item.oldContracts 
+NMay expose internal representation by returning reference to mutable object 
+cReturning a reference to a mutable object value stored in one of the object's fields exposes the 
+f  internal representation of the object. If instances are accessed by untrusted code, and unchecked 
+d  changes to the mutable object would compromise security or other important properties, you will 
+b  need to do something different. Returning a new copy of the object is better approach in many 
+  situations.
+
+text:lines: 14-254 
+HgetOwner() may expose internal representation by returning Item.owner 
+NMay expose internal representation by returning reference to mutable object 
+cReturning a reference to a mutable object value stored in one of the object's fields exposes the 
+f  internal representation of the object. If instances are accessed by untrusted code, and unchecked 
+d  changes to the mutable object would compromise security or other important properties, you will 
+b  need to do something different. Returning a new copy of the object is better approach in many 
+  situations.
+
+text:lines: 14-254 
+esetOwner(Member$MutableMember) may expose internal representation by storing an externally mutable 
+  object into Item.owner 
+RMay expose internal representation by incorporating reference to mutable object 
+gThis code stores a reference to an externally mutable object into the internal representation of the 
+e  object. If instances are accessed by untrusted code, and unchecked changes to the mutable object 
+f  would compromise security or other important properties, you will need to do something different. 
+G  Storing a copy of the object is better approach in many situations.
+
+12 FindBugs Issues in model/MembersItemList.java
+text:lines: 9-68 
+SgetOwner() may expose internal representation by returning MembersItemList.owner 
+NMay expose internal representation by returning reference to mutable object 
+cReturning a reference to a mutable object value stored in one of the object's fields exposes the 
+f  internal representation of the object. If instances are accessed by untrusted code, and unchecked 
+d  changes to the mutable object would compromise security or other important properties, you will 
+b  need to do something different. Returning a new copy of the object is better approach in many 
+  situations.
+
+text:lines: 9-68 
+esetOwner(Member$MutableMember) may expose internal representation by storing an externally mutable 
+&  object into MembersItemList.owner 
+RMay expose internal representation by incorporating reference to mutable object 
+gThis code stores a reference to an externally mutable object into the internal representation of the 
+e  object. If instances are accessed by untrusted code, and unchecked changes to the mutable object 
+f  would compromise security or other important properties, you will need to do something different. 
+G  Storing a copy of the object is better approach in many situations.
+
+52 FindBugs Issues in controller/ItemController.java
+text:lines: 20-241 
+bsetCurrentItemList(MembersItemList) may expose internal representation by storing an externally 
+>  mutable object into ItemController.currentMembersItemlist 
+RMay expose internal representation by incorporating reference to mutable object 
+gThis code stores a reference to an externally mutable object into the internal representation of the 
+e  object. If instances are accessed by untrusted code, and unchecked changes to the mutable object 
+f  would compromise security or other important properties, you will need to do something different. 
+G  Storing a copy of the object is better approach in many situations.
+
+text:lines: 210-213 
+8categories must be non-null but is marked as nullable 
+7Parameter must be non-null but is marked as nullable 
+_This parameter is always used in a way that requires it to be non-null, but the parameter is 
+a  explicitly annotated as being Nullable. Either the use of the parameter or the annotation is 
+
+  wrong.
+
++0 FindBugs Issues in view/MemberView.java
