@@ -5,7 +5,7 @@ public class Member {
     protected String name;
     protected String email;
     protected String phoneNumber;
-    private int id;
+    private String id;
     private int dayOfCreation;
     public int credit;
     public MembersItemList itemList;
@@ -31,7 +31,7 @@ public class Member {
         this.dayOfCreation = dayOfCreation;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -67,7 +67,7 @@ public class Member {
         this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

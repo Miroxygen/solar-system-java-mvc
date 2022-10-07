@@ -163,7 +163,6 @@ public class MainController  {
 
     public void dailyContractCheck() {
         for(Contract c : contractController.getRunningContracts()) {
-            System.out.println(" Im a contract");
             setCurrentContract(c);
             Contract oldContract = removeOldContracts(c);
             if(oldContract != null) {
@@ -184,21 +183,6 @@ public class MainController  {
 
     public Contract removeOldContracts(Contract contract) {
         if(contract.getEndDay() < time.getCurrentDay()) {
-           /*  if(contract.getItem().getFutureContractAmount() != 0) {
-                for(Contract c : contract.getItem().getFutureContracts()) {
-                    if(!(c.getStartDay() <= time.getCurrentDay() && c.getEndDay() <= time.getCurrentDay())) {
-                        c.getItem().moveExpiredContract(contract);
-                    } else {
-                        c.getItem().setAsRented();
-                        c.getItem().setCurrentContract(c);
-                        c.getItem().removeFromFutureContracts(c);
-                        c.getItem().addToOldContracts(contract);
-                    }
-                    
-                }
-            } else {
-                contract.getItem().moveExpiredContract(contract);
-            }*/
             contract.getItem().moveExpiredContract(contract);
             contractController.removeExpiredContract(contract);
             return contract;
