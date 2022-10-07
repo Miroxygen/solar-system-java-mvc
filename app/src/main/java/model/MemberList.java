@@ -6,6 +6,7 @@ import java.util.Random;
 public class MemberList {
     private ArrayList<Member> members = new ArrayList<Member>();
     private String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    Random random = new Random();
     private StringBuilder builder = new StringBuilder();
 
 
@@ -30,19 +31,17 @@ public class MemberList {
    *@return String id.
    */
   public String createAlphaNumericId() {
-    Random random = new Random();
     while (builder.length() < 6) {
       int randomCharIndex = (int) (random.nextFloat() * chars.length());
       builder.append(chars.charAt(randomCharIndex));
     }
     String id = builder.toString();
+    builder.delete(0, 5);
     return id;
   }
 
   /**
    * Generates a new ID while the created ID is not unique.
-   *
-   *@param registryInterface Object of class RegistryInterface.
    *@return String id.
    */
   public String generateUniqueId() {
@@ -50,7 +49,7 @@ public class MemberList {
     for (Member m : members) {
       memberId.add(m.getId());
     }
-    String id = "";
+    String id = createAlphaNumericId();
     do {
       id = createAlphaNumericId();
     } while (memberId.contains(id));
