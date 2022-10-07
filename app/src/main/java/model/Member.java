@@ -21,6 +21,7 @@ public class Member {
         this.name = m.name;
         this.phoneNumber = m.phoneNumber;
         this.email = m.email;
+        this.id = m.id;
     }
 
     public void setItemList(MembersItemList itemList) {

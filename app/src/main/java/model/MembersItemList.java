@@ -3,14 +3,14 @@ package model;
 import java.util.ArrayList;
 
 public class MembersItemList {
-    private Member owner = null;
+    private Member.MutableMember owner = null;
     private ArrayList<Item.MutableItem> items = new ArrayList<Item.MutableItem>();
 
-    public void setOwner(Member owner) {
+    public void setOwner(Member.MutableMember owner) {
         this.owner = owner;
     }
 
-    public Member getOwner() {
+    public Member.MutableMember getOwner() {
         return owner;
     }
 

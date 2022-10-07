@@ -73,13 +73,14 @@ public class MemberView {
     }
 
     public void showMember (model.Member m) {  
+        System.out.println(m.getClass());
         System.out.println("Name : " + m.getName() + " Email : " + m.getEmail() + " Phone-number : " + m.getPhoneNumber() + " Id : " + m.getId() + " Day of Creation : " + m.getDayOfCreation() + " Credits : " + m.getCredit()); 
     }
 
     public <T extends Member> void displayAllMembersSimple (Iterable<T> members) {
         for(Member member : members) {
             System.out.println("Name : " + member.getName() + " Email : " + member.getEmail() + " Current credits : " + member.getCredit() + 
-            " Number of owned items : " + member.getItemList().getNumberOfItems());
+            " Number of owned items : "  + member.getItemList().getNumberOfItems());
         }
     }
 

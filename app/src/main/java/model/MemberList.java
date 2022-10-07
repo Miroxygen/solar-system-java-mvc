@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MemberList {
-    private ArrayList<Member> members = new ArrayList<Member>();
+    private ArrayList<Member.MutableMember> members = new ArrayList<Member.MutableMember>();
     private String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     Random random = new Random();
     private StringBuilder builder = new StringBuilder();
 
 
-    public Iterable<Member> getMembers() {
+    public Iterable<Member.MutableMember> getMembers() {
         return members;
     }
 
     public Member addMember(Member member) {
         member.setId(generateUniqueId());
         member.addCredit(0);
-        members.add(member);
+        members.add(new Member.MutableMember(member));
         return members.get(members.size() - 1);
     }
 

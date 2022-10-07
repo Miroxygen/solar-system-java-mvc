@@ -3,6 +3,7 @@ package controller;
 import model.Member;
 import model.MemberList;
 import model.MembersItemList;
+import model.Member.MutableMember;
 import view.MemberView.memberMenuChoices;
 import view.MemberView.editMemberChoices;
 
@@ -68,12 +69,12 @@ public class MemberController {
             model.Member newMember = memberUI.createMember();
             duplicatePhoneNumberCheck(newMember.getPhoneNumber());
             duplicateEmailCheck(newMember.getEmail());
-            model.MembersItemList itemList = new MembersItemList();
-            itemList.setOwner(newMember);
-            newMember.setItemList(itemList);
             newMember.setDayOfCreation(time.getCurrentDay());
-            memberList.addMember(newMember);
-            memberUI.showMember(newMember);
+            model.Member createdMember = memberList.addMember(newMember);
+            model.MembersItemList itemList = new MembersItemList();
+            itemList.setOwner((MutableMember) createdMember);
+            createdMember.setItemList(itemList);
+            memberUI.showMember(createdMember);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             createMember(time);
