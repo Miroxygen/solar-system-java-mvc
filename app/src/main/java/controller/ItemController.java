@@ -1,8 +1,8 @@
 package controller;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +32,7 @@ public class ItemController {
   */
   public void itemMenu(Member.MutableMember selectedMember, model.Time time) throws Exception {
     try {
-      ItemMenuChoices action = itemUi.showItemMenu(selectedMember);
+      ItemMenuChoices action = itemUi.showItemMenu(selectedMember.getName());
       switch (action) {
         case AddItem:
           addItem(selectedMember, time);
@@ -53,14 +53,16 @@ public class ItemController {
           addItem(selectedMember, time);
       }
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw e;
     }
   }
 
   /**
   * For editing an item.
+
+   * @throws Exception Error.
   */
-  public void changeItemMenu() {
+  public void changeItemMenu() throws Exception {
     try {
       Item itemToChange = itemUi.selectItemFromCurrentMember(currentMembersItemlist.getItems(),
           currentMembersItemlist.getNumberOfItems());
@@ -82,7 +84,7 @@ public class ItemController {
           changeName(itemToChange);
       }
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw e;
     }
   }
 
@@ -131,8 +133,9 @@ public class ItemController {
   *
   * @param selectedMember Object.
   * @param time Object. 
+   * @throws Exception Error.
   */
-  public void addItem(Member.MutableMember selectedMember, model.Time time) {
+  public void addItem(Member.MutableMember selectedMember, model.Time time) throws Exception {
     try {
       model.Item newItem = itemUi.createItem(time.getCurrentDay());
       handleCategoryErrors(newItem.getCategory());
@@ -141,22 +144,24 @@ public class ItemController {
       model.Item createdItem = currentMembersItemlist.addItem(newItem);
       createdItem.setOwner(selectedMember);
     } catch (Exception e) {
-      System.out.println(e.getMessage() + "| Your item was NOT created.");
+      throw e;
     }  
   }
 
 
   /**
   * Remove reference to chosen object.
+  *
+  * @throws Exception Error.
   */
-  public void deleteItem() {
+  public void deleteItem() throws Exception {
     try {
       Item.MutableItem selectedItem;
       selectedItem = itemUi.selectItemFromCurrentMember(currentMembersItemlist.getItems(),
         currentMembersItemlist.getNumberOfItems());
       currentMembersItemlist.deleteItem(selectedItem);
     } catch (Exception e) {
-      e.printStackTrace();
+      throw e;
     }
   }
 
@@ -165,6 +170,7 @@ public class ItemController {
   *
   * @param itemList Object.
   */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "An abstraction is in parameter.")
   public void setCurrentItemList(MembersItemList itemList) {
     currentMembersItemlist = itemList;
     addCurrentListIfItHasntBeenAdded();
@@ -184,9 +190,10 @@ public class ItemController {
   *
   * @param selectedMember Object.
   * @return Object Item.
-  * @throws Exception
+  * @throws Exception Error.
   * 
   */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
   public Item selectLendableItem(Member selectedMember) throws Exception {
     try {
       Item.MutableItem selectedItem = (MutableItem) itemUi.getLendableItem(allMembersItemList, selectedMember);
@@ -206,15 +213,14 @@ public class ItemController {
   /**
   * To make sure the strings are correct.
   */
-  public boolean handleStringErrors(String input)  {
-    List<String> categories = Arrays.asList("tool", "vehicle", "game", "toy", "sport", "other");
-    boolean ifCategory = Iterables.any(categories, new Predicate<String>() {
+  public boolean stringMatcher(String input, List<String> stringsToCompareWith)  {
+    boolean ifMatch = Iterables.any(stringsToCompareWith, new Predicate<String>() {
       @Override
       public boolean apply(@Nullable String categories) {
         return categories.equalsIgnoreCase(input);
       }
     });
-    return ifCategory;
+    return ifMatch;
   }
 
   /**
@@ -224,7 +230,8 @@ public class ItemController {
   * @throws Exception Wrong category.
   */
   public void handleCategoryErrors(String category) throws Exception {
-    if (handleStringErrors(category) == false) {
+    List<String> categories = Arrays.asList("tool", "vehicle", "game", "toy", "sport", "other");
+    if (stringMatcher(category, categories) == false) {
       throw new Exception(" Wrong category.");
     }
   }

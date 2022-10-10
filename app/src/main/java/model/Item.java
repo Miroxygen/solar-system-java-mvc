@@ -1,5 +1,6 @@
 package model;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.ArrayList;
 
 /**
@@ -52,6 +53,7 @@ public class Item {
    *
    * @param owner Object.
    */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "MutableMember is a mutable copy.")
   public void setOwner(Member.MutableMember owner) {
     this.owner = owner;
   }
@@ -61,6 +63,7 @@ public class Item {
    *
    * @return Object.
    */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
   public Member.MutableMember getOwner() {
     return owner;
   }
@@ -202,6 +205,7 @@ public class Item {
    *
    * @return Object.
    */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
   public Contract getCurrentContract() {
     return currentContract;
   }
@@ -211,6 +215,7 @@ public class Item {
    *
    * @return List.
    */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning an abstraction.")
   public Iterable<Contract> getFutureContracts() {
     return futureContracts;
   }
@@ -220,6 +225,7 @@ public class Item {
    *
    * @return List.
    */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning an abstraction.")
   public Iterable<Contract> getOldContracts() {
     return oldContracts;
   }

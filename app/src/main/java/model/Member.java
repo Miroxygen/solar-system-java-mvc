@@ -1,5 +1,7 @@
 package model;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * Represents a member.
  */
@@ -169,6 +171,7 @@ public class Member {
    *
    * @return Object.
    */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning an abstraction.")
   public MembersItemList getItemList() {
     return itemList;
   }

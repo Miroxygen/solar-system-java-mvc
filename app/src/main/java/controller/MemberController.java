@@ -18,8 +18,10 @@ public class MemberController {
 
   /**
   * For changing, deleting, adding and representing.
+  *
+  * @throws Exception Error.
   */
-  public void selectMemberToActAs() {
+  public void selectMemberToActAs() throws Exception {
     selectedMember = memberUi.selectMember(memberList.getMembers());
   }
 
@@ -98,8 +100,10 @@ public class MemberController {
   * New object.
   *
   * @param time Object.
+  *
+  * @throws Exception Error.
   */
-  public void createMember(model.Time time) {
+  public void createMember(model.Time time) throws Exception {
     try {
       model.Member newMember = memberUi.createMember();
       duplicatePhoneNumberCheck(newMember.getPhoneNumber());
@@ -111,8 +115,7 @@ public class MemberController {
       createdMember.setItemList(itemList);
       memberUi.showMember(createdMember);
     } catch (Exception e) {
-      System.out.println(e.getMessage());
-      createMember(time);
+      throw e;
     }
   }
 

@@ -7,6 +7,9 @@ C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\controller\MainCo
 C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\controller\MainController.class
 C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\controller\MemberController$1.class
 C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\controller\MemberController.class
+C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\dao\Dao.class
+C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\dao\ItemDao.class
+C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\dao\MemberDao.class
 C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\model\Contract.class
 C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\model\Item$MutableItem.class
 C:\Users\miranda\Documents\Java\a2\app\build\classes\java\main\model\Item.class

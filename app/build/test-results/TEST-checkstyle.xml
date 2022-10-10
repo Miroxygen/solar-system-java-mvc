@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite package="org.checkstyle" time="0" tests="15" errors="3" name="checkstyle">
+<testsuite package="org.checkstyle" time="0" tests="18" errors="2" name="checkstyle">
 <testcase time="0" name="controller/App.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="controller/ContractController.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="controller/ItemController.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="controller/MainController.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="controller/MemberController.java" classname="CheckStyle Issues">
+</testcase><testcase time="0" name="dao/Dao.java" classname="CheckStyle Issues">
+</testcase><testcase time="0" name="dao/ItemDao.java" classname="CheckStyle Issues">
+</testcase><testcase time="0" name="dao/MemberDao.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="model/Contract.java" classname="CheckStyle Issues">
-<failure message="issues" ><![CDATA[line: 2 column: column:1 
-'import' should be separated from previous statement.
-----------------
-]]></failure>
 </testcase><testcase time="0" name="model/Item.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="model/Member.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="model/MemberList.java" classname="CheckStyle Issues">

@@ -59,6 +59,7 @@ public class ContractController {
   *
   * @return Iterable list.
   */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning an abstraction.")
   public Iterable<Contract> getRunningContracts() {
     return savedContracts;
   }

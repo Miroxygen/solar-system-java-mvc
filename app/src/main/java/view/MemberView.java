@@ -79,23 +79,28 @@ public class MemberView {
   * @param memberList Iterable with any T.
   * @return Object of memberchild.
   */
-  public <T extends Member> T selectMember(Iterable<T> memberList) {
-    int index = 0;
-    for (Member m : memberList) {
-      System.out.println(index + ". | Name : " + m.getName() + " Email : " + m.getEmail());
-      index++;
-    }
-    System.out.println("Please enter the index of the member you wish to login as");
-    String stringIndex = userInput.nextLine();
-    int selectedIndex = Integer.parseInt(stringIndex);
-    index = 0;
-    for (T m : memberList) {
-      if (index == selectedIndex) {
-        return m;
+  public <T extends Member> T selectMember(Iterable<T> memberList) throws Exception {
+    try {
+      int index = 0;
+      for (Member m : memberList) {
+        System.out.println(index + ". | Name : " + m.getName() + " Email : " + m.getEmail());
+        index++;
       }
-      index++;
+      System.out.println("Please enter the index of the member you wish to login as");
+      String stringIndex = userInput.nextLine();
+      int selectedIndex = Integer.parseInt(stringIndex);
+      index = 0;
+      for (T m : memberList) {
+        if (index == selectedIndex) {
+          return m;
+        }
+        index++;
+      }
+      throw new Exception("Invalid index");
+    } catch (Exception e) {
+      throw e;
     }
-    return null;
+    
   }
 
   /**
@@ -200,13 +205,6 @@ public class MemberView {
     System.out.println("Please enter the new e-mail you wish to have :");
     String newEmail = userInput.nextLine();
     return newEmail;
-  }
-
-  /**
-  * Helpful info.
-  */
-  public void resourceNotFound() {
-    System.out.println("The requested resource was not found.");
   }
 
   /**

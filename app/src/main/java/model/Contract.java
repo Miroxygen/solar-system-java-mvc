@@ -1,4 +1,5 @@
 package model;
+
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**

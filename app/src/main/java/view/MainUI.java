@@ -160,4 +160,13 @@ public class MainUi {
   public void succesfulAction() {
     System.out.println("Your action was succesful.");
   }
+
+  /**
+   * For printing error messgaes etc.
+   *
+   * @param text String.
+   */
+  public void displayText(String text) {
+    System.out.println(text);
+  }
 }

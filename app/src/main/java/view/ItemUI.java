@@ -35,11 +35,11 @@ public class ItemUi {
   /**
    * Shows item menu.
    *
-   * @param member Model.
+   * @param name Membername.
    * @return Static enum.
    */
-  public ItemMenuChoices showItemMenu(model.Member member) {
-    System.out.println("  ~ Welcome! You are logged in as : " + member.getName());
+  public ItemMenuChoices showItemMenu(String name) {
+    System.out.println("  ~ Welcome! You are logged in as : " + name);
     System.out.println("=== 1. Add item to this member.");
     System.out.println("=== 2. Look at detailed information about one item.");
     System.out.println("=== 3. Change one item.");
@@ -191,7 +191,7 @@ public class ItemUi {
         index++;
       }
     }
-    return null;
+    throw new Exception("Invalid index.");
   }   
 
   /**

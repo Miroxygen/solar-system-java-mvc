@@ -10,8 +10,13 @@
 </file>
 <file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\MemberController.java">
 </file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\dao\Dao.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\dao\ItemDao.java">
+</file>
+<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\dao\MemberDao.java">
+</file>
 <file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Contract.java">
-<error line="2" column="1" severity="warning" message="&apos;import&apos; should be separated from previous statement." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
 </file>
 <file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Item.java">
 </file>

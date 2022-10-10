@@ -1,5 +1,6 @@
 package controller;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import model.Contract;
 import model.Item;
 import model.Item.MutableItem;
@@ -76,7 +77,8 @@ public class MainController  {
         }    
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      mainUi.displayText(e.getMessage());
+      startMenu();
     }
   }
 
@@ -101,7 +103,7 @@ public class MainController  {
   * For future implementations mostly.
   * Right now no password is added.
   */
-  public void login() {
+  public void login() throws Exception {
     try {
       int counter = 0;
       for (Member m : memberController.getMemberList().getMembers()) {
@@ -114,7 +116,7 @@ public class MainController  {
         itemController.setCurrentItemList(memberController.getSelectedMember().getItemList());
       }
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw e;
     }
   }
 
@@ -128,7 +130,7 @@ public class MainController  {
   /**
   * Added to main because its a "system" function.
   */
-  public void lendItem() {
+  public void lendItem() throws Exception {
     try {
       Item.MutableItem lendItem = (MutableItem) itemController.selectLendableItem(memberController.getSelectedMember());
       int startDate = contractController.getStartDate();
@@ -151,7 +153,7 @@ public class MainController  {
       }
       lendItem = null;
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw e;
     }  
   }
 
@@ -186,7 +188,7 @@ public class MainController  {
   /**
   * For testing out contractperiods and so on.
   */
-  public void advanceTime() {
+  public void advanceTime() throws Exception {
     try {
       int daysToAdvance = mainUi.advanceTime(time);
       if (daysToAdvance < 0) {
@@ -195,7 +197,7 @@ public class MainController  {
       time.advanceTime(daysToAdvance);
       dailyContractCheck();
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw e;
     }
   }
 
@@ -234,6 +236,7 @@ public class MainController  {
   * @return Object contract.
   * 
   */
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
   public Contract removeOldContracts(Contract contract) {
     if (contract.getEndDay() < time.getCurrentDay()) {
       contract.getItem().moveExpiredContract(contract);
