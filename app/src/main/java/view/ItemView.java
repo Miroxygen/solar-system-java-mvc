@@ -8,7 +8,7 @@ import model.MembersItemList;
 /**
  * Represents the item view.
  */
-public class ItemUi {
+public class ItemView {
   private Scanner userInput = new Scanner(System.in, "utf-8");
 
   /**

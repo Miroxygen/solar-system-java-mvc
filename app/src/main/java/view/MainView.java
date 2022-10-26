@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Represents main view.
  */
-public class MainUi {
+public class MainView {
   private Scanner userInput = new Scanner(System.in, "utf-8");
 
   /**

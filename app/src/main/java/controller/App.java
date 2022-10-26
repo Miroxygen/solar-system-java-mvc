@@ -1,6 +1,5 @@
 package controller;
 
-import com.google.common.base.Optional;
 import dao.ItemDao;
 import dao.MemberDao;
 import model.Member;

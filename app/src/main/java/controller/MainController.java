@@ -6,17 +6,17 @@ import model.Item;
 import model.Item.MutableItem;
 import model.Member;
 import model.Member.MutableMember;
-import view.MainUi;
-import view.MainUi.ListChoices;
-import view.MainUi.LoginChoices;
-import view.MainUi.MainMenuChoices;
+import view.MainView;
+import view.MainView.ListChoices;
+import view.MainView.LoginChoices;
+import view.MainView.MainMenuChoices;
 
 
 /**
  * Represents the head controller.
  */
 public class MainController  {
-  MainUi mainUi = new MainUi();
+  MainView mainUi = new MainView();
   MemberController memberController = new MemberController();
   ItemController  itemController = new ItemController();
   ContractController contractController = new ContractController();

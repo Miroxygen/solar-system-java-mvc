@@ -11,15 +11,15 @@ import model.Item.MutableItem;
 import model.Member;
 import model.MembersItemList;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import view.ItemUi;
-import view.ItemUi.ChangeItemChoices;
-import view.ItemUi.ItemMenuChoices;
+import view.ItemView;
+import view.ItemView.ChangeItemChoices;
+import view.ItemView.ItemMenuChoices;
 
 /**
  * Represents a controller for item.
  */
 public class ItemController {
-  private view.ItemUi itemUi = new ItemUi();
+  private view.ItemView itemUi = new ItemView();
   private ArrayList<MembersItemList> allMembersItemList = new ArrayList<MembersItemList>();
   private MembersItemList currentMembersItemlist = null;
 
