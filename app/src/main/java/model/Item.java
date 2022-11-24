@@ -1,7 +1,6 @@
 package model;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.util.ArrayList;
 
 /**
  * Represents an Item.
@@ -12,11 +11,8 @@ public class Item {
   protected String description;
   protected int dayOfCreation;
   protected int costPerDay;
-  protected Boolean isRented = false;
-  protected Contract currentContract;
-  protected ArrayList<Contract> futureContracts = new ArrayList<Contract>();
-  protected ArrayList<Contract> oldContracts = new ArrayList<Contract>();
   protected Member.MutableMember owner;
+  protected MembersContractList contractList;
 
   /**
    * Constructor.
@@ -69,20 +65,6 @@ public class Item {
   }
 
   /**
-   * Item is unavailable.
-   */
-  public void setAsRented() {
-    this.isRented = true;
-  }
-
-  /**
-   * Item is available.
-   */
-  public void setAsNotRented() {
-    this.isRented = false;
-  }
-
-  /**
    * Itemcategory.
    *
    * @param category Field.
@@ -116,15 +98,6 @@ public class Item {
    */
   public void setCostPerDay(int costPerDay) {
     this.costPerDay = costPerDay;
-  }
-
-  /**
-   * Items availablity.
-   *
-   * @return Boolean.
-   */
-  public Boolean getRented() {
-    return this.isRented;
   }
 
   /**
@@ -172,97 +145,15 @@ public class Item {
     return this.costPerDay;
   }
 
-  /**
-   * If item is contracted.
-   *
-   * @param currentContract Object. 
-   */
-  public void setCurrentContract(Contract currentContract) {
-    this.currentContract = currentContract;
-  }
-
-  /**
-   * For voiding contracts.
-   */
-  public void removeCurrentContract() {
-    this.currentContract = null;
-  }
-
-  /**
-   * For voiding contracts.
-   *
-   * @param contract Object.
-   */
-  public void moveExpiredContract(Contract contract) {
-    this.futureContracts.remove(contract);
-    this.oldContracts.add(contract);
-    removeCurrentContract();
-    setAsNotRented();
-  }
-
-  /**
-   * If contracted.
-   *
-   * @return Object.
-   */
-  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
-  public Contract getCurrentContract() {
-    return currentContract;
-  }
-
-  /**
-   * To make it possible to lend for the future.
-   *
-   * @return List.
-   */
-  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning an abstraction.")
-  public Iterable<Contract> getFutureContracts() {
-    return futureContracts;
-  }
-
-  /**
-   * To show old conracts.
-   *
-   * @return List.
-   */
-  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning an abstraction.")
-  public Iterable<Contract> getOldContracts() {
-    return oldContracts;
-  }
-
-  /**
-   * Storing for future.
-   *
-   * @param contract Object.
-   */
-  public void addToFutureContracts(Contract contract) {
-    this.futureContracts.add(contract);
-  }
-
-  /**
-   * To set as current.
-   *
-   * @param contract Object.
-   */
-  public void removeFromFutureContracts(Contract contract) {
-    this.futureContracts.remove(contract);
-  }
-
-  /**
-   * To avoid duplication, checks first.
-   *
-   * @param contract Object.
-   */
-  public void addToOldContracts(Contract contract) {
-    if (!this.oldContracts.contains(contract) || contract != null) {
-      this.oldContracts.add(contract);
-    }   
+  public MembersContractList getContractList() {
+    return contractList;
   }
 
   /**
   * An item you can change.
   */
   public static class MutableItem extends Item {
+    protected Boolean isRented = false;
 
     /**
      * Constructor.
@@ -275,6 +166,7 @@ public class Item {
      */
     public MutableItem(String category, String name, String description, int dayOfCreation, int costPerDay) {
       super(category, name, description, dayOfCreation, costPerDay);
+      contractList = new MembersContractList();
     }
 
     /**
@@ -284,6 +176,29 @@ public class Item {
     */
     public MutableItem(Item item) {
       super(item);
+    }
+
+      /**
+     * Item is unavailable.
+     */
+    public void setAsRented() {
+      this.isRented = true;
+    }
+
+    /**
+     * Item is available.
+     */
+    public void setAsNotRented() {
+      this.isRented = false;
+    }
+
+    /**
+     * Items availablity.
+     *
+     * @return Boolean.
+     */
+    public Boolean getRented() {
+      return this.isRented;
     }
   }
 }

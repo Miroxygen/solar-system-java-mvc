@@ -9,7 +9,7 @@ public class Contract {
   protected int startDay;
   protected int endDay;
   public Item.MutableItem item;
-  protected Member.MutableMember lender;
+  public Member.MutableMember lender;
 
   /**
    * Constructor.
@@ -25,6 +25,19 @@ public class Contract {
     this.endDay = endDay;
     this.item = item;
     this.lender = lender;
+  }
+
+  /**
+   * For child object.
+   *
+   * @param c Contract.
+   */
+  public Contract (Contract c) {
+    this.startDay = c.startDay;
+    this.endDay = c.endDay;
+    this.item = c.item;
+    this.lender = c.lender;
+    this.item = c.item;
   }
 
   /**
@@ -56,7 +69,7 @@ public class Contract {
   }
 
   /**
-   * Contractor.
+   * The member lending the item..
    *
    * @return Object.
    */
@@ -72,6 +85,21 @@ public class Contract {
    */
   public int getLength() {
     return getEndDay() - getStartDay();
+  }
+
+  /**
+   * Mutable Contract.
+   */
+  public static class MutableContract extends Contract {
+
+    /**
+     * For creating a copy.
+     * @param c Contract.
+     */
+    public MutableContract(Contract c) {
+      super(c);
+    }
+
   }
 
 }

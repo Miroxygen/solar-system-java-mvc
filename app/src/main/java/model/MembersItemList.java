@@ -15,7 +15,7 @@ public class MembersItemList {
    *
    * @param owner Object.
    */
-  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "MutableMember is a mutable copy..")
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "MutableMember is a mutable copy.")
   public void setOwner(Member.MutableMember owner) {
     this.owner = owner;
   }

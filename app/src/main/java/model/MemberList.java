@@ -30,11 +30,14 @@ public class MemberList {
   * @param member Object.
   * @return Object.
   */
-  public Member addMember(Member member) {
+  public Member.MutableMember addMember(Member member) {
     member.setId(generateUniqueId());
-    member.addCredit(0);
     members.add(new Member.MutableMember(member));
     return members.get(members.size() - 1);
+  }
+
+  public int getNumberOfMembers() {
+    return members.size();
   }
 
   /**
@@ -78,5 +81,34 @@ public class MemberList {
     return id;
   }
 
+  /**
+   * Checks if the email is unique.
+   *
+   * @param email Members email.
+   * @return Boolean.
+   */
+  public Boolean isEmailUnique(String email) {
+    for(Member.MutableMember m : members) {
+      if(m.getEmail().equals(email)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Checks if the phone-number is unique.
+   *
+   * @param number Members phonenumber.
+   * @return Boolean.
+   */
+  public Boolean isPhoneNumberUnique(String number) {
+    for(Member.MutableMember m : members) {
+      if(m.getPhoneNumber().equals(number)) {
+        return false;
+      }
+    }
+    return true;
+  }
 
 }

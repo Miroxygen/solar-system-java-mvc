@@ -11,8 +11,8 @@ public class Member {
   protected String phoneNumber;
   private String id;
   private int dayOfCreation;
-  public int credit;
-  public MembersItemList itemList;
+  protected int credit;
+  protected MembersItemList itemList;
 
 
   /**
@@ -41,15 +41,6 @@ public class Member {
   }
 
   /**
-   * Setting list.
-   *
-   * @param itemList Object.
-   */
-  public void setItemList(MembersItemList itemList) {
-    this.itemList = itemList;
-  }
-
-  /**
    * Sets day of creation.
    *
    * @param dayOfCreation Int.
@@ -68,39 +59,12 @@ public class Member {
   }
 
   /**
-   * Adding more credits.
-   *
-   * @param credit Int.
-   */
-  public void addCredit(int credit) {
-    this.credit += credit;
-  }
-
-  /**
-   * Removing credit.
-   *
-   * @param credit Int.
-   */
-  public void withdrawCredit(int credit) {
-    this.credit -= credit;
-  }
-
-  /**
    * Gets name.
    *
    * @return String.
    */
   public String getName() {
     return name;
-  }
-
-  /**
-   * Sets name.
-   *
-   * @param name String.
-   */
-  public void setName(String name) {
-    this.name = name;
   }
 
   /**
@@ -112,14 +76,6 @@ public class Member {
     return phoneNumber;
   }
 
-  /**
-   * Set field.
-   *
-   * @param phoneNumber String.
-   */
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
 
   /**
    * Get field.
@@ -128,15 +84,6 @@ public class Member {
    */
   public String getEmail() {
     return email;
-  }
-
-  /**
-   * Set field.
-   *
-   * @param email String.
-   */
-  public void setEmail(String email) {
-    this.email = email;
   }
 
   /**
@@ -166,6 +113,14 @@ public class Member {
     return credit;
   }
 
+  public int getNumberOfItems() {
+    return itemList.getNumberOfItems();
+  }
+
+  public Iterable<model.Item.MutableItem> getItems() {
+    return itemList.getItems();
+  }
+
   /**
    * Return object.
    *
@@ -180,6 +135,8 @@ public class Member {
   * Represents a member you can change.
   */
   public static class MutableMember extends Member {
+  private MembersContractList contractList;
+  
 
     /**
      * Constructor.
@@ -199,6 +156,67 @@ public class Member {
      */
     public MutableMember(Member m) {
       super(m);
+      contractList = new MembersContractList();
+      contractList.setOwner(this);
     }
+
+      /**
+     * Sets name.
+     *
+     * @param name String.
+     */
+    public void setName(String name) {
+      this.name = name;
+    }
+
+      /**
+     * Set field.
+     *
+     * @param email String.
+     */
+    public void setEmail(String email) {
+      this.email = email;
+    }
+
+      /**
+     * Set field.
+     *
+     * @param phoneNumber String.
+     */
+    public void setPhoneNumber(String phoneNumber) {
+      this.phoneNumber = phoneNumber;
+    }
+
+
+  /**
+   * Adding more credits.
+   *
+   * @param credit Int.
+   */
+  public void addCredit(int credit) {
+    this.credit += credit;
+  }
+
+  /**
+   * Removing credit.
+   *
+   * @param credit Int.
+   */
+  public void withdrawCredit(int credit) {
+    this.credit -= credit;
+  }
+
+  /**
+   * Setting list.
+   *
+   * @param itemList Object.
+   */
+  public void setItemList(MembersItemList itemList) {
+    this.itemList = itemList;
+  }
+
+  public MembersContractList getContractList() {
+    return contractList;
+  }
   }
 }
