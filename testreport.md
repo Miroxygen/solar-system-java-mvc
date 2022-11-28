@@ -21,3 +21,27 @@ Environment: Windows, Java Version 17.0.4.1. Perfomerd by : Miranda.
 | 3.6 | OK |  |
 | 4.1 | OK |  |
 | 5.1 | OK |  End day in my system is "returnday", so day 5,6 and 7 are lending days. Return day is a grace period from lending.|
+
+
+
+Version: [#133732](https://gitlab.lnu.se/1dv607/student/mh225wi/a2/-/pipelines/143333)
+Date: 2022.11.28
+Environment: Windows, Java Version 17.0.4.1. Perfomerd by : Miranda.
+
+| Case | Result | Note |
+| ------ | ------ | ------ |
+| 1.1 | OK |  |
+| 1.2 | OK |  |
+| 1.3 | OK |  |
+| 2.1 | OK |  |
+| 2.2 | OK |  |
+| 2.3 | OK |  |
+| 3.1 | OK |  |
+| 3.2 | OK |  |
+| 3.3 | OK |  |
+| 3.4 | OK |  |
+| 3.5 | OK |  |
+| 3.6 | OK |  |
+| 4.1 | OK |  |
+| 5.1 | OK |  |
+
