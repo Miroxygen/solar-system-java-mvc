@@ -32,7 +32,7 @@ public class Contract {
    *
    * @param c Contract.
    */
-  public Contract (Contract c) {
+  public Contract(Contract c) {
     this.startDay = c.startDay;
     this.endDay = c.endDay;
     this.item = c.item;
@@ -94,6 +94,7 @@ public class Contract {
 
     /**
      * For creating a copy.
+     *
      * @param c Contract.
      */
     public MutableContract(Contract c) {

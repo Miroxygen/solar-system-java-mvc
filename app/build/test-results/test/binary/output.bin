@@ -1,54 +1,43 @@
-a0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/App.java
-p0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/ContractController.java
-l0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/ItemController.java
-l0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/MainController.java
-n0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/controller/MemberController.java
-Z0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/dao/Dao.java
-^0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/dao/ItemDao.java
-`0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/dao/MemberDao.java
-a0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/Contract.java
-]0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/Item.java
-_0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/Member.java
-c0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/MemberList.java
-h0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/MembersItemList.java
-]0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/model/Time.java
-d0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/view/ContractView.java
-^2 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/view/ItemUi.java
-!text:line: 73 column: column:5 
-fDistance between variable 'category' declaration and its first usage is 5, but allowed 3.  Consider 
+f0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/controller/App.java
+n0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/controller/LendingClub.java
+i0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/controller/Member.java
+f0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/Contract.java
+j0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/ContractList.java
+b0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/Item.java
+l0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/LendingClubDao.java
+o0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/LendingClubDaoImp.java
+d0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/Member.java
+h0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/MemberList.java
+m0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/MembersItemList.java
+b0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/model/Time.java
+e2 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/view/ItemView.java
+!text:line: 38 column: column:7 
+bDistance between variable 'name' declaration and its first usage is 5, but allowed 3.  Consider 
 d  making that variable final if you still need to store its value in advance (before method calls 
 8  that might have side effects on the original value).
 
-!text:line: 75 column: column:5 
-bDistance between variable 'name' declaration and its first usage is 4, but allowed 3.  Consider 
-d  making that variable final if you still need to store its value in advance (before method calls 
-8  that might have side effects on the original value).
+!text:line: 40 column: column:7 
+`Distance between variable 'description' declaration and its first usage is 4, but allowed 3.  
+g  Consider making that variable final if you still need to store its value in advance (before method 
+>  calls that might have side effects on the original value).
 
-^0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/view/MainUi.java
-b0 CheckStyle Issues in C:/Users/miranda/Documents/Java/a2/app/src/main/java/view/MemberView.java
+g0 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/view/MemberView.java
+a1 CheckStyle Issues in C:/Users/miranda/Documents/Java/test/a2/app/src/main/java/view/View.java
+!text:line: 51 column: column:3 
+;'METHOD_DEF' should be separated from previous statement.
+
 &0 FindBugs Issues in model/Time.java
-'0 FindBugs Issues in dao/ItemDao.java
 *0 FindBugs Issues in model/Contract.java
--0 FindBugs Issues in view/ContractView.java
-'0 FindBugs Issues in view/ItemUi.java
-50 FindBugs Issues in controller/MainController.java
+.0 FindBugs Issues in model/ContractList.java
+00 FindBugs Issues in model/LendingClubDao.java
+30 FindBugs Issues in model/LendingClubDaoImp.java
 ,0 FindBugs Issues in model/MemberList.java
-70 FindBugs Issues in controller/MemberController.java
-)0 FindBugs Issues in dao/MemberDao.java
+-0 FindBugs Issues in controller/Member.java
 (0 FindBugs Issues in model/Member.java
-'0 FindBugs Issues in view/MainUi.java
+)0 FindBugs Issues in view/ItemView.java
 *0 FindBugs Issues in controller/App.java
-90 FindBugs Issues in controller/ContractController.java
+%0 FindBugs Issues in view/View.java
 &0 FindBugs Issues in model/Item.java
 10 FindBugs Issues in model/MembersItemList.java
-51 FindBugs Issues in controller/ItemController.java
-text:lines: 217-220 
-8categories must be non-null but is marked as nullable 
-7Parameter must be non-null but is marked as nullable 
-_This parameter is always used in a way that requires it to be non-null, but the parameter is 
-a  explicitly annotated as being Nullable. Either the use of the parameter or the annotation is 
-
-  wrong.
-
+20 FindBugs Issues in controller/LendingClub.java
 +0 FindBugs Issues in view/MemberView.java
-#0 FindBugs Issues in dao/Dao.java

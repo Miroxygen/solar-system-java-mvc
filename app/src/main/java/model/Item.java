@@ -11,8 +11,8 @@ public class Item {
   protected String description;
   protected int dayOfCreation;
   protected int costPerDay;
-  protected Member.MutableMember owner;
-  protected MembersContractList contractList;
+  protected ContractList contractList;
+  protected Boolean isRented = false;
 
   /**
    * Constructor.
@@ -42,26 +42,6 @@ public class Item {
     this.description = item.description;
     this.dayOfCreation = item.dayOfCreation;
     this.costPerDay = item.costPerDay;
-  }
-
-  /**
-   * Itemowner.
-   *
-   * @param owner Object.
-   */
-  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "MutableMember is a mutable copy.")
-  public void setOwner(Member.MutableMember owner) {
-    this.owner = owner;
-  }
-
-  /**
-   * Itemowner.
-   *
-   * @return Object.
-   */
-  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
-  public Member.MutableMember getOwner() {
-    return owner;
   }
 
   /**
@@ -145,15 +125,24 @@ public class Item {
     return this.costPerDay;
   }
 
-  public MembersContractList getContractList() {
+  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Suppose to be mutable.")
+  public ContractList getContractList() {
     return contractList;
+  }
+
+  /**
+  * Items availablity.
+  *
+  * @return Boolean.
+  */
+  public Boolean getRented() {
+    return this.isRented;
   }
 
   /**
   * An item you can change.
   */
   public static class MutableItem extends Item {
-    protected Boolean isRented = false;
 
     /**
      * Constructor.
@@ -166,7 +155,7 @@ public class Item {
      */
     public MutableItem(String category, String name, String description, int dayOfCreation, int costPerDay) {
       super(category, name, description, dayOfCreation, costPerDay);
-      contractList = new MembersContractList();
+      contractList = new ContractList();
     }
 
     /**
@@ -176,9 +165,10 @@ public class Item {
     */
     public MutableItem(Item item) {
       super(item);
+      contractList = new ContractList();
     }
 
-      /**
+    /**
      * Item is unavailable.
      */
     public void setAsRented() {
@@ -190,15 +180,6 @@ public class Item {
      */
     public void setAsNotRented() {
       this.isRented = false;
-    }
-
-    /**
-     * Items availablity.
-     *
-     * @return Boolean.
-     */
-    public Boolean getRented() {
-      return this.isRented;
     }
   }
 }

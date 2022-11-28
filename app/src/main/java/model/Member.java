@@ -135,7 +135,6 @@ public class Member {
   * Represents a member you can change.
   */
   public static class MutableMember extends Member {
-  private MembersContractList contractList;
   
 
     /**
@@ -156,11 +155,9 @@ public class Member {
      */
     public MutableMember(Member m) {
       super(m);
-      contractList = new MembersContractList();
-      contractList.setOwner(this);
     }
 
-      /**
+    /**
      * Sets name.
      *
      * @param name String.
@@ -169,7 +166,7 @@ public class Member {
       this.name = name;
     }
 
-      /**
+    /**
      * Set field.
      *
      * @param email String.
@@ -178,7 +175,7 @@ public class Member {
       this.email = email;
     }
 
-      /**
+    /**
      * Set field.
      *
      * @param phoneNumber String.
@@ -188,35 +185,32 @@ public class Member {
     }
 
 
-  /**
-   * Adding more credits.
-   *
-   * @param credit Int.
-   */
-  public void addCredit(int credit) {
-    this.credit += credit;
-  }
+    /**
+     * Adding more credits.
+     *
+     * @param credit Int.
+     */
+    public void addCredit(int credit) {
+      this.credit += credit;
+    }
 
-  /**
-   * Removing credit.
-   *
-   * @param credit Int.
-   */
-  public void withdrawCredit(int credit) {
-    this.credit -= credit;
-  }
+    /**
+    * Removing credit.
+    *
+    * @param credit Int.
+    */
+    public void withdrawCredit(int credit) {
+      this.credit -= credit;
+    }
 
-  /**
-   * Setting list.
-   *
-   * @param itemList Object.
-   */
-  public void setItemList(MembersItemList itemList) {
-    this.itemList = itemList;
-  }
-
-  public MembersContractList getContractList() {
-    return contractList;
-  }
+    /**
+    * Setting list.
+    *
+    * @param itemList Object.
+    */
+    @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Mutable list in mutable.")
+    public void setItemList(MembersItemList itemList) {
+      this.itemList = itemList;
+    }
   }
 }

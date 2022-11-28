@@ -1,41 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.38">
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\App.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\controller\App.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\ContractController.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\controller\LendingClub.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\ItemController.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\controller\Member.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\MainController.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\Contract.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\controller\MemberController.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\ContractList.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\dao\Dao.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\Item.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\dao\ItemDao.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\LendingClubDao.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\dao\MemberDao.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\LendingClubDaoImp.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Contract.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\Member.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Item.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\MemberList.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Member.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\MembersItemList.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\MemberList.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\model\Time.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\MembersItemList.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\view\ItemView.java">
+<error line="38" column="7" severity="warning" message="Distance between variable &apos;name&apos; declaration and its first usage is 5, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
+<error line="40" column="7" severity="warning" message="Distance between variable &apos;description&apos; declaration and its first usage is 4, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\model\Time.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\view\MemberView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\view\ContractView.java">
-</file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\view\ItemUi.java">
-<error line="73" column="5" severity="warning" message="Distance between variable &apos;category&apos; declaration and its first usage is 5, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
-<error line="75" column="5" severity="warning" message="Distance between variable &apos;name&apos; declaration and its first usage is 4, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
-</file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\view\MainUi.java">
-</file>
-<file name="C:\Users\miranda\Documents\Java\a2\app\src\main\java\view\MemberView.java">
+<file name="C:\Users\miranda\Documents\Java\test\a2\app\src\main\java\view\View.java">
+<error line="51" column="3" severity="warning" message="&apos;METHOD_DEF&apos; should be separated from previous statement." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
 </file>
 </checkstyle>

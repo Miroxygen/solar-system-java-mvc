@@ -88,8 +88,8 @@ public class MemberList {
    * @return Boolean.
    */
   public Boolean isEmailUnique(String email) {
-    for(Member.MutableMember m : members) {
-      if(m.getEmail().equals(email)) {
+    for (Member.MutableMember m : members) {
+      if (m.getEmail().equals(email)) {
         return false;
       }
     }
@@ -103,8 +103,8 @@ public class MemberList {
    * @return Boolean.
    */
   public Boolean isPhoneNumberUnique(String number) {
-    for(Member.MutableMember m : members) {
-      if(m.getPhoneNumber().equals(number)) {
+    for (Member.MutableMember m : members) {
+      if (m.getPhoneNumber().equals(number)) {
         return false;
       }
     }

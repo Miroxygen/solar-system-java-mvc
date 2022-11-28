@@ -1,9 +1,10 @@
 package controller;
 
 import model.MemberList;
-import view.TestItemView;
-import view.TestMemberView;
-import view.TestView;
+import model.Time;
+import view.ItemView;
+import view.MemberView;
+import view.View;
 
 /**
  * Responsible for staring the application.
@@ -12,15 +13,16 @@ public class App {
   /**
    * Application starting point.
 
-   * @param args command line arguments.
+   * @param args Not used.
    */
   public static void main(String[] args) {
-    view.TestView view = new TestView();
+    view.View view = new View();
     model.MemberList list = new MemberList();
-    view.TestMemberView memberView = new TestMemberView();
-    view.TestItemView itemView = new TestItemView();
-    TestMember member = new TestMember(itemView);
-    TestLc controller = new TestLc(view, list, memberView, member);
+    view.MemberView memberView = new MemberView();
+    view.ItemView itemView = new ItemView();
+    Member member = new Member(itemView);
+    Time time = new Time();
+    LendingClub controller = new LendingClub(view, list, memberView, member, time);
     controller.start();
   }
 }
