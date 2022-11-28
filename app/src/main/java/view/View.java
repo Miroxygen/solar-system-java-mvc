@@ -31,7 +31,7 @@ public class View {
   /**
    * Choices for list.
    */
-  public static enum List {
+  public static enum ListChoice {
     Simple,
     Verbose
   }
@@ -105,15 +105,15 @@ public class View {
    *
    * @return An enum.
    */
-  public List list() {
+  public ListChoice list() {
     final String simple = "s";
     final String verbose = "v";
     System.out.println(simple + " - List simple | " + verbose + " - List verbose |");
     String key = input.nextLine();
     if (key.equals(simple)) {
-      return List.Simple;
+      return ListChoice.Simple;
     } else if (key.equals(verbose)) {
-      return List.Verbose;
+      return ListChoice.Verbose;
     }
     return null;
   }

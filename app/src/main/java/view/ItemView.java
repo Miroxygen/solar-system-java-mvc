@@ -116,15 +116,6 @@ public class ItemView extends View {
   }
 
   /**
-   * Displays a message. 
-   *
-   * @param message String message.
-   */
-  public void displayMessage(String message) {
-    System.out.println(message);
-  }
-
-  /**
    * If the item has wrong category. 
    *
    * @param category Item category.

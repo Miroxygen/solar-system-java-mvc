@@ -401,7 +401,7 @@ public class LendingClub {
    * Menu for lists.
    */
   private void list() {
-    view.View.List action = view.list();
+    view.View.ListChoice action = view.list();
     switch (action) {
       case Simple:
         view.listMembersSimple(list.getMembers());
