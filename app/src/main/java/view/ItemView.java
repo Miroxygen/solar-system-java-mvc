@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * View for items.
  */
-public class ItemView {
+public class ItemView extends View {
   private Scanner input = new Scanner(System.in, "utf-8");
 
   /**
