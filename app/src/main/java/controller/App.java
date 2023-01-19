@@ -2,9 +2,12 @@ package controller;
 
 import model.MemberList;
 import model.Time;
-import view.ItemView;
-import view.MemberView;
-import view.View;
+import view.EnglishItemView;
+import view.EnglishMemberView;
+import view.EnglishView;
+import view.SwedishItemView;
+import view.SwedishMemberView;
+import view.SwedishView;
 
 /**
  * Responsible for staring the application.
@@ -16,10 +19,10 @@ public class App {
    * @param args Not used.
    */
   public static void main(String[] args) {
-    view.View view = new View();
+    view.SwedishView view = new SwedishView();
     model.MemberList list = new MemberList();
-    view.MemberView memberView = new MemberView();
-    view.ItemView itemView = new ItemView();
+    SwedishMemberView memberView = new SwedishMemberView();
+    SwedishItemView itemView = new SwedishItemView();
     Member member = new Member(itemView);
     Time time = new Time();
     LendingClub controller = new LendingClub(view, list, memberView, member, time);

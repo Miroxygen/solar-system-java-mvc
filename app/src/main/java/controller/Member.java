@@ -1,6 +1,7 @@
 package controller;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import view.ItemView.Edit;
 
 /**
  * Member controls their information and items.
@@ -46,7 +47,7 @@ public class Member {
   public void editItem() {
     try {
       selectItem();
-      view.ItemView.Edit action = view.editItem();
+      Edit action = view.editItem();
       String value = view.getNewValue();
       switch (action) {
         case Category:
