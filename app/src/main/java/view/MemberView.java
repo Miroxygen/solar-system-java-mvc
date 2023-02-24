@@ -1,5 +1,8 @@
 package view;
 
+/**
+ * Interface for memberview.
+ */
 public interface MemberView {
   /**
    * Choices for profile.

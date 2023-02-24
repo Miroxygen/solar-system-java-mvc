@@ -10,11 +10,7 @@ import java.util.Scanner;
  */
 public class EnglishItemView implements ItemView {
   private Scanner input = new Scanner(System.in, "utf-8");
-  private final String category = "cg";
-  private final String name = "n";
-  private final String description = "d";
-  private final  String cost = "c";
-
+  
   /**
    * Menu for editing.
    */
@@ -25,8 +21,10 @@ public class EnglishItemView implements ItemView {
     Cost
   }
 
-  
-  @SuppressFBWarnings(value = "VARIABLE_DECLARATION_DISTANCE", justification = "Value wont be altered.")
+  /**
+   * For creating an item.
+   */
+  @SuppressFBWarnings(value = "VariableDeclarationUsageDistance", justification = "Value wont be altered.")
   public model.Item createItem(int currentDay) throws Exception {
     try {
       System.out.println("=== Please enter a category for your item : (Tool, Vehicle, Game, Toy, Sport, or Other)");
@@ -46,7 +44,9 @@ public class EnglishItemView implements ItemView {
     }
   }
 
-  
+  /**
+   * Selects item from member.
+   */
   public <T extends model.Item> T selectItem(Iterable<T> list) {
     int index = 0;
     for (model.Item i : list) {
@@ -66,8 +66,14 @@ public class EnglishItemView implements ItemView {
     return null;
   }
 
-  
+  /**
+   * Edits an item.
+   */
   public view.ItemView.Edit editItem() {
+    final String category = "cg";
+    final String name = "n";
+    final String description = "d";
+    final  String cost = "c";
     try {
       System.out.println(" Enter what you want to change :");
       System.out.println(category + " Category | " + name + " Name | " 
@@ -88,14 +94,18 @@ public class EnglishItemView implements ItemView {
     return null;
   }
 
-  
+  /**
+   * For getting a string value.
+   */
   public String getNewValue() {
     System.out.println(" Enter the new value : ");
     String value = input.nextLine();
     return value;
   }
 
-  
+  /**
+   * Checks that entered category is valid.
+   */
   public void wrongCategory(String category) throws Exception {
     String[] categories = {"Tool", "tool", "Vehicle", "vehicle",
       "Game", "game", "Toy", "toy", "Sport", "sport", "Other", "other"};
@@ -105,13 +115,18 @@ public class EnglishItemView implements ItemView {
     }
   }
 
+  /**
+   * Checks that entered cost is valid.
+   */
   public void wrongCost(int cost) throws Exception {
     if (cost < 10 || cost > 100) {
       throw new Exception("Wrong cost.");
     }
   }
 
-  
+  /**
+   * Displays one item with all its values.
+   */
   public void showOneItem(model.Item item, int currentDay) {
     System.out.println("Category : " + item.getCategory() + " Name : " + item.getName() 
         + " Description : " + item.getDescription()
@@ -131,6 +146,9 @@ public class EnglishItemView implements ItemView {
   }
 
 
+  /**
+   * For system out print.
+   */
   public void displayMessage(String message) {
     System.out.print(message);
   }

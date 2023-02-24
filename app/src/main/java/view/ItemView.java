@@ -1,5 +1,8 @@
 package view;
 
+/** 
+ * Interfacew for itemview.
+*/
 public interface ItemView {
 
   /**

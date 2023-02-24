@@ -7,16 +7,6 @@ import java.util.Scanner;
  */
 public class EnglishMemberView implements MemberView {
   private Scanner input = new Scanner(System.in, "utf-8");
-  final String details = "d";
-  final String edit = "e";
-  final String item = "i";
-  final String name = "n";
-  final String email = "e";
-  final String phone = "p";
-  final String delete = "d";
-  final String add = "a";
-  final String inspect = "i";
-
 
   /**
    * View member profile. 
@@ -24,6 +14,9 @@ public class EnglishMemberView implements MemberView {
    * @return Enum.
    */
   public view.MemberView.Profile profile() {
+    final String details = "d";
+    final String edit = "e";
+    final String item = "i";
     System.out.println(details + " Member details | " + edit + " Edit member | " + item + " Edit items");
     String key = input.nextLine();
     if (key.equals(details)) {
@@ -42,6 +35,10 @@ public class EnglishMemberView implements MemberView {
    * @return Enum.
    */
   public view.MemberView.Edit editMember() {
+    final String name = "n";
+    final String email = "e";
+    final String phone = "p";
+    final String delete = "d";
     System.out.println(" Please enter your action : ");
     System.out.println(name + " Edit name |" + email + " Edit email |" + phone 
         + " Edit phonenumber |" + delete + " Delete Member |");
@@ -64,6 +61,10 @@ public class EnglishMemberView implements MemberView {
    * @return Enum.
    */
   public view.MemberView.Item itemMenu() {
+    final String delete = "d";
+    final String add = "a";
+    final String inspect = "i";
+    final String edit = "e";
     System.out.println(" Please enter your action :");
     System.out.println(add + " Add an item | " + delete + " Delete an item |" 
         + edit + " Edit an item |" + inspect + " Inspect an item | ");

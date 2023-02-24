@@ -1,23 +1,21 @@
 package view;
 
 import java.util.Scanner;
-
 import model.Member;
 
+/**
+ * The Swedish memberview.
+ */
 public class SwedishMemberView implements MemberView {
   private Scanner input = new Scanner(System.in, "utf-8");
-  final String details = "1";
-  final String edit = "2";
-  final String item = "3";
-  final String name = "1";
-  final String email = "2";
-  final String phone = "3";
-  final String delete = "4";
-  final String add = "1";
-  final String inspect = "3";
 
-
+  /**
+   * For displaying members profile.
+   */
   public view.MemberView.Profile profile() {
+    String details = "1";
+    String edit = "2";
+    String item = "3";
     System.out.println(details + " Medlemsdetaljer | " + edit + " Redigera medlem | " + item + " Redigera pryl");
     String key = input.nextLine();
     if (key.equals(details)) {
@@ -30,8 +28,14 @@ public class SwedishMemberView implements MemberView {
     return null;
   }
 
-  
+  /**
+   * For editing a member.
+   */
   public Edit editMember() {
+    String name = "1";
+    String email = "2";
+    String phone = "3";
+    String delete = "4";
     System.out.println(" Gör ditt val : ");
     System.out.println(name + " Ändra namn |" + email + " Ändra email |" + phone 
         + " Ändra telefonnummer |" + delete + " Ta bort medlem |");
@@ -48,8 +52,14 @@ public class SwedishMemberView implements MemberView {
     return null;
   }
 
-  
+  /**
+   * Displays the items menu.
+   */
   public Item itemMenu() {
+    String add = "1";
+    String edit = "2";
+    String inspect = "3";
+    String delete = "4";
     System.out.println(" Gör ditt val :");
     System.out.println(add + " Lägg till en pryl | " + edit + " Redigera en pryl |" 
         + inspect + " Se pryldetaljer | " + delete + " Ta bort pryl | ");
@@ -66,14 +76,18 @@ public class SwedishMemberView implements MemberView {
     return null;
   }
 
-  
+  /**
+   * For getting a string value.
+   */
   public String getNewStringValue() {
     System.out.println(" Ange ett nytt värde : ");
     String value = input.nextLine();
     return value;
   }
 
-  
+  /**
+   * For creating a new member.
+   */
   public Member createMember() {
     System.out.println("=== Ange ett namn.");
     String name = input.nextLine();
@@ -84,7 +98,9 @@ public class SwedishMemberView implements MemberView {
     return new model.Member(name, phoneNumber, email);
   }
 
-  
+  /**
+   * For selecting an exisiting member.
+   */
   public <T extends Member> T selectMember(Iterable<T> list) {
     try {
       int index = 0;
@@ -108,7 +124,9 @@ public class SwedishMemberView implements MemberView {
     return null;
   }
 
-  
+  /**
+   * For seeing a members info.
+   */
   public <T extends Member> void viewMember(Member m) {
     System.out.println(" Namn : " + m.getName() + " Email : " + m.getEmail() 
         + " Telefonnummer : " + m.getPhoneNumber() + " ID : " + m.getId() + " Skapades dag : " + m.getDayOfCreation());

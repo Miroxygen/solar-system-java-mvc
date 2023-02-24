@@ -10,18 +10,14 @@ import java.util.Scanner;
  */
 public class EnglishView implements View {
   private Scanner input = new Scanner(System.in, "utf-8");
-  private final String login = "L";
-  private final String create = "C";
-  private final String quit = "Q";
-  private final String edit = "e";
-  private final String list = "l";
-  private final String contract = "c";
-  private final String time = "t";
-  private final String logout = "out";
-  private final String simple = "s";
-  private final String verbose = "v";
 
+  /**
+   * Login view.
+   */
   public Start login() {
+    final String login = "L";
+    final String create = "C";
+    final String quit = "Q";
     System.out.println("=== Welcome to the Stuff Lending Club! ===");
     System.out.println("=== " + login + ". Login with existing member");
     System.out.println("=== " + create + ". Create a new member");
@@ -37,8 +33,16 @@ public class EnglishView implements View {
     return null;
   }
 
+  /**
+   * Menu view.
+   */
   public Menu menu(int currentDay) {
     displayCurrentDay(currentDay);
+    final String edit = "e";
+    final String list = "l";
+    final String contract = "c";
+    final String time = "t";
+    final String logout = "out";
     System.out.println("=== " + edit + "| Memberprofile.");
     System.out.println("=== " + list + "| List members.");
     System.out.println("=== " + contract + "| Establish a contract.");
@@ -59,8 +63,12 @@ public class EnglishView implements View {
     return null;
   }
 
- 
+  /**
+   * List view.
+   */
   public ListChoice list() {
+    final String simple = "s";
+    final String verbose = "v";
     System.out.println(simple + " - List simple | " + verbose + " - List verbose |");
     String key = input.nextLine();
     if (key.equals(simple)) {
@@ -71,6 +79,9 @@ public class EnglishView implements View {
     return null;
   }
 
+  /**
+   * View for selecting a member.
+   */
   public <T extends model.Member> T selectMember(Iterable<T> list) {
     try {
       int index = 0;
@@ -94,6 +105,9 @@ public class EnglishView implements View {
     return null;
   }
 
+  /**
+   * View for selecting a member.
+   */
   public <T extends model.Item> T selectItem(Iterable<T> list) {
     try {
       int index = 0;
@@ -120,7 +134,9 @@ public class EnglishView implements View {
     return null;
   }
 
-  
+  /**
+   * A simple members list.
+   */
   public <T extends model.Member> void listMembersSimple(Iterable<T> list) {
     for (model.Member m : list) {
       System.out.println(" Name : " + m.getName() + " Email : " + m.getEmail() 
@@ -129,23 +145,29 @@ public class EnglishView implements View {
   }
 
 
+  /**
+   * A verbose members list.
+   */
   public <T extends model.Member> void listMembersVerbose(Iterable<T> list, int currentDay) {
     List<T> memberCopyList = new ArrayList<T>();
     for (T m : list) {
-        memberCopyList.add(m);
+      memberCopyList.add(m);
     }
     Collections.sort(memberCopyList, (a, b) -> a.getId().compareTo(b.getId()));
     for (T m : memberCopyList) {
-        System.out.println(" Name : " + m.getName() + " Email : " + m.getEmail());
-        System.out.println(" Items :");
-        if (m.getNumberOfItems() != 0) {
-            listMembersItems(m.getItems(), currentDay);
-        } else {
-            System.out.println(" No items.");
-        }
+      System.out.println(" Name : " + m.getName() + " Email : " + m.getEmail());
+      System.out.println(" Items :");
+      if (m.getNumberOfItems() != 0) {
+        listMembersItems(m.getItems(), currentDay);
+      } else {
+        System.out.println(" No items.");
+      }
     }
   }
 
+  /**
+   * Lists a members items.
+   */
   public <T extends model.Item> void listMembersItems(Iterable<T> list, int currentDay) {
     for (model.Item i : list) {
       System.out.println(" Name : " + i.getName() + " Category : " + i.getCategory() 
@@ -163,10 +185,16 @@ public class EnglishView implements View {
   }
 
 
+  /**
+   * For system out print.
+   */
   public void displayMessage(String message) {
     System.out.println(message);
   }
 
+  /**
+   * For selecting from all available (not rented) items.
+   */
   public <T extends model.Item> model.Item selectFromAllAvailableItems(Iterable<T> list) {
     int index = 0;
     for (model.Item i : list) {
@@ -186,6 +214,9 @@ public class EnglishView implements View {
     return null;
   }
 
+  /**
+   * Gets a starting day for a contract.
+   */
   public int getContractStartDay() {
     System.out.println("On which day do you want to start your lending period?");
     String startDay = input.nextLine();
@@ -194,6 +225,9 @@ public class EnglishView implements View {
   }
 
 
+  /**
+   * Gets total lenght of contract.
+   */
   public int getContractPeriod() {
     System.out.println("How many days do you wish to lend the item?");
     String days = input.nextLine();
@@ -201,6 +235,9 @@ public class EnglishView implements View {
     return intDays;
   }
 
+  /**
+   * For advancing day time counter.
+   */
   public int time(int currentDay) {
     displayCurrentDay(currentDay);
     System.out.println("How many days do you want to advance time?");
@@ -209,10 +246,16 @@ public class EnglishView implements View {
     return daysInInteger;
   }
 
+  /**
+   * Displays current day.
+   */
   public void displayCurrentDay(int currentDay) {
     System.out.println(" The current day is : " + currentDay);
   }
 
+  /**
+   * Deletes a member.
+   */
   public Delete deleteMember() {
     final String yes = "Y";
     final String no = "N";

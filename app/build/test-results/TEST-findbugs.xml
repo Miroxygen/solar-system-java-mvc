@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite package="org.spotbugs" time="0" tests="15" errors="0" name="findbugs">
+<testsuite package="org.spotbugs" time="0" tests="21" errors="0" name="findbugs">
 <testcase time="0" name="model/Time.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="view/SwedishView.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="model/Contract.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="model/ContractList.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="model/LendingClubDao.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="view/EnglishItemView.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="model/LendingClubDaoImp.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="model/MemberList.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="controller/Member.java" classname="FindBugs Issues">
@@ -11,8 +13,12 @@
 </testcase><testcase time="0" name="view/ItemView.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="controller/App.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="view/View.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="view/EnglishMemberView.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="view/EnglishView.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="view/SwedishItemView.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="model/Item.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="model/MembersItemList.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="view/SwedishMemberView.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="controller/LendingClub.java" classname="FindBugs Issues">
 </testcase><testcase time="0" name="view/MemberView.java" classname="FindBugs Issues">
 </testcase></testsuite>

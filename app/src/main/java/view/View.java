@@ -1,5 +1,8 @@
 package view;
 
+/**
+* Interface for view.
+*/
 public interface View {
   /**
    * Choices for start.
@@ -38,18 +41,18 @@ public interface View {
   }
 
   /**
-   * Login menu.
-   *
-   * @return An enum.
-   */
+  * Login menu.
+  *
+  * @return An enum.
+  */
   public Start login();
 
-   /**
-   * The manin menu.
-   *
-   * @param currentDay Systems current day.
-   * @return An enum.
-   */
+  /**
+  * The manin menu.
+  *
+  * @param currentDay Systems current day.
+  * @return An enum.
+  */
   public Menu menu(int currentDay);
 
   /**
@@ -68,7 +71,7 @@ public interface View {
    */
   public <T extends model.Member> T selectMember(Iterable<T> list);
 
-   /**
+  /**
    * Select an item from a list.
    *
    * @param <T> Item

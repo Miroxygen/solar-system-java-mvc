@@ -1,20 +1,21 @@
 package view;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import model.Item;
 
+/**
+ * The Swedish itemview.
+ */
 public class SwedishItemView implements ItemView {
   private Scanner input = new Scanner(System.in, "utf-8");
-  private final String category = "1";
-  private final String name = "2";
-  private final String description = "3";
-  private final  String cost = "4";
   
-  @SuppressFBWarnings(value = "VARIABLE_DECLARATION_DISTANCE", justification = "Value wont be altered.")
+  /**
+   * For creating an item.
+   */
+  @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
   public model.Item createItem(int currentDay) throws Exception {
     try {
       System.out.println("=== Välj en kategori för din pryl : (Verktyg, Fordon, Spel, Leksak, Sport, eller Annat)");
@@ -34,7 +35,9 @@ public class SwedishItemView implements ItemView {
     }
   }
 
-  
+  /**
+   * For selecting an item.
+   */
   public <T extends Item> T selectItem(Iterable<T> list) {
     int index = 0;
     for (model.Item i : list) {
@@ -54,8 +57,14 @@ public class SwedishItemView implements ItemView {
     return null;
   }
 
-  
+  /** 
+   * For editing an item.
+  */
   public Edit editItem() {
+    final String category = "1";
+    final String name = "2";
+    final String description = "3";
+    final  String cost = "4";
     try {
       System.out.println(" Vad vill du ändra på? ");
       System.out.println(category + " Kategori | " + name + " Namn | " 
@@ -76,14 +85,18 @@ public class SwedishItemView implements ItemView {
     return null;
   }
 
-  
+  /** 
+   * For getting a String value.
+  */
   public String getNewValue() {
     System.out.println(" Skriv in ett nytt värde : ");
     String value = input.nextLine();
     return value;
   }
 
-  
+  /**
+   * To detect a wrong category.
+   */
   public void wrongCategory(String category) throws Exception {
     String[] categories = {"Verktyg", "verktyg", "Fordon", "fordon",
       "Spel", "spel", "Leksak", "leksak", "Sport", "sport", "Annat", "annat"};
@@ -93,14 +106,18 @@ public class SwedishItemView implements ItemView {
     }
   }
 
-  
+  /**
+   * For detecting a wrong cost.
+   */
   public void wrongCost(int cost) throws Exception {
     if (cost < 10 || cost > 100) {
       throw new Exception("Fel kostnad.");
     }
   }
 
-  
+  /**
+   * Shows one item.
+   */
   public void showOneItem(Item item, int currentDay) {
     System.out.println("Kategori : " + item.getCategory() + " Namn : " + item.getName() 
         + " Beskrivning : " + item.getDescription()
@@ -120,6 +137,9 @@ public class SwedishItemView implements ItemView {
   }
 
 
+  /**
+   * For displaying a message.
+   */
   public void displayMessage(String message) {
     System.out.print(message);
   }
