@@ -10,12 +10,13 @@ The application uses the model-view-controller (MVC) architectural pattern. The 
 ### Class Diagram
 Please provide at least one class diagram according to the assignment requirments.
 
-![my class diagram](img/lending-club.jpeg)
+![my class diagram](img/lccd.jpeg)
 
 ### Sequence Diagram
 Please provide at least one sequence diagram according to the assignment requirments.
 
-![sequence diagram](img/secuence.png)
+![sequence diagram create member](img/secuence.png)
+![sequence diagram create item](img/createitem.png)
 
 ### Object Diagram
 
