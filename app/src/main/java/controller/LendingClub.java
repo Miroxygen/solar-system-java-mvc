@@ -39,7 +39,7 @@ public class LendingClub {
       Boolean running = true;
       while (running) {
         if (chosenMember == null) {
-          view.EnglishView.Start action = view.login();
+          view.View.Start action = view.login();
           switch (action) {
             case Login:
               login();
@@ -111,7 +111,7 @@ public class LendingClub {
   * Main menu.
   */
   private void menu() {
-    view.EnglishView.Menu action = view.menu(time.getCurrentDay());
+    view.View.Menu action = view.menu(time.getCurrentDay());
     switch (action) {
       case Profile:
         memberProfile();
@@ -138,7 +138,7 @@ public class LendingClub {
   * Member profile menu.
   */
   private void memberProfile() {
-    view.EnglishMemberView.Profile action = memberView.profile();
+    view.MemberView.Profile action = memberView.profile();
     switch (action) {
       case Details:
         memberView.viewMember(chosenMember);
@@ -158,7 +158,7 @@ public class LendingClub {
   * Edit member menu.
   */
   private void editMember() {
-    view.EnglishMemberView.Edit action = memberView.editMember();
+    view.MemberView.Edit action = memberView.editMember();
     String newValue;
     switch (action) {
       case Name:
@@ -224,7 +224,7 @@ public class LendingClub {
   * Deletes a member.
   */
   private void deleteMember() {
-    view.EnglishView.Delete action = view.deleteMember();
+    view.View.Delete action = view.deleteMember();
     switch (action) {
       case Yes:
         list.deleteMember(chosenMember);
@@ -242,7 +242,7 @@ public class LendingClub {
   * Item menu.
   */
   private void itemMenu() {
-    view.EnglishMemberView.Item action = memberView.itemMenu();
+    view.MemberView.Item action = memberView.itemMenu();
     switch (action) {
       case Add:
         createItem();
@@ -401,7 +401,7 @@ public class LendingClub {
    * Menu for lists.
    */
   private void list() {
-    view.EnglishView.ListChoice action = view.list();
+    view.View.ListChoice action = view.list();
     switch (action) {
       case Simple:
         view.listMembersSimple(list.getMembers());
