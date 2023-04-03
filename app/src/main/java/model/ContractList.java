@@ -8,7 +8,15 @@ import java.util.ArrayList;
  * A list of contracts.
  */
 public class ContractList {
-  private ArrayList<Contract.MutableContract> contracts = new ArrayList<Contract.MutableContract>();
+  private ArrayList<Contract.MutableContract> contracts;
+
+  public ContractList(ContractList contractList) {
+    this.contracts = contractList.contracts;
+  }
+
+  public ContractList() {
+    contracts = new ArrayList<Contract.MutableContract>(); 
+  }
 
   /**
    * Adds a contract.

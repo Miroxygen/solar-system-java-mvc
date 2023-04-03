@@ -35,10 +35,29 @@ public class MembersItemList {
    *
    * @param item Object.
    * @return Object.
+   * @throws Exception
    */
-  public Item addItem(Item item) {
+  public Item addItem(Item item) throws Exception {
+    if(!isNameUnique(item.getName())) {
+      throw new Exception("Item name not unique.");
+    }
     items.add(new Item.MutableItem(item));
     return items.get(items.size() - 1);
+  }
+
+   /**
+   * Checks if item name is unique amongst members own items.
+   *
+   * @param name Items name.
+   * @return True if unique, false otherwise.
+   */
+  private Boolean isNameUnique(String name) {
+    for(Item.MutableItem i : items) {
+      if(i.getName().equals(name)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**

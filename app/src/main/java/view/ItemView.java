@@ -25,6 +25,34 @@ public interface ItemView {
   public model.Item createItem(int currentDay) throws Exception;
 
   /**
+   * Choose category for item.
+   *
+   * @return String.
+   */
+  public String chooseCategory() throws Exception;
+
+  /**
+   * Choose name for item.
+   *
+   * @return String.
+   */
+  public String chooseName();
+
+  /**
+   * Choose description for item.
+   *
+   * @return String.
+   */
+  public String chooseDescription();
+
+  /**
+   * Choose cost for item.
+   *
+   * @return Integer.
+   */
+  public int chooseCost() throws Exception;
+
+  /**
    * Selects an item from list.
    *
    * @param <T> Item.

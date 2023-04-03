@@ -6,13 +6,13 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * Represents an Item.
  */
 public class Item {
-  protected String category;
-  protected String name;
-  protected String description;
-  protected int dayOfCreation;
-  protected int costPerDay;
-  protected ContractList contractList;
-  protected Boolean isRented = false;
+  private String category;
+  private String name;
+  private String description;
+  private int dayOfCreation;
+  private int costPerDay;
+  private ContractList contractList;
+  private Boolean isRented = false;
 
   /**
    * Constructor.
@@ -125,13 +125,21 @@ public class Item {
     return this.costPerDay;
   }
 
-  @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Suppose to be mutable.")
   public ContractList getContractList() {
-    return contractList;
+    return new ContractList(contractList);
   }
 
   /**
-  * Items availablity.
+   * Sets rented status of item.
+   *
+   * @param isRented Boolean.
+   */
+  public void setRented(Boolean isRented) {
+    this.isRented = isRented;
+  }
+
+  /**
+  * Items rented flag status.
   *
   * @return Boolean.
   */
@@ -140,23 +148,9 @@ public class Item {
   }
 
   /**
-  * An item you can change.
+  * A mutable version of object Item.
   */
   public static class MutableItem extends Item {
-
-    /**
-     * Constructor.
-     *
-     * @param category String.
-     * @param name String.
-     * @param description String.
-     * @param dayOfCreation Int.
-     * @param costPerDay Int.
-     */
-    public MutableItem(String category, String name, String description, int dayOfCreation, int costPerDay) {
-      super(category, name, description, dayOfCreation, costPerDay);
-      contractList = new ContractList();
-    }
 
     /**
     * For making a mutable version.
@@ -165,21 +159,38 @@ public class Item {
     */
     public MutableItem(Item item) {
       super(item);
-      contractList = new ContractList();
     }
 
     /**
-     * Item is unavailable.
+     * Overrides the setRented method of parent to set the isRented flag.
      */
+    @Override
+    public void setRented(Boolean isRented) {
+      super.setRented(isRented);
+    }
+  
+    /**
+     * Overrides the getRented method of parent to get the isRented flag.
+     */
+    @Override
+    public Boolean getRented() {
+      return super.getRented();
+    }
+  
+    /**
+    * Sets the isRented flag of the item to true, indicating that the
+    * item is rented.
+    */
     public void setAsRented() {
-      this.isRented = true;
+      setRented(true);
     }
 
     /**
-     * Item is available.
-     */
+    * Sets the isRented flag of the item to false, indicating that the
+    * item is no longer rented and is available for rent.
+    */
     public void setAsNotRented() {
-      this.isRented = false;
+      setRented(false);
     }
   }
 }

@@ -152,4 +152,28 @@ public class EnglishItemView implements ItemView {
   public void displayMessage(String message) {
     System.out.print(message);
   }
+
+  @Override
+  public String chooseCategory() throws Exception {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'chooseCategory'");
+  }
+
+  @Override
+  public String chooseName() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'chooseName'");
+  }
+
+  @Override
+  public String chooseDescription() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'chooseDescription'");
+  }
+
+  @Override
+  public int chooseCost() throws Exception {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'chooseCost'");
+  }
 }

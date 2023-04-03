@@ -4,32 +4,82 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+import org.checkerframework.checker.units.qual.C;
+
 import model.Item;
 
 /**
  * The Swedish itemview.
  */
 public class SwedishItemView implements ItemView {
-  private Scanner input = new Scanner(System.in, "utf-8");
+  private Scanner input;
+
+  public SwedishItemView(Scanner input) {
+    this.input = input;
+  }
   
   /**
    * For creating an item.
    */
-  @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
   public model.Item createItem(int currentDay) throws Exception {
+    try {
+      return new model.Item(chooseCategory(), chooseName(), chooseDescription(), currentDay, chooseCost());
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+
+  /**
+   * Choose category for item.
+   *
+   * @return String.
+   */
+  public String chooseCategory() throws Exception {
     try {
       System.out.println("=== Välj en kategori för din pryl : (Verktyg, Fordon, Spel, Leksak, Sport, eller Annat)");
       String category = input.nextLine();
       wrongCategory(category);
-      System.out.println("=== Ge din pryl ett namn :");
-      String name = input.nextLine();
-      System.out.println("=== Ge en kort beskrivning av din pryl : ");
-      String description = input.nextLine();
+      return category;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+
+  /**
+   * Choose name for item.
+   *
+   * @return String.
+   */
+  public String chooseName() {
+    System.out.println("=== Ge din pryl ett namn :");
+    String name = input.nextLine();
+    return name;
+  }
+
+  /**
+   * Choose description for item.
+   *
+   * @return String.
+   */
+  public String chooseDescription() {
+    System.out.println("=== Ge en kort beskrivning av din pryl : ");
+    String description = input.nextLine();
+    return description;
+  }
+
+  /**
+   * Choose cost for item.
+   *
+   * @return Integer.
+   */
+  public int chooseCost() throws Exception {
+    try {
       System.out.println("=== Vad kostar din pryl per dag? (10-100 daler)");
-      int costPerDay = input.nextInt();
-      wrongCost(costPerDay);
-      input.nextLine();
-      return new model.Item(category, name, description, currentDay, costPerDay);
+      String costPerDay = input.nextLine();
+      int costPerDayInt = Integer.parseInt(costPerDay);
+      wrongCost(costPerDayInt);
+      return costPerDayInt;
     } catch (Exception e) {
       throw e;
     }
@@ -125,13 +175,13 @@ public class SwedishItemView implements ItemView {
     for (model.Contract c : item.getContractList().getContracts()) {
       if (c.getStartDay() > currentDay) {
         System.out.println(" Framtida kontrakt :  Startdag : " + c.getStartDay() + " Slutdag : " 
-            + c.getEndDay() + " Lånare : " + c.getLender().getName());
+            + c.getEndDay() + " Lånare : " + "c.getLender().getName()");
       } else if (c.getEndDay() < currentDay) {
         System.out.println(" Gamla kontrakt : Startdag : " + c.getStartDay() + " Slutdag : " 
-            + c.getEndDay() + " Lender : " + c.getLender().getName());
+            + c.getEndDay() + " Lender : " + "c.getLender().getName()");
       } else {
         System.out.println(" Nuvarande kontrakt : Startdag : " + c.getStartDay() + " Slutdag : "
-            + c.getEndDay() + " Lånare : " + c.getLender().getName());
+            + c.getEndDay() + " Lånare : " + "c.getLender().getName()");
       }
     }
   }

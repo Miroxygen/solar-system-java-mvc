@@ -36,29 +36,11 @@ public class Member {
   public void addItem(int currentDay) {
     try {
       Item newItem = view.createItem(currentDay);
-      if (!isNameUnique(newItem.getName())) {
-        throw new Exception("Item name is not unique.");
-      }
       itemList.addItem(newItem);
       chosenMember.addCredit(100);
     } catch (Exception e) {
       view.displayMessage(e.getMessage());
     }
-  }
-
-  /**
-   * Checks if item name is unique amongst members own items.
-   *
-   * @param name Items name.
-   * @return True if unique, false otherwise.
-   */
-  public Boolean isNameUnique(String name) {
-    for (Item.MutableItem i : chosenMember.getItems()) {
-      if (i.getName().equals(name)) {
-        return false;
-      }
-    }
-    return true;
   }
 
   /**

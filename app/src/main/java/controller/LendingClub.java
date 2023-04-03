@@ -15,6 +15,7 @@ import model.MembersItemList;
 public class LendingClub {
   private view.View view;
   private view.MemberView memberView;
+  private view.ContractView contractView;
   private model.MemberList list;
   private model.Member.MutableMember chosenMember;
   private Member member;
@@ -22,8 +23,9 @@ public class LendingClub {
   private model.Time time;
   private ArrayList<model.ContractList> allContractLists = new ArrayList<model.ContractList>();
 
-  LendingClub(view.View v, model.MemberList l, view.MemberView tml, Member tm, model.Time t) {
+  LendingClub(view.View v ,view.ContractView cv, model.MemberList l, view.MemberView tml, Member tm, model.Time t) {
     view = v;
+    contractView = cv;
     list = l;
     memberView = tml;
     member = tm;
@@ -304,7 +306,7 @@ public class LendingClub {
   private void makeItemRentedCorrect() {
     for (model.ContractList cl : allContractLists) {
       for (model.Contract.MutableContract c : cl.getContracts()) {
-        model.Item.MutableItem item = c.getItem();
+        model.Item.MutableItem item = (MutableItem) c.getItem();
         if (item.getRented() == true && c.getEndDay() < time.getCurrentDay()) {
           item.setAsNotRented();
         }
@@ -315,7 +317,6 @@ public class LendingClub {
         }
       }
     }
-
   }
 
   /**
@@ -332,7 +333,7 @@ public class LendingClub {
       int contractPeriod = view.getContractPeriod();
       checkIfItemIsAvailble(startDay, (startDay + contractPeriod), chosenItem);
       checkIfMemberCanAffordContract(chosenMember.getCredit(), (chosenItem.getCostPerday() * contractPeriod));
-      model.Contract contract = new Contract(startDay, (startDay + contractPeriod), chosenItem, chosenMember);
+      model.Contract contract = new Contract(startDay, (startDay + contractPeriod));
       model.Contract.MutableContract newContract = new model.Contract.MutableContract(contract);
       model.ContractList currentContractList = chosenItem.getContractList();
       if (!allContractLists.contains(currentContractList)) {
@@ -352,6 +353,18 @@ public class LendingClub {
     } finally {
       availableItems.clear();
     }
+  }
+
+  private Contract createContract(Item.MutableItem item) {
+    try {
+      Contract newContract = contractView.createContract(0);
+      newContract.setLender(chosenMember);
+      newContract.setItem(item);
+      return newContract;
+    } catch (Exception e) {
+      view.displayMessage(e.getMessage());
+    }
+    return null;
   }
 
   /**
