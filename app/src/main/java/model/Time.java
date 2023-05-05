@@ -4,7 +4,7 @@ package model;
  * Respresents a daycounter.
  */
 public class Time {
-  protected int currentDay;
+  private int currentDay;
 
   /**
    * Returns current int for counter.

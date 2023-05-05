@@ -21,9 +21,9 @@ public class LendingClub {
   private Member member;
   public ArrayList<model.Item.MutableItem> availableItems;
   private model.Time time;
-  private ArrayList<model.ContractList> allContractLists = new ArrayList<model.ContractList>();
+  private model.ContractList allMembersContracts;
 
-  LendingClub(view.View v ,view.ContractView cv, model.MemberList l, view.MemberView tml, Member tm, model.Time t) {
+  LendingClub(view.View v ,view.ContractView cv, model.MemberList l, view.MemberView tml, Member tm, model.Time t, model.ContractList cl) {
     view = v;
     contractView = cv;
     list = l;
@@ -31,6 +31,7 @@ public class LendingClub {
     member = tm;
     time = t;
     availableItems = new ArrayList<model.Item.MutableItem>();
+    allMembersContracts = cl;
   }
 
   /**
@@ -122,7 +123,7 @@ public class LendingClub {
         list();
         break;
       case Contract:
-        contract();
+        establishContractAndAddToList();
         break;
       case Time:
         time();
@@ -304,16 +305,14 @@ public class LendingClub {
    * If day time counter increases, check that items rented status are true.
    */
   private void makeItemRentedCorrect() {
-    for (model.ContractList cl : allContractLists) {
-      for (model.Contract.MutableContract c : cl.getContracts()) {
-        model.Item.MutableItem item = (MutableItem) c.getItem();
-        if (item.getRented() == true && c.getEndDay() < time.getCurrentDay()) {
-          item.setAsNotRented();
-        }
-        if (item.getRented() == false) {
-          if (c.getStartDay() <= time.getCurrentDay() && c.getEndDay() >= time.getCurrentDay()) {
-            item.setAsRented();
-          }
+    for (model.Contract.MutableContract c : allMembersContracts.getContracts()) {
+      model.Item.MutableItem item = c.getItem();
+      if (item.getRented() == true && c.getEndDay() < time.getCurrentDay()) {
+        item.setAsNotRented();
+      }
+      if (item.getRented() == false) {
+        if (c.getStartDay() <= time.getCurrentDay() && c.getEndDay() >= time.getCurrentDay()) {
+          item.setAsRented();
         }
       }
     }
@@ -322,30 +321,24 @@ public class LendingClub {
   /**
    * Establishes a contract if its possible to do so.
    */
-  private void contract() {
+  private void establishContractAndAddToList() {
     try {
       setAvailableItems();
       if (availableItems.size() == 0) {
         throw new Exception("No available items.");
       }
-      model.Item.MutableItem chosenItem = (MutableItem) view.selectFromAllAvailableItems(getAvailableItems());
-      int startDay = view.getContractStartDay();
-      int contractPeriod = view.getContractPeriod();
-      checkIfItemIsAvailble(startDay, (startDay + contractPeriod), chosenItem);
-      checkIfMemberCanAffordContract(chosenMember.getCredit(), (chosenItem.getCostPerday() * contractPeriod));
-      model.Contract contract = new Contract(startDay, (startDay + contractPeriod));
-      model.Contract.MutableContract newContract = new model.Contract.MutableContract(contract);
-      model.ContractList currentContractList = chosenItem.getContractList();
-      if (!allContractLists.contains(currentContractList)) {
-        allContractLists.add(currentContractList);
-      }
-      currentContractList.addContract(newContract);
+      model.Item.MutableItem chosenItem = returnChosenItem();
+      model.Contract newContract = createContract(chosenItem);
+      checkIfItemIsAvailble(newContract.getStartDay(), newContract.getEndDay(), chosenItem);
+      checkIfMemberCanAffordContract(chosenMember.getCredit(), (chosenItem.getCostPerday() * (newContract.getEndDay() - newContract.getStartDay())));
+      allMembersContracts.addContract(newContract);
+      chosenItem.getContractList().addContract(newContract);
       if (newContract.getStartDay() == time.getCurrentDay()) {
         chosenItem.setAsRented();
       }
       for (model.Item.MutableItem item : chosenMember.getItems()) {
         if (item != chosenItem) {
-          chosenMember.withdrawCredit(chosenItem.getCostPerday() * contractPeriod);
+          chosenMember.withdrawCredit(chosenItem.getCostPerday() * (newContract.getEndDay() - newContract.getStartDay()));
         }
       }
     } catch (Exception e) {
@@ -355,6 +348,22 @@ public class LendingClub {
     }
   }
 
+  /**
+   * Chooses an item to lend.
+   *
+   * @return Chosen item.
+   */
+  private Item.MutableItem returnChosenItem() {
+    model.Item.MutableItem chosenItem = (MutableItem) view.selectFromAllAvailableItems(getAvailableItems());
+    return chosenItem;
+  }
+
+  /**
+   * Establishes a new contract.
+   *
+   * @param item The item to lend.
+   * @return A contract.
+   */
   private Contract createContract(Item.MutableItem item) {
     try {
       Contract newContract = contractView.createContract(0);

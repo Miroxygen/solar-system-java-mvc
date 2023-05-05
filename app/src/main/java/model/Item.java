@@ -1,7 +1,5 @@
 package model;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 /**
  * Represents an Item.
  */
@@ -11,7 +9,7 @@ public class Item {
   private String description;
   private int dayOfCreation;
   private int costPerDay;
-  private ContractList contractList;
+  private ContractList contractList = new ContractList();
   private Boolean isRented = false;
 
   /**

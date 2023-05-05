@@ -226,28 +226,6 @@ public class SwedishView implements View {
 
 
   /**
-   * Gets a contracts start day.
-   */
-  public int getContractStartDay() {
-    System.out.println("Vilken dag vill du börja låna?");
-    String startDay = input.nextLine();
-    int intStartDay = Integer.parseInt(startDay);
-    return intStartDay;
-  }
-
-
-  /**
-   * Gets a contracts period.
-   */
-  public int getContractPeriod() {
-    System.out.println("Hur många dagar vill du låna?");
-    String days = input.nextLine();
-    int intDays = Integer.parseInt(days);
-    return intDays;
-  }
-
-
-  /**
    * For advancing time.
    */
   public int time(int currentDay) {

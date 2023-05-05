@@ -23,8 +23,8 @@ public class ContractList {
    *
    * @param c A contract.
    */
-  public void addContract(Contract.MutableContract c) {
-    contracts.add(c);
+  public void addContract(Contract c) {
+    contracts.add(new Contract.MutableContract(c));
   }
 
   /**

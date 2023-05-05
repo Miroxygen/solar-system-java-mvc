@@ -10,7 +10,7 @@ import java.util.Random;
 public class MemberList {
   private ArrayList<Member.MutableMember> members = new ArrayList<Member.MutableMember>();
   private String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-  Random random = new Random();
+  private Random random = new Random();
   private StringBuilder builder = new StringBuilder();
 
 

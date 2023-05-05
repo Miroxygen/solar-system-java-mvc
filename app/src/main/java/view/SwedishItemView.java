@@ -1,13 +1,10 @@
 package view;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Arrays;
+import model.Item;
 import java.util.List;
 import java.util.Scanner;
 
-import org.checkerframework.checker.units.qual.C;
-
-import model.Item;
 
 /**
  * The Swedish itemview.
@@ -175,13 +172,13 @@ public class SwedishItemView implements ItemView {
     for (model.Contract c : item.getContractList().getContracts()) {
       if (c.getStartDay() > currentDay) {
         System.out.println(" Framtida kontrakt :  Startdag : " + c.getStartDay() + " Slutdag : " 
-            + c.getEndDay() + " Lånare : " + "c.getLender().getName()");
+            + c.getEndDay() + " Lånare : " + c.getLender().getName());
       } else if (c.getEndDay() < currentDay) {
         System.out.println(" Gamla kontrakt : Startdag : " + c.getStartDay() + " Slutdag : " 
-            + c.getEndDay() + " Lender : " + "c.getLender().getName()");
+            + c.getEndDay() + " Lender : " + c.getLender().getName());
       } else {
         System.out.println(" Nuvarande kontrakt : Startdag : " + c.getStartDay() + " Slutdag : "
-            + c.getEndDay() + " Lånare : " + "c.getLender().getName()");
+            + c.getEndDay() + " Lånare : " + c.getLender().getName());
       }
     }
   }

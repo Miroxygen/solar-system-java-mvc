@@ -65,12 +65,12 @@ public class Contract {
  }
 
  /**
-  * Returns the item of the contract.
+  * Returns the item in mutable form of the contract.
   *
   * @return The item.
   */
- public Item getItem() {
-  return new Item(item);
+ public Item.MutableItem getItem() {
+  return new Item.MutableItem(item);
  }
 
   /**

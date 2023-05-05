@@ -123,20 +123,6 @@ public interface View {
   public <T extends model.Item> model.Item selectFromAllAvailableItems(Iterable<T> list);
 
   /**
-   * Get a startday for the contract. 
-   *
-   * @return Integer of startday.
-   */
-  public int getContractStartDay();
-
-  /**
-   * Gets how many days to lend the item.
-   *
-   * @return Integer of days.
-   */
-  public int getContractPeriod();
-
-  /**
    * To increase daytime counter.
    *
    * @param currentDay To show the current day,
