@@ -7,7 +7,7 @@ import model.Member;
  * The Swedish memberview.
  */
 public class SwedishMemberView implements MemberView {
-  private Scanner input = new Scanner(System.in, "utf-8");
+  private final Scanner input = new Scanner(System.in, "utf-8");
 
   /**
    * For displaying members profile.

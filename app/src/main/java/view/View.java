@@ -113,7 +113,7 @@ public interface View {
    * @param currentDay Current day in the system.
    * @return Boolean if its rented.
    */
-  public Boolean getRentedStatus(model.ContractList i, int currentDay);
+  public boolean getRentedStatus(model.ContractList i, int currentDay);
 
   /**
    * Displays any string put in.

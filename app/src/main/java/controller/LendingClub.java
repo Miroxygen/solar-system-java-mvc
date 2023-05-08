@@ -23,7 +23,7 @@ public class LendingClub {
   private model.Time time;
   private ArrayList<model.ContractList> allMembersContractLists;
 
-  LendingClub(view.View v ,view.ContractView cv, model.MemberList l, view.MemberView tml, Member tm, model.Time t) {
+  LendingClub(view.View v, view.ContractView cv, model.MemberList l, view.MemberView tml, Member tm, model.Time t) {
     view = v;
     contractView = cv;
     list = l;
@@ -314,8 +314,10 @@ public class LendingClub {
       checkIfItemIsAvailble(newContract.getStartDay(), newContract.getEndDay(), chosenItem);
       for (model.Item.MutableItem item : chosenMember.getItems()) {
         if (item != chosenItem) {
-          checkIfMemberCanAffordContract(chosenMember.getCredit(), (chosenItem.getCostPerday() * (newContract.getEndDay() - newContract.getStartDay())));
-          chosenMember.withdrawCredit(chosenItem.getCostPerday() * (newContract.getEndDay() - newContract.getStartDay()));
+          checkIfMemberCanAffordContract(chosenMember.getCredit(),
+              (chosenItem.getCostPerday() * (newContract.getEndDay() - newContract.getStartDay())));
+          chosenMember.withdrawCredit(chosenItem.getCostPerday() 
+              * (newContract.getEndDay() - newContract.getStartDay()));
         }
       }
       model.ContractList itemsContractList = chosenItem.getContractList();

@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Thw Swedish main view.
  */
 public class SwedishView implements View {
-  private Scanner input = new Scanner(System.in, "utf-8");
+  private final Scanner input = new Scanner(System.in, "utf-8");
 
   /**
    * For loggin in.
@@ -193,23 +193,23 @@ public class SwedishView implements View {
   /**
    * Checks the items contract to determine if it should be rented or not.
    *
-   * @param i The item to check.
+   * @param cl The contract to check.
    * @param currentDay Current day in the system.
    * @return Boolean if its rented.
    */
-  public Boolean getRentedStatus(model.ContractList cl, int currentDay) {
-    if(cl.getNumberOfContracts() == 0) {
+  public boolean getRentedStatus(model.ContractList cl, int currentDay) {
+    if (cl.getNumberOfContracts() == 0) {
       return false;
     } else {
-      for(model.Contract c : cl.getContracts()) {
-        if(c.getStartDay() <= currentDay && c.getEndDay() >= currentDay) {
+      for (model.Contract c : cl.getContracts()) {
+        if (c.getStartDay() <= currentDay && c.getEndDay() >= currentDay) {
           return true;
         } else {
           return false;
         }
       }
     }
-    return null;
+    return false;
   }
 
 

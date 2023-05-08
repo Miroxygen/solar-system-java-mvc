@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite package="org.checkstyle" time="0" tests="21" errors="4" name="checkstyle">
+<testsuite package="org.checkstyle" time="0" tests="23" errors="2" name="checkstyle">
 <testcase time="0" name="controller/App.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="controller/LendingClub.java" classname="CheckStyle Issues">
+<failure message="issues" ><![CDATA[line: 318 column: column:13 
+'(' has incorrect indentation level 12, expected level should be 14.
+----------------
+line: 320 column: column:13 
+'*' has incorrect indentation level 12, expected level should be 14.
+----------------
+]]></failure>
 </testcase><testcase time="0" name="controller/Member.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="model/Contract.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="model/ContractList.java" classname="CheckStyle Issues">
@@ -12,38 +19,14 @@
 </testcase><testcase time="0" name="model/MemberList.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="model/MembersItemList.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="model/Time.java" classname="CheckStyle Issues">
+</testcase><testcase time="0" name="view/ContractView.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="view/EnglishItemView.java" classname="CheckStyle Issues">
-<failure message="issues" ><![CDATA[line: 34 column: column:7 
-Distance between variable 'name' declaration and its first usage is 5, but 
-  allowed 3.  Consider making that variable final if you still need to 
-  store its value in advance (before method calls that might have side 
-  effects on the original value).
-----------------
-line: 36 column: column:7 
-Distance between variable 'description' declaration and its first usage is 
-  4, but allowed 3.  Consider making that variable final if you still need 
-  to store its value in advance (before method calls that might have side 
-  effects on the original value).
-----------------
-]]></failure>
 </testcase><testcase time="0" name="view/EnglishMemberView.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="view/EnglishView.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="view/ItemView.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="view/MemberView.java" classname="CheckStyle Issues">
+</testcase><testcase time="0" name="view/SwedishContractView.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="view/SwedishItemView.java" classname="CheckStyle Issues">
-<failure message="issues" ><![CDATA[line: 25 column: column:7 
-Distance between variable 'name' declaration and its first usage is 5, but 
-  allowed 3.  Consider making that variable final if you still need to 
-  store its value in advance (before method calls that might have side 
-  effects on the original value).
-----------------
-line: 27 column: column:7 
-Distance between variable 'description' declaration and its first usage is 
-  4, but allowed 3.  Consider making that variable final if you still need 
-  to store its value in advance (before method calls that might have side 
-  effects on the original value).
-----------------
-]]></failure>
 </testcase><testcase time="0" name="view/SwedishMemberView.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="view/SwedishView.java" classname="CheckStyle Issues">
 </testcase><testcase time="0" name="view/View.java" classname="CheckStyle Issues">

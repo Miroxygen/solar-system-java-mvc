@@ -6,7 +6,7 @@ import java.util.Scanner;
  * View for member profile.
  */
 public class EnglishMemberView implements MemberView {
-  private Scanner input = new Scanner(System.in, "utf-8");
+  private final Scanner input = new Scanner(System.in, "utf-8");
 
   /**
    * View member profile. 

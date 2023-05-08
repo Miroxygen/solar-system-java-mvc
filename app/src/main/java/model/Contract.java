@@ -16,8 +16,6 @@ public class Contract {
    *
    * @param startDay Int.
    * @param endDay Int.
-   * @param item Object.
-   * @param lender Object.
    */
   @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returning a mutable.")
   public Contract(int startDay, int endDay) {
@@ -37,11 +35,11 @@ public class Contract {
     this.item = new Item(c.item);
   }
 
-/**
- * Sets the lender of the contract to a copy of the Member object.
- *
- * @param lender The new lender for the contract.
- */
+  /**
+   * Sets the lender of the contract to a copy of the Member object.
+   *
+   * @param lender The new lender for the contract.
+   */
   public void setLender(Member lender) {
     this.lender = new Member(lender);
   }
@@ -56,22 +54,22 @@ public class Contract {
   }
 
   /**
- * Sets the item of the contract to a copy of the Item object.
- *
- * @param item The new item for the contract.
- */
- public void setItem(Item item) {
-   this.item = new Item(item);
- }
+   * Sets the item of the contract to a copy of the Item object.
+   *
+   * @param item The new item for the contract.
+   */
+  public void setItem(Item item) {
+    this.item = new Item(item);
+  }
 
- /**
+  /**
   * Returns the item in mutable form of the contract.
   *
   * @return The item.
   */
- public Item.MutableItem getItem() {
-  return new Item.MutableItem(item);
- }
+  public Item.MutableItem getItem() {
+    return new Item.MutableItem(item);
+  }
 
   /**
    * Contracts startday.

@@ -1,6 +1,5 @@
 package view;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -9,7 +8,7 @@ import java.util.Scanner;
  * View for items.
  */
 public class EnglishItemView implements ItemView {
-  private Scanner input = new Scanner(System.in, "utf-8");
+  private final Scanner input = new Scanner(System.in, "utf-8");
   
   /**
    * Menu for editing.
@@ -24,25 +23,62 @@ public class EnglishItemView implements ItemView {
   /**
    * For creating an item.
    */
-  @SuppressFBWarnings(value = "VariableDeclarationUsageDistance", justification = "Value wont be altered.")
   public model.Item createItem(int currentDay) throws Exception {
     try {
-      System.out.println("=== Please enter a category for your item : (Tool, Vehicle, Game, Toy, Sport, or Other)");
-      String category = input.nextLine();
-      wrongCategory(category);
-      System.out.println("=== Please enter a name for your item :");
-      String name = input.nextLine();
-      System.out.println("=== Please enter a short descrition for you item : ");
-      String description = input.nextLine();
-      System.out.println("=== Please enter a cost per day for your item : (10-100 credits)");
-      int costPerDay = input.nextInt();
-      wrongCost(costPerDay);
-      input.nextLine();
-      return new model.Item(category, name, description, currentDay, costPerDay);
+      return new model.Item(chooseCategory(), chooseName(), chooseDescription(), currentDay, chooseCost());
     } catch (Exception e) {
       throw e;
     }
   }
+
+  /**
+   * Choose a category for an item.
+   */
+  public String chooseCategory() throws Exception {
+    try {
+      System.out.println("=== Please enter a category for your item : (Tool, Vehicle, Game, Toy, Sport, or Other)");
+      String category = input.nextLine();
+      wrongCategory(category);
+      return category;
+    } catch (Exception e) {
+      throw e;
+    }  
+  }
+
+  /**
+   * Choose a name for item.
+   */
+  public String chooseName() {
+    System.out.println("=== Please enter a name for your item :");
+    String name = input.nextLine();
+    return name;
+  }
+
+  /**
+   * Choose a description for item.
+   */
+  public String chooseDescription() {
+    System.out.println("=== Please enter a short descrition for you item : ");
+    String description = input.nextLine();
+    return description;
+  }
+
+  /**
+   * Choose a cost for item.
+   */
+  public int chooseCost() throws Exception {
+    try {
+      System.out.println("=== Please enter a cost per day for your item : (10-100 credits)");
+      int costPerDay = input.nextInt();
+      wrongCost(costPerDay);
+      input.nextLine();
+      return costPerDay;
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+
+
 
   /**
    * Selects item from member.
@@ -151,29 +187,5 @@ public class EnglishItemView implements ItemView {
    */
   public void displayMessage(String message) {
     System.out.print(message);
-  }
-
-  @Override
-  public String chooseCategory() throws Exception {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'chooseCategory'");
-  }
-
-  @Override
-  public String chooseName() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'chooseName'");
-  }
-
-  @Override
-  public String chooseDescription() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'chooseDescription'");
-  }
-
-  @Override
-  public int chooseCost() throws Exception {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'chooseCost'");
   }
 }

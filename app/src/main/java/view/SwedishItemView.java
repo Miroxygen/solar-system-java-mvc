@@ -1,7 +1,6 @@
 package view;
 
 import java.util.Arrays;
-import model.Item;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,11 +9,7 @@ import java.util.Scanner;
  * The Swedish itemview.
  */
 public class SwedishItemView implements ItemView {
-  private Scanner input;
-
-  public SwedishItemView(Scanner input) {
-    this.input = input;
-  }
+  private Scanner input = new Scanner(System.in, "utf-8");
   
   /**
    * For creating an item.
@@ -85,7 +80,7 @@ public class SwedishItemView implements ItemView {
   /**
    * For selecting an item.
    */
-  public <T extends Item> T selectItem(Iterable<T> list) {
+  public <T extends model.Item> T selectItem(Iterable<T> list) {
     int index = 0;
     for (model.Item i : list) {
       System.out.println(index + " | Namn : " + i.getName());
@@ -165,7 +160,7 @@ public class SwedishItemView implements ItemView {
   /**
    * Shows one item.
    */
-  public void showOneItem(Item item, int currentDay) {
+  public void showOneItem(model.Item item, int currentDay) {
     System.out.println("Kategori : " + item.getCategory() + " Namn : " + item.getName() 
         + " Beskrivning : " + item.getDescription()
         + " Skapad dag : " + item.getDayOfCreation() + " Kostnad per dag : " + item.getCostPerday());

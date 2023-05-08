@@ -2,22 +2,16 @@ package view;
 
 import java.util.Scanner;
 
-import model.Contract;
-
 /**
  * Swedish version of contractview.
  */
 public class SwedishContractView implements ContractView {
-  private Scanner input;
-
-  public SwedishContractView(Scanner input) {
-    this.input = input;
-  }
+  private Scanner input = new Scanner(System.in, "utf-8");
 
   /**
    * Creates and returns a contract.
    */
-  public Contract createContract(int currentDay) throws Exception {
+  public model.Contract createContract(int currentDay) throws Exception {
     try {
       int startDay = getStartDay();
       int endDay = getContractPeriod() + startDay;

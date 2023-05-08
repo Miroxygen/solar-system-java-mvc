@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.38">
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\controller\App.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\controller\App.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\controller\LendingClub.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\controller\LendingClub.java">
+<error line="318" column="13" severity="warning" message="&apos;(&apos; has incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="320" column="13" severity="warning" message="&apos;*&apos; has incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\controller\Member.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\controller\Member.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\Contract.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\Contract.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\ContractList.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\ContractList.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\Item.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\Item.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\LendingClubDao.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\LendingClubDao.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\LendingClubDaoImp.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\LendingClubDaoImp.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\Member.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\Member.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\MemberList.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\MemberList.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\MembersItemList.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\MembersItemList.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\model\Time.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\Time.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\EnglishItemView.java">
-<error line="34" column="7" severity="warning" message="Distance between variable &apos;name&apos; declaration and its first usage is 5, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
-<error line="36" column="7" severity="warning" message="Distance between variable &apos;description&apos; declaration and its first usage is 4, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\ContractView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\EnglishMemberView.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\EnglishItemView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\EnglishView.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\EnglishMemberView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\ItemView.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\EnglishView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\MemberView.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\ItemView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\SwedishItemView.java">
-<error line="25" column="7" severity="warning" message="Distance between variable &apos;name&apos; declaration and its first usage is 5, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
-<error line="27" column="7" severity="warning" message="Distance between variable &apos;description&apos; declaration and its first usage is 4, but allowed 3.  Consider making that variable final if you still need to store its value in advance (before method calls that might have side effects on the original value)." source="com.puppycrawl.tools.checkstyle.checks.coding.VariableDeclarationUsageDistanceCheck"/>
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\MemberView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\SwedishMemberView.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\SwedishContractView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\SwedishView.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\SwedishItemView.java">
 </file>
-<file name="C:\Users\miranda\Documents\Java\new a2\a2\app\src\main\java\view\View.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\SwedishMemberView.java">
+</file>
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\SwedishView.java">
+</file>
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\View.java">
 </file>
 </checkstyle>

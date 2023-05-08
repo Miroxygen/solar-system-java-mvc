@@ -9,7 +9,7 @@ import java.util.Scanner;
  * The view for the controller.
  */
 public class EnglishView implements View {
-  private Scanner input = new Scanner(System.in, "utf-8");
+  private final Scanner input = new Scanner(System.in, "utf-8");
 
   /**
    * Login view.
@@ -187,23 +187,23 @@ public class EnglishView implements View {
   /**
    * Checks the items contract to determine if it should be rented or not.
    *
-   * @param i The item to check.
+   * @param cl The contracts to check.
    * @param currentDay Current day in the system.
    * @return Boolean if its rented.
    */
-  public Boolean getRentedStatus(model.ContractList cl, int currentDay) {
-    if(cl.getNumberOfContracts() == 0) {
+  public boolean getRentedStatus(model.ContractList cl, int currentDay) {
+    if (cl.getNumberOfContracts() == 0) {
       return false;
     } else {
-      for(model.Contract c : cl.getContracts()) {
-        if(c.getStartDay() <= currentDay && c.getEndDay() >= currentDay) {
+      for (model.Contract c : cl.getContracts()) {
+        if (c.getStartDay() <= currentDay && c.getEndDay() >= currentDay) {
           return true;
         } else {
           return false;
         }
       }
     }
-    return null;
+    return false;
   }
 
 
