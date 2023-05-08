@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-import model.Item;
-import model.Member;
 
 /**
  * Thw Swedish main view.
@@ -87,7 +85,7 @@ public class SwedishView implements View {
   /**
    * For selecting a member.
    */
-  public <T extends Member> T selectMember(Iterable<T> list) {
+  public <T extends model.Member> T selectMember(Iterable<T> list) {
     try {
       int index = 0;
       for (model.Member m : list) {
@@ -114,7 +112,7 @@ public class SwedishView implements View {
   /**
    * For selecting an item.
    */
-  public <T extends Item> T selectItem(Iterable<T> list) {
+  public <T extends model.Item> T selectItem(Iterable<T> list) {
     try {
       int index = 0;
       for (model.Item i : list) {
@@ -140,11 +138,10 @@ public class SwedishView implements View {
     return null;
   }
 
-
   /**
    * For viewing a simple memberslist.
    */
-  public <T extends Member> void listMembersSimple(Iterable<T> list) {
+  public <T extends model.Member> void listMembersSimple(Iterable<T> list) {
     for (model.Member m : list) {
       System.out.println(" Namn : " + m.getName() + " Email : " + m.getEmail() 
           + " Pengar : " + m.getCredit() + " Antal prylar : " + m.getNumberOfItems());
@@ -155,7 +152,7 @@ public class SwedishView implements View {
   /**
    * For viewing a verbose memberslist.
    */
-  public <T extends Member> void listMembersVerbose(Iterable<T> list, int currentDay) {
+  public <T extends model.Member> void listMembersVerbose(Iterable<T> list, int currentDay) {
     List<T> memberCopyList = new ArrayList<T>();
     for (T m : list) {
       memberCopyList.add(m);
@@ -177,14 +174,14 @@ public class SwedishView implements View {
   /**
    * For listing all members items.
    */
-  public <T extends Item> void listMembersItems(Iterable<T> list, int currentDay) {
+  public <T extends model.Item> void listMembersItems(Iterable<T> list, int currentDay) {
     for (model.Item i : list) {
       System.out.println(" Namn : " + i.getName() + " Kategori : " + i.getCategory() 
           + " Beskrivning : " + i.getDescription() + " Kostnad per dag : " + i.getCostPerday() 
-          + " Lånad : " + i.getRented());
-      if (i.getRented() == true) {
+          + " Lånad : " + getRentedStatus(i.getContractList(), currentDay));
+      if (getRentedStatus(i.getContractList(), currentDay) == true) {
         for (model.Contract c : i.getContractList().getContracts()) {
-          if (c.getStartDay() < currentDay && c.getEndDay() >= currentDay) {
+          if (c.getStartDay() <= currentDay && c.getEndDay() >= currentDay) {
             System.out.println("Kontraktets slutdag : " +  c.getEndDay() + " Startdag : " 
                 + c.getStartDay() + " Lånare : " + c.getLender().getName());
           }
@@ -193,35 +190,34 @@ public class SwedishView implements View {
     }
   }
 
+  /**
+   * Checks the items contract to determine if it should be rented or not.
+   *
+   * @param i The item to check.
+   * @param currentDay Current day in the system.
+   * @return Boolean if its rented.
+   */
+  public Boolean getRentedStatus(model.ContractList cl, int currentDay) {
+    if(cl.getNumberOfContracts() == 0) {
+      return false;
+    } else {
+      for(model.Contract c : cl.getContracts()) {
+        if(c.getStartDay() <= currentDay && c.getEndDay() >= currentDay) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    return null;
+  }
+
 
   /**
    * For displaying a message.
    */
   public void displayMessage(String message) {
     System.out.println(message);
-  }
-
-
-  /**
-   * Selects from all non-rented items.
-   */
-  public <T extends Item> Item selectFromAllAvailableItems(Iterable<T> list) {
-    int index = 0;
-    for (model.Item i : list) {
-      System.out.println(index + " Namn : " + i.getName());
-      System.out.println(" Välj siffran för prylen du vill låna");
-      index++;
-    }
-    String key = input.nextLine();
-    int intKey = Integer.parseInt(key);
-    index = 0;
-    for (T i : list) {
-      if (index == intKey) {
-        return i;
-      }
-      index++;
-    }
-    return null;
   }
 
 

@@ -172,8 +172,8 @@ public class EnglishView implements View {
     for (model.Item i : list) {
       System.out.println(" Name : " + i.getName() + " Category : " + i.getCategory() 
           + " Description : " + i.getDescription() + " Cost per day : " + i.getCostPerday() 
-          + " Rented : " + i.getRented());
-      if (i.getRented() == true) {
+          + " Rented : " + getRentedStatus(i.getContractList(), currentDay));
+      if (getRentedStatus(i.getContractList(), currentDay) == true) {
         for (model.Contract c : i.getContractList().getContracts()) {
           if (c.getStartDay() < currentDay && c.getEndDay() >= currentDay) {
             System.out.println("Contract end day : " +  c.getEndDay() + " Start day : " 
@@ -184,34 +184,34 @@ public class EnglishView implements View {
     }
   }
 
+  /**
+   * Checks the items contract to determine if it should be rented or not.
+   *
+   * @param i The item to check.
+   * @param currentDay Current day in the system.
+   * @return Boolean if its rented.
+   */
+  public Boolean getRentedStatus(model.ContractList cl, int currentDay) {
+    if(cl.getNumberOfContracts() == 0) {
+      return false;
+    } else {
+      for(model.Contract c : cl.getContracts()) {
+        if(c.getStartDay() <= currentDay && c.getEndDay() >= currentDay) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    return null;
+  }
+
 
   /**
    * For system out print.
    */
   public void displayMessage(String message) {
     System.out.println(message);
-  }
-
-  /**
-   * For selecting from all available (not rented) items.
-   */
-  public <T extends model.Item> model.Item selectFromAllAvailableItems(Iterable<T> list) {
-    int index = 0;
-    for (model.Item i : list) {
-      System.out.println(index + " Name : " + i.getName());
-      System.out.println(" Please select index of item you wish to lend.");
-      index++;
-    }
-    String key = input.nextLine();
-    int intKey = Integer.parseInt(key);
-    index = 0;
-    for (T i : list) {
-      if (index == intKey) {
-        return i;
-      }
-      index++;
-    }
-    return null;
   }
 
   /**

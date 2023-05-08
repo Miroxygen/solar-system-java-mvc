@@ -107,20 +107,20 @@ public interface View {
   public <T extends model.Item> void listMembersItems(Iterable<T> list, int currentDay);
 
   /**
+   * Checks the items contract to determine if it should be rented or not.
+   *
+   * @param i The item to check.
+   * @param currentDay Current day in the system.
+   * @return Boolean if its rented.
+   */
+  public Boolean getRentedStatus(model.ContractList i, int currentDay);
+
+  /**
    * Displays any string put in.
    *
    * @param message String message.
    */
   public void displayMessage(String message);
-
-  /**
-   * Select an item from the available items.
-   *
-   * @param <T> An item object.
-   * @param list Iterable item list.
-   * @return An item.
-   */
-  public <T extends model.Item> model.Item selectFromAllAvailableItems(Iterable<T> list);
 
   /**
    * To increase daytime counter.

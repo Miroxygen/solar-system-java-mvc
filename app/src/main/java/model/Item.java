@@ -10,7 +10,6 @@ public class Item {
   private int dayOfCreation;
   private int costPerDay;
   private ContractList contractList = new ContractList();
-  private Boolean isRented = false;
 
   /**
    * Constructor.
@@ -128,24 +127,6 @@ public class Item {
   }
 
   /**
-   * Sets rented status of item.
-   *
-   * @param isRented Boolean.
-   */
-  public void setRented(Boolean isRented) {
-    this.isRented = isRented;
-  }
-
-  /**
-  * Items rented flag status.
-  *
-  * @return Boolean.
-  */
-  public Boolean getRented() {
-    return this.isRented;
-  }
-
-  /**
   * A mutable version of object Item.
   */
   public static class MutableItem extends Item {
@@ -157,38 +138,6 @@ public class Item {
     */
     public MutableItem(Item item) {
       super(item);
-    }
-
-    /**
-     * Overrides the setRented method of parent to set the isRented flag.
-     */
-    @Override
-    public void setRented(Boolean isRented) {
-      super.setRented(isRented);
-    }
-  
-    /**
-     * Overrides the getRented method of parent to get the isRented flag.
-     */
-    @Override
-    public Boolean getRented() {
-      return super.getRented();
-    }
-  
-    /**
-    * Sets the isRented flag of the item to true, indicating that the
-    * item is rented.
-    */
-    public void setAsRented() {
-      setRented(true);
-    }
-
-    /**
-    * Sets the isRented flag of the item to false, indicating that the
-    * item is no longer rented and is available for rent.
-    */
-    public void setAsNotRented() {
-      setRented(false);
     }
   }
 }

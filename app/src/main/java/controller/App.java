@@ -1,10 +1,6 @@
 package controller;
 
 import java.util.Scanner;
-
-import org.checkerframework.checker.units.qual.C;
-
-import model.ContractList;
 import model.MemberList;
 import model.Time;
 import view.EnglishItemView;
@@ -28,13 +24,12 @@ public class App {
     Scanner input = new Scanner(System.in, "utf-8");
     view.SwedishView view = new SwedishView(); //Or EnglishView
     model.MemberList list = new MemberList();
-    model.ContractList contractList = new ContractList();
     SwedishMemberView memberView = new SwedishMemberView();//Or EnglishMemberView
     SwedishItemView itemView = new SwedishItemView(input);//Or EnglishItemView
     view.SwedishContractView contractView = new SwedishContractView(input);//Or EnglishContractView
     Member member = new Member(itemView);
     Time time = new Time();
-    LendingClub controller = new LendingClub(view, contractView, list, memberView, member, time, contractList);
+    LendingClub controller = new LendingClub(view, contractView, list, memberView, member, time);
     controller.start();
   }
 }
