@@ -1,16 +1,18 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import model.SolarSystem;
 import model.Sun;
 import view.SolarSystemView;
 
 public class SolarSystemController {
-    private SolarSystem solarSystem;
+    private List<SolarSystem> solarSystemList;
     private SolarSystemView view;
 
-    public SolarSystemController(SolarSystem solarSystem, SolarSystemView view) {
-        this.solarSystem = solarSystem;
+    public SolarSystemController(SolarSystemView view) {
+        this.solarSystemList = new ArrayList<>();
         this.view = view;
     }
 
@@ -28,14 +30,15 @@ public class SolarSystemController {
           Sun centralStar = new Sun(starName, starRadius);
           newSolarSystem.setCentralStar(centralStar);
 
-          solarSystem = newSolarSystem;
+          solarSystemList.add(newSolarSystem);
+
         } catch (NumberFormatException e) {
           e.printStackTrace();
         }
     }
 
     public void displaySolarSystem() {
-        view.displaySolarSystem(solarSystem);
+        view.displaySolarSystem(solarSystemList);
     }
 
     // Other methods to add planets and moons

@@ -11,10 +11,8 @@ public class App {
    * @param args Not used.
    */
   public static void main(String[] args) {
-    SolarSystem solarSystem = new SolarSystem("My Solar System");
     SolarSystemView view = new SolarSystemView();
-    SolarSystemController controller = new SolarSystemController(solarSystem, view);
-
+    SolarSystemController controller = new SolarSystemController(view);
     controller.createSolarSystem();
     controller.displaySolarSystem();
   }
