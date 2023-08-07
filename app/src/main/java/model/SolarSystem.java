@@ -5,22 +5,31 @@ import java.util.List;
 
 public class SolarSystem {
     private String name;
-    private List<Sun> suns;
+    private Sun centralStar;
+    private List<Planet> planets;
 
     public SolarSystem(String name) {
         this.name = name;
-        suns = new ArrayList<>();
+        planets = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public List<Sun> getSuns() {
-      return new ArrayList<>(suns);
+    public Sun getCentralStar() {
+      return centralStar;
     }
 
-    public void addSun(Sun sun) {
-        suns.add(sun);
+    public void setCentralStar(Sun centralStar) {
+        this.centralStar = centralStar;
+    }
+
+    public List<Planet> getPlanets() {
+      return new ArrayList<>(planets);
+    }
+
+    public void addPlanet(Planet planet) {
+        planets.add(planet);
     }
 }
