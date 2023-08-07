@@ -18,6 +18,7 @@ public class SolarSystem {
     }
 
     public Sun getCentralStar() {
+      //make copy
       return centralStar;
     }
 
@@ -31,5 +32,9 @@ public class SolarSystem {
 
     public void addPlanet(Planet planet) {
         planets.add(planet);
+    }
+
+    public void deletePlanet(Planet planet) {
+      planets.remove(planet);
     }
 }

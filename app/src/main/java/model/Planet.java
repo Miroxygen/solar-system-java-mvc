@@ -67,7 +67,11 @@ public class Planet {
    * @param moon Object.
    */
   public void addMoon(Moon moon) {
-      moons.add(moon);
+    moons.add(moon);
+  }
+
+  public void deleteMoon(Moon moon) {
+    moons.remove(moon);
   }
 }
 

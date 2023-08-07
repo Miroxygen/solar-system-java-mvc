@@ -37,8 +37,29 @@ public class SolarSystemController {
         }
     }
 
+    public void deleteMemberOfSolarSystem(SolarSystem solarSystem) {
+      String memberName = view.deleteMember();
+      if(solarSystem.getCentralStar().getName().equalsIgnoreCase(memberName)) {
+        solarSystem = null;
+      } else {
+        for (model.Planet planet : solarSystem.getPlanets()) {
+          if (planet.getName().equalsIgnoreCase(memberName)) {
+              solarSystem.getPlanets().remove(planet);
+              break;
+          } else {
+              for (model.Moon moon : planet.getMoons()) {
+                  if (moon.getName().equalsIgnoreCase(memberName)) {
+                      planet.getMoons().remove(moon);
+                      break;
+                  }
+              }
+            }
+          }
+      }
+    }
+
     public void displaySolarSystem() {
-        view.displaySolarSystem(solarSystemList);
+        view.displaySolarSystems(solarSystemList);
     }
 
     // Other methods to add planets and moons

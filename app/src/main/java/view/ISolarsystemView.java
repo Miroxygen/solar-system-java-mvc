@@ -2,21 +2,33 @@ package view;
 
 import java.util.List;
 
-import model.SolarSystem;
-
 public interface ISolarsystemView {
   
-  public static enum Menu {
+  static enum Menu {
     List,
     Add,
     Inspect
   }
 
-  void displaySolarSystems(List<SolarSystem> solarSystems);
+  <T extends model.SolarSystem> void displaySolarSystems(Iterable<T> solarSystems);
 
-  SolarSystem createSolarSystem();
+  model.SolarSystem createSolarSystem();
 
-  void displaySolarSystemDetails(SolarSystem solarSystem);
+  /**
+   * Select a solarsystem from a list. 
+   *
+   * @param <T> Member.
+   * @param list List of member.
+   * @return Member.
+   */
+  <T extends model.SolarSystem> T selectSolarSystem(Iterable<T> list);
+
+
+  <T extends model.SolarSystem>  void displaySolarSystemDetails(T solarSystem);
+
+  <T extends model.Planet>  void displayPlanetAndMoons(T planet);
+
+  String deleteMember();
 
   void showMessage(String message);
 }
