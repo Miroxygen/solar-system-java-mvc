@@ -7,6 +7,7 @@ import view.SolarSystemView;
 public class SolarSystemController {
     private List<model.SolarSystem> solarSystemList;
     private SolarSystemView view;
+    private model.SolarSystem currentSolarSystem;
 
     public SolarSystemController(SolarSystemView view) {
         this.solarSystemList = new ArrayList<>();
@@ -43,20 +44,21 @@ public class SolarSystemController {
       }
     }
 
-    public void solarSystemMenu() {
+    private void solarSystemMenu() {
       try {
         Boolean running = true;
-        model.SolarSystem currenSolarSystem = selectSpecificSolarSystem();
+        currentSolarSystem = selectSpecificSolarSystem();
         while (running) {
           view.SolarSystemView.SolarSystemMenu action = view.showSolarSystemMenu();
           switch (action) {
             case View:
-              displaySolarSystemDetails(currenSolarSystem);
+              displaySolarSystemDetails(currentSolarSystem);
               break;
             case Add:
+              addMemberMenu();
               break;
             case Delete:
-              deleteMemberOfSolarSystem(currenSolarSystem);
+              deleteMemberOfSolarSystem(currentSolarSystem);
               break;
             case Back:
               running = false;
@@ -71,10 +73,24 @@ public class SolarSystemController {
       }
     }
 
+    private void addMemberMenu() {
+      view.SolarSystemView.AddMemberMenu action = view.showAddMemberMenu();
+      switch (action) {
+        case Planet:
+          createPlanet();
+          break;
+        case Moon:
+          createMoon();
+          break;
+        default:
+          break;
+      }
+    }
+
     /**
      * Creates a new object of Solarsystem.
      */
-    public void createSolarSystem() {
+    private void createSolarSystem() {
       model.SolarSystem newSolarSystem = view.createSolarSystem();
       solarSystemList.add(newSolarSystem);
     }
@@ -84,7 +100,7 @@ public class SolarSystemController {
      *
      * @param solarSystem Solarsystem object.
      */
-    public void deleteMemberOfSolarSystem(model.SolarSystem solarSystem) {
+    private void deleteMemberOfSolarSystem(model.SolarSystem solarSystem) {
       String memberName = view.deleteMember();
       if(solarSystem.getCentralStar().getName().equalsIgnoreCase(memberName)) {
         solarSystem = null;
@@ -108,8 +124,8 @@ public class SolarSystemController {
     /**
      * Displays all solar systems.
      */
-    public void displaySolarSystem() {
-        view.displaySolarSystems(solarSystemList);
+    private void displaySolarSystem() {
+      view.displaySolarSystems(solarSystemList);
     }
 
     /**
@@ -117,14 +133,14 @@ public class SolarSystemController {
      *
      * @return Solarsystem object.
      */
-    public model.SolarSystem selectSpecificSolarSystem() {
+    private model.SolarSystem selectSpecificSolarSystem() {
       return view.selectSolarSystem(solarSystemList);
     }
 
     /**
      * Displays details of one solarsystem.
      */
-    public void displaySolarSystemDetails(model.SolarSystem solarSystem) {
+    private void displaySolarSystemDetails(model.SolarSystem solarSystem) {
       view.displaySolarSystemDetails(solarSystem);
     }
 
@@ -133,14 +149,13 @@ public class SolarSystemController {
      *
      * @return Planet object.
      */
-    public model.Planet createPlanet() {
-      view.createPlanet();
-      return null;
+    private void createPlanet() {
+      currentSolarSystem.addPlanet(view.createPlanet());
     }
 
-    public model.Moon createMoon() {
-      view.createMoon();
-      return null;
+    private void createMoon() {
+      model.Planet planet = view.selectPlanet(currentSolarSystem.getPlanets());
+      planet.addMoon(view.createMoon());
     }
 }
 

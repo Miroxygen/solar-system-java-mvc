@@ -19,6 +19,11 @@ public interface ISolarsystemView {
     Back,
   }
 
+  static enum AddMemberMenu {
+    Planet,
+    Moon
+  }
+
   <T extends model.SolarSystem> void displaySolarSystems(Iterable<T> solarSystems);
 
   model.SolarSystem createSolarSystem();
@@ -38,6 +43,8 @@ public interface ISolarsystemView {
   <T extends model.Planet>  void displayPlanetAndMoons(T planet);
 
   model.Planet createPlanet();
+
+  <T extends model.Planet> T selectPlanet(Iterable<T> list);
 
   model.Moon createMoon();
 

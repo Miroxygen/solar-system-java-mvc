@@ -3,6 +3,8 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 
+import org.checkerframework.checker.units.qual.m;
+
 /**
  * View for Solarsystem app.
  */
@@ -20,10 +22,10 @@ public class SolarSystemView implements ISolarsystemView {
     final String inspect = "I";
     final String quit = "Q";
     System.out.println("-*-*- Solarsystem app -*-*-");
-    System.out.println("-*-*- " + list + "List all solarsystems");
-    System.out.println("-*-*- " + add + "Add new solarsystem");
-    System.out.println("-*-*- " + inspect + "Look at detail information on specific solarsystem");
-    System.out.println("-*-*- " + quit + "Quit application.");
+    System.out.println("-*-*- " + list + " List all solarsystems");
+    System.out.println("-*-*- " + add + " Add new solarsystem");
+    System.out.println("-*-*- " + inspect + " Look at detail information on specific solarsystem");
+    System.out.println("-*-*- " + quit + " Quit application.");
     String key = input.nextLine();
     if(key.equals(list)) {
       return Menu.List;
@@ -47,10 +49,10 @@ public class SolarSystemView implements ISolarsystemView {
     final String add = "A";
     final String delete = "D";
     final String back = "B";
-    System.out.println("-*-*- " + view + "View solarsystem details");
-    System.out.println("-*-*- " + add + "Add new members to solarsystem");
-    System.out.println("-*-*- " + delete + "Delete members of solarsystem.");
-    System.out.println("-*-*- " + back + "Back to main menu.");
+    System.out.println("-*-*- " + view + " View solarsystem details");
+    System.out.println("-*-*- " + add + " Add new members to solarsystem");
+    System.out.println("-*-*- " + delete + " Delete members of solarsystem.");
+    System.out.println("-*-*- " + back + " Back to main menu.");
     String key = input.nextLine();
     if(key.equals(view)) {
       return SolarSystemMenu.View;
@@ -61,6 +63,20 @@ public class SolarSystemView implements ISolarsystemView {
     } else if(key.equals(back)) {
       return SolarSystemMenu.Back;
     }
+    return null;
+  }
+
+  public AddMemberMenu showAddMemberMenu() {
+    final String planet = "P";
+    final String moon = "M";
+    System.out.println("-*-*- " + planet + " Add planet.");
+    System.out.println("-*-*- " + moon + " Add moon.");
+    String key = input.nextLine();
+    if(key.equals(planet)) {
+      return AddMemberMenu.Planet;
+    } else if(key.equals(moon)) {
+      return AddMemberMenu.Moon;
+    } 
     return null;
   }
 
@@ -115,8 +131,12 @@ public class SolarSystemView implements ISolarsystemView {
     model.Sun centralStar = solarSystem.getCentralStar();
     System.out.println("Central Star: " + centralStar.getName() + ", Radius: " + centralStar.getRadius() + " km");
     List<model.Planet> planets = solarSystem.getPlanets();
-    for (model.Planet planet : planets) {
+    if(planets.size() > 0) {
+      for (model.Planet planet : planets) {
         displayPlanetAndMoons(planet);
+      } 
+    } else {
+      System.out.println("No planets.");
     }
   }
 
@@ -124,8 +144,12 @@ public class SolarSystemView implements ISolarsystemView {
   public <T extends model.Planet> void displayPlanetAndMoons(T planet) {
     System.out.println("Planet: " + planet.getName() + ", Radius: " + planet.getRadius() + " km, Orbit Radius: " + planet.getOrbitRadius() + " km");
     List<model.Moon> moons = planet.getMoons();
-    for (model.Moon moon : moons) {
+    if(moons.size() > 0) {
+      for (model.Moon moon : moons) {
         System.out.println("  Moon: " + moon.getName() + ", Radius: " + moon.getRadius() + " km, Orbit Radius: " + moon.getOrbitRadius() + " km");
+      }
+    } else {
+      System.out.println("This planets has no moons.");
     }
   }
 
@@ -150,6 +174,30 @@ public class SolarSystemView implements ISolarsystemView {
     int planetOrdbitRadius = Integer.parseInt(input.nextLine());
     model.Planet newPlanet = new model.Planet(planetName, planetRadius, planetOrdbitRadius);
     return newPlanet;
+  }
+
+  @Override
+  public <T extends model.Planet> T selectPlanet(Iterable<T> list) {
+    try {
+      int index = 0;
+      for (model.Planet p : list) {
+        System.out.println(index + " | " + p.getName());
+        index++;
+      }
+      System.out.println("Which planet do you want to add a moon to?");
+      String key = input.nextLine();
+      int intKey = Integer.parseInt(key);
+      index = 0;
+      for (T s : list) {
+        if (index == intKey) {
+          return s;
+        }
+        index++;
+      }
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    return null;
   }
 
   public model.Moon createMoon() {

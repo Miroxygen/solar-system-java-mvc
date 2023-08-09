@@ -23,6 +23,7 @@ public class Planet {
       this.name = name;
       this.radius = radius;
       this.orbitRadius = orbitRadius;
+      moons = new ArrayList<>();
   }
 
   /**
