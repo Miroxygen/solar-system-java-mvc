@@ -2,13 +2,10 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import model.SolarSystem;
-import model.Sun;
 import view.SolarSystemView;
 
 public class SolarSystemController {
-    private List<SolarSystem> solarSystemList;
+    private List<model.SolarSystem> solarSystemList;
     private SolarSystemView view;
 
     public SolarSystemController(SolarSystemView view) {
@@ -16,28 +13,78 @@ public class SolarSystemController {
         this.view = view;
     }
 
-    public void createSolarSystem() {
-        try (Scanner scanner = new Scanner(System.in)) {
-          System.out.print("Enter the name of the solar system: ");
-          String solarSystemName = scanner.nextLine();
-          SolarSystem newSolarSystem = new SolarSystem(solarSystemName);
-
-          System.out.print("Enter the name of the central star: ");
-          String starName = scanner.nextLine();
-          System.out.print("Enter the radius of the central star (in km): ");
-          int starRadius = Integer.parseInt(scanner.nextLine());
-
-          Sun centralStar = new Sun(starName, starRadius);
-          newSolarSystem.setCentralStar(centralStar);
-
-          solarSystemList.add(newSolarSystem);
-
-        } catch (NumberFormatException e) {
-          e.printStackTrace();
+    /**
+     * Starting point of application.
+     */
+    public void startApp() {
+      try {
+        Boolean running = true;
+        while(running) {
+          view.SolarSystemView.Menu action = view.showMenu();
+          switch (action) {
+            case List:
+              displaySolarSystem();
+              break;
+            case Add:
+              createSolarSystem();
+              break;
+            case Inspect:
+              solarSystemMenu();
+              break;
+            case Quit:
+              running = false;
+            default:
+              running = false;
+              break;
+          }
         }
+      } catch (Exception e) {
+        view.showMessage(e.getMessage());
+      }
     }
 
-    public void deleteMemberOfSolarSystem(SolarSystem solarSystem) {
+    public void solarSystemMenu() {
+      try {
+        Boolean running = true;
+        model.SolarSystem currenSolarSystem = selectSpecificSolarSystem();
+        while (running) {
+          view.SolarSystemView.SolarSystemMenu action = view.showSolarSystemMenu();
+          switch (action) {
+            case View:
+              displaySolarSystemDetails(currenSolarSystem);
+              break;
+            case Add:
+              break;
+            case Delete:
+              deleteMemberOfSolarSystem(currenSolarSystem);
+              break;
+            case Back:
+              running = false;
+              break;
+            default:
+              running = false;
+              break;
+          }
+        }
+      } catch (Exception e) {
+        view.showMessage(e.getMessage());
+      }
+    }
+
+    /**
+     * Creates a new object of Solarsystem.
+     */
+    public void createSolarSystem() {
+      model.SolarSystem newSolarSystem = view.createSolarSystem();
+      solarSystemList.add(newSolarSystem);
+    }
+
+    /**
+     * Deletes an object.
+     *
+     * @param solarSystem Solarsystem object.
+     */
+    public void deleteMemberOfSolarSystem(model.SolarSystem solarSystem) {
       String memberName = view.deleteMember();
       if(solarSystem.getCentralStar().getName().equalsIgnoreCase(memberName)) {
         solarSystem = null;
@@ -58,10 +105,42 @@ public class SolarSystemController {
       }
     }
 
+    /**
+     * Displays all solar systems.
+     */
     public void displaySolarSystem() {
         view.displaySolarSystems(solarSystemList);
     }
 
-    // Other methods to add planets and moons
+    /**
+     * Pick a specific solarsystem for actions.
+     *
+     * @return Solarsystem object.
+     */
+    public model.SolarSystem selectSpecificSolarSystem() {
+      return view.selectSolarSystem(solarSystemList);
+    }
+
+    /**
+     * Displays details of one solarsystem.
+     */
+    public void displaySolarSystemDetails(model.SolarSystem solarSystem) {
+      view.displaySolarSystemDetails(solarSystem);
+    }
+
+    /**
+     * Creates a planet.
+     *
+     * @return Planet object.
+     */
+    public model.Planet createPlanet() {
+      view.createPlanet();
+      return null;
+    }
+
+    public model.Moon createMoon() {
+      view.createMoon();
+      return null;
+    }
 }
 

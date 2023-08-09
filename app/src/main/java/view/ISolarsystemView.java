@@ -1,13 +1,22 @@
 package view;
 
-import java.util.List;
-
+/**
+ * Interface for SolarSystemView
+ */
 public interface ISolarsystemView {
   
   static enum Menu {
     List,
     Add,
-    Inspect
+    Inspect,
+    Quit
+  }
+
+  static enum SolarSystemMenu {
+    View,
+    Add,
+    Delete,
+    Back,
   }
 
   <T extends model.SolarSystem> void displaySolarSystems(Iterable<T> solarSystems);
@@ -27,6 +36,10 @@ public interface ISolarsystemView {
   <T extends model.SolarSystem>  void displaySolarSystemDetails(T solarSystem);
 
   <T extends model.Planet>  void displayPlanetAndMoons(T planet);
+
+  model.Planet createPlanet();
+
+  model.Moon createMoon();
 
   String deleteMember();
 

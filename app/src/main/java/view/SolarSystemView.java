@@ -3,16 +3,79 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 
-import model.Planet;
-import model.SolarSystem;
-
+/**
+ * View for Solarsystem app.
+ */
 public class SolarSystemView implements ISolarsystemView {
   private final Scanner input = new Scanner(System.in, "utf-8");
 
+  /**
+   * Shows starting menu.
+   *
+   * @return Enum.
+   */
+  public Menu showMenu() {
+    final String list = "L";
+    final String add = "A";
+    final String inspect = "I";
+    final String quit = "Q";
+    System.out.println("-*-*- Solarsystem app -*-*-");
+    System.out.println("-*-*- " + list + "List all solarsystems");
+    System.out.println("-*-*- " + add + "Add new solarsystem");
+    System.out.println("-*-*- " + inspect + "Look at detail information on specific solarsystem");
+    System.out.println("-*-*- " + quit + "Quit application.");
+    String key = input.nextLine();
+    if(key.equals(list)) {
+      return Menu.List;
+    } else if(key.equals(add)) {
+      return Menu.Add;
+    } else if(key.equals(inspect)) {
+      return Menu.Inspect;
+    } else if(key.equals(quit)) {
+      return Menu.Quit;
+    }
+    return null;
+  }
+
+  /**
+   * Menu for looking at individual solarsystems.
+   *
+   * @return Enum.
+   */
+  public SolarSystemMenu showSolarSystemMenu() {
+    final String view = "V";
+    final String add = "A";
+    final String delete = "D";
+    final String back = "B";
+    System.out.println("-*-*- " + view + "View solarsystem details");
+    System.out.println("-*-*- " + add + "Add new members to solarsystem");
+    System.out.println("-*-*- " + delete + "Delete members of solarsystem.");
+    System.out.println("-*-*- " + back + "Back to main menu.");
+    String key = input.nextLine();
+    if(key.equals(view)) {
+      return SolarSystemMenu.View;
+    } else if(key.equals(add)) {
+      return SolarSystemMenu.Add;
+    } else if(key.equals(delete)) {
+      return SolarSystemMenu.Delete;
+    } else if(key.equals(back)) {
+      return SolarSystemMenu.Back;
+    }
+    return null;
+  }
+
   @Override
-  public SolarSystem createSolarSystem() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'createSolarSystem'");
+  public model.SolarSystem createSolarSystem() {
+    System.out.print("Enter the name of the solar system: ");
+    String solarSystemName = input.nextLine();
+    model.SolarSystem newSolarSystem = new model.SolarSystem(solarSystemName);
+    System.out.print("Enter the name of the central star: ");
+    String starName = input.nextLine();
+    System.out.print("Enter the radius of the central star (in km): ");
+    int starRadius = Integer.parseInt(input.nextLine());
+    model.Sun centralStar = new model.Sun(starName, starRadius);
+    newSolarSystem.setCentralStar(centralStar);
+    return newSolarSystem;
   }
 
   @Override
@@ -23,7 +86,7 @@ public class SolarSystemView implements ISolarsystemView {
   }
 
   @Override
-  public <T extends SolarSystem> T selectSolarSystem(Iterable<T> list) {
+  public <T extends model.SolarSystem> T selectSolarSystem(Iterable<T> list) {
     try {
       int index = 0;
       for (model.SolarSystem s : list) {
@@ -51,8 +114,8 @@ public class SolarSystemView implements ISolarsystemView {
     System.out.println("Solar System: " + solarSystem.getName());
     model.Sun centralStar = solarSystem.getCentralStar();
     System.out.println("Central Star: " + centralStar.getName() + ", Radius: " + centralStar.getRadius() + " km");
-    List<Planet> planets = solarSystem.getPlanets();
-    for (Planet planet : planets) {
+    List<model.Planet> planets = solarSystem.getPlanets();
+    for (model.Planet planet : planets) {
         displayPlanetAndMoons(planet);
     }
   }
@@ -67,16 +130,37 @@ public class SolarSystemView implements ISolarsystemView {
   }
 
   @Override
-  public void showMessage(String message) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'showMessage'");
-  }
-
-  @Override
   public String deleteMember() {
     System.out.print("Enter the name of the member (Sun, Planet, or Moon) to delete: ");
     String memberName = input.nextLine();
     return memberName;
+  }
+
+  @Override
+  public void showMessage(String message) {
+    System.out.println(message);
+  }
+
+  public model.Planet createPlanet() {
+    System.out.println("Enter name of the planet :");
+    String planetName = input.nextLine();
+    System.out.println("Enter radius of planet : ");
+    int planetRadius = Integer.parseInt(input.nextLine());
+    System.out.println("Enter orbit radius of planet :");
+    int planetOrdbitRadius = Integer.parseInt(input.nextLine());
+    model.Planet newPlanet = new model.Planet(planetName, planetRadius, planetOrdbitRadius);
+    return newPlanet;
+  }
+
+  public model.Moon createMoon() {
+    System.out.println("Enter name of moon :");
+    String moonName = input.nextLine();
+    System.out.println("Enter radius of moon : ");
+    int moonRadius = Integer.parseInt(input.nextLine());
+    System.out.println("Enter orbit radius of moon :");
+    int moonOrdbitRadius = Integer.parseInt(input.nextLine());
+    model.Moon newMoon = new model.Moon(moonName, moonRadius, moonOrdbitRadius);
+    return newMoon;
   }
 
 }
