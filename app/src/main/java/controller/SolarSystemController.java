@@ -48,6 +48,9 @@ public class SolarSystemController {
       try {
         Boolean running = true;
         currentSolarSystem = selectSpecificSolarSystem();
+        if(currentSolarSystem == null) {
+          running = false;
+        }
         while (running) {
           view.SolarSystemView.SolarSystemMenu action = view.showSolarSystemMenu();
           switch (action) {
@@ -58,7 +61,10 @@ public class SolarSystemController {
               addMemberMenu();
               break;
             case Delete:
-              deleteMemberOfSolarSystem(currentSolarSystem);
+              Boolean centralStarRemoved = deleteMemberOfSolarSystem(currentSolarSystem);
+              if(centralStarRemoved) {
+                running = false;
+              }
               break;
             case Back:
               running = false;
@@ -95,30 +101,43 @@ public class SolarSystemController {
       solarSystemList.add(newSolarSystem);
     }
 
+    private void deleteSolarSystem(model.SolarSystem solarSystem) {
+      this.solarSystemList.remove(solarSystem);
+    }
+
     /**
      * Deletes an object.
      *
      * @param solarSystem Solarsystem object.
+     * @return Boolean if the entire system is deleted or not.
      */
-    private void deleteMemberOfSolarSystem(model.SolarSystem solarSystem) {
+    private Boolean deleteMemberOfSolarSystem(model.SolarSystem solarSystem) {
       String memberName = view.deleteMember();
+      Boolean centralStarRemoved = false;
       if(solarSystem.getCentralStar().getName().equalsIgnoreCase(memberName)) {
-        solarSystem = null;
+        deleteSolarSystem(solarSystem);
+        centralStarRemoved = true;
+        view.showMessage("Entire solarsystem removed.");
+        return centralStarRemoved;
       } else {
         for (model.Planet planet : solarSystem.getPlanets()) {
           if (planet.getName().equalsIgnoreCase(memberName)) {
-              solarSystem.getPlanets().remove(planet);
-              break;
+              solarSystem.deletePlanet(planet);
+              view.showMessage(memberName +" removed.");
+              return centralStarRemoved;
           } else {
               for (model.Moon moon : planet.getMoons()) {
                   if (moon.getName().equalsIgnoreCase(memberName)) {
-                      planet.getMoons().remove(moon);
-                      break;
+                      planet.deleteMoon(moon);
+                      view.showMessage(memberName +" removed.");
+                      return centralStarRemoved;
                   }
               }
             }
           }
       }
+      view.showMessage("Could not find member with that name.");
+      return false;
     }
 
     /**

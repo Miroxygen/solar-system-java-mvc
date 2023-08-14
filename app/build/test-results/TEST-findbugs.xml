@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite package="org.spotbugs" time="0" tests="23" errors="0" name="findbugs">
-<testcase time="0" name="model/Time.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/SwedishView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="model/Contract.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="model/ContractList.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/ContractView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="model/LendingClubDao.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/EnglishItemView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="model/LendingClubDaoImp.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="model/MemberList.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="controller/Member.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/SwedishContractView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="model/Member.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/ItemView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="controller/App.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/View.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/EnglishMemberView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/EnglishView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/SwedishItemView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="model/Item.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="model/MembersItemList.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/SwedishMemberView.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="controller/LendingClub.java" classname="FindBugs Issues">
-</testcase><testcase time="0" name="view/MemberView.java" classname="FindBugs Issues">
+<testsuite package="org.spotbugs" time="0" tests="8" errors="1" name="findbugs">
+<testcase time="0" name="controller/App.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="model/Planet.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="model/Moon.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="model/SolarSystem.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="model/Sun.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="view/ISolarsystemView.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="view/SolarSystemView.java" classname="FindBugs Issues">
+</testcase><testcase time="0" name="controller/SolarSystemController.java" classname="FindBugs Issues">
+<failure message="issues" ><![CDATA[lines: 12-160 
+new controller.SolarSystemController(SolarSystemView) may expose internal 
+  representation by storing an externally mutable object into 
+  SolarSystemController.view 
+May expose internal representation by incorporating reference to mutable 
+  object 
+This code stores a reference to an externally mutable object into the 
+  internal representation of the object. If instances are accessed by 
+  untrusted code, and unchecked changes to the mutable object would 
+  compromise security or other important properties, you will need to do 
+  something different. Storing a copy of the object is better approach in 
+  many situations.
+----------------
+]]></failure>
 </testcase></testsuite>

@@ -1,59 +1,749 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CodeQualityTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-05-08T11:58:07" hostname="DESKTOP-KTRK0FO" time="0.076">
+<testsuite name="CodeQualityTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-08-14T12:02:53" hostname="DESKTOP-KTRK0FO" time="0.165">
   <properties/>
-  <testcase name="codeQuality()" classname="CodeQualityTests" time="0.076"/>
-  <system-out><![CDATA[0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/App.java
-2 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/LendingClub.java
-text:line: 318 column: column:13 
-'(' has incorrect indentation level 12, expected level should be 14.
+  <testcase name="codeQuality()" classname="CodeQualityTests" time="0.165">
+    <failure message="org.opentest4j.AssertionFailedError: Max amount (5) of quality issues exceeded:205 ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Max amount (5) of quality issues exceeded:205 ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;
+	at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at app//org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:40)
+	at app//org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:193)
+	at app//CodeQualityTests.codeQuality(CodeQualityTests.java:70)
+	at java.base@17.0.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base@17.0.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base@17.0.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base@17.0.1/java.lang.reflect.Method.invoke(Method.java:568)
+	at app//org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:688)
+	at app//org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at app//org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at app//org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at app//org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at app//org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at app//org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at app//org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at app//org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:210)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:206)
+	at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:131)
+	at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:65)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at app//org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base@17.0.1/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at app//org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base@17.0.1/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at app//org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at app//org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at app//org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at java.base@17.0.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base@17.0.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base@17.0.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base@17.0.1/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at app//worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at app//worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
+  <system-out><![CDATA[1 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/App.java
+text:line: 6 column: column:1 
+Missing a Javadoc comment.
 
-text:line: 320 column: column:13 
-'*' has incorrect indentation level 12, expected level should be 14.
+120 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/SolarSystemController.java
+text:line: 7 column: column:1 
+Missing a Javadoc comment.
 
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/Member.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Contract.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/ContractList.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Item.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/LendingClubDao.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/LendingClubDaoImp.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Member.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/MemberList.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/MembersItemList.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Time.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/ContractView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishItemView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishMemberView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/ItemView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/MemberView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishContractView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishItemView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishMemberView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/View.java
-0 FindBugs Issues in model/Time.java
-0 FindBugs Issues in view/SwedishView.java
-0 FindBugs Issues in model/Contract.java
-0 FindBugs Issues in model/ContractList.java
-0 FindBugs Issues in view/ContractView.java
-0 FindBugs Issues in model/LendingClubDao.java
-0 FindBugs Issues in view/EnglishItemView.java
-0 FindBugs Issues in model/LendingClubDaoImp.java
-0 FindBugs Issues in model/MemberList.java
-0 FindBugs Issues in controller/Member.java
-0 FindBugs Issues in view/SwedishContractView.java
-0 FindBugs Issues in model/Member.java
-0 FindBugs Issues in view/ItemView.java
+text:line: 8 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 9 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 10 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 12 column: column:5 
+'ctor def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 13 column: column:9 
+'ctor def' child has incorrect indentation level 8, expected level should be 4.
+
+text:line: 14 column: column:9 
+'ctor def' child has incorrect indentation level 8, expected level should be 4.
+
+text:line: 15 column: column:5 
+'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 20 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 21 column: column:7 
+'try' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 22 column: column:9 
+'try' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 23 column: column:9 
+'while' has incorrect indentation level 8, expected level should be 6.
+
+text:line: 23 column: column:9 
+'while' is not followed by whitespace.
+
+text:line: 23 column: column:9 
+WhitespaceAround: 'while' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 24 column: column:11 
+'while' child has incorrect indentation level 10, expected level should be 8.
+
+text:line: 25 column: column:11 
+'switch' has incorrect indentation level 10, expected level should be 8.
+
+text:line: 26 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 27 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 28 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 29 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 30 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 31 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 32 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 33 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 34 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 35 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 36 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 37 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 37 column: column:13 
+Fall through from previous branch of the switch statement.
+
+text:line: 38 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 39 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 40 column: column:11 
+'switch rcurly' has incorrect indentation level 10, expected level should be 8.
+
+text:line: 41 column: column:9 
+'while rcurly' has incorrect indentation level 8, expected level should be 6.
+
+text:line: 42 column: column:7 
+'try rcurly' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 43 column: column:9 
+'catch' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 44 column: column:7 
+'catch rcurly' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 45 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 47 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 48 column: column:7 
+'try' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 49 column: column:9 
+'try' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 50 column: column:9 
+'try' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 51 column: column:9 
+'while' has incorrect indentation level 8, expected level should be 6.
+
+text:line: 52 column: column:11 
+'while' child has incorrect indentation level 10, expected level should be 8.
+
+text:line: 53 column: column:11 
+'switch' has incorrect indentation level 10, expected level should be 8.
+
+text:line: 54 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 55 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 56 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 57 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 58 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 59 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 60 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 61 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 62 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 63 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 64 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 65 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 66 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 10.
+
+text:line: 67 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 68 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 12.
+
+text:line: 69 column: column:11 
+'switch rcurly' has incorrect indentation level 10, expected level should be 8.
+
+text:line: 70 column: column:9 
+'while rcurly' has incorrect indentation level 8, expected level should be 6.
+
+text:line: 71 column: column:7 
+'try rcurly' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 72 column: column:9 
+'catch' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 73 column: column:7 
+'catch rcurly' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 74 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 76 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 77 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 78 column: column:7 
+'switch' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 79 column: column:9 
+'case' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 80 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 8.
+
+text:line: 81 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 8.
+
+text:line: 82 column: column:9 
+'case' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 83 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 8.
+
+text:line: 84 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 8.
+
+text:line: 85 column: column:9 
+'case' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 86 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 8.
+
+text:line: 87 column: column:7 
+'switch rcurly' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 88 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 93 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 94 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 95 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 96 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 103 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 104 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 106 column: column:7 
+'if' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 106 column: column:7 
+'if' is not followed by whitespace.
+
+text:line: 106 column: column:7 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 107 column: column:9 
+'if' child has incorrect indentation level 8, expected level should be 6.
+
+text:line: 108 column: column:7 
+'if rcurly' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 109 column: column:9 
+'for' has incorrect indentation level 8, expected level should be 6.
+
+text:line: 110 column: column:11 
+'if' has incorrect indentation level 10, expected level should be 8.
+
+text:line: 111 column: column:15 
+'if' child has incorrect indentation level 14, expected level should be 10.
+
+text:line: 112 column: column:15 
+'if' child has incorrect indentation level 14, expected level should be 10.
+
+text:line: 113 column: column:11 
+'if rcurly' has incorrect indentation level 10, expected level should be 8.
+
+text:line: 114 column: column:15 
+'for' has incorrect indentation level 14, expected level should be 10.
+
+text:line: 115 column: column:19 
+'if' has incorrect indentation level 18, expected level should be 12.
+
+text:line: 116 column: column:23 
+'if' child has incorrect indentation level 22, expected level should be 14.
+
+text:line: 117 column: column:23 
+'if' child has incorrect indentation level 22, expected level should be 14.
+
+text:line: 118 column: column:19 
+'if rcurly' has incorrect indentation level 18, expected level should be 12.
+
+text:line: 119 column: column:15 
+'for rcurly' has incorrect indentation level 14, expected level should be 10.
+
+text:line: 120 column: column:13 
+'else rcurly' has incorrect indentation level 12, expected level should be 8.
+
+text:line: 121 column: column:11 
+'for rcurly' has incorrect indentation level 10, expected level should be 6.
+
+text:line: 122 column: column:7 
+'else rcurly' has incorrect indentation level 6, expected level should be 4.
+
+text:line: 123 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 128 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 129 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 130 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 137 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 138 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 139 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 144 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 145 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 146 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 153 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 154 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 155 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 157 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 158 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 159 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 160 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+8 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Moon.java
+text:line: 3 column: column:1 
+Missing a Javadoc comment.
+
+text:line: 8 column: column:3 
+Missing a Javadoc comment.
+
+text:line: 9 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 10 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 11 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 15 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 19 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 23 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+7 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Planet.java
+text:line: 23 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 24 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 25 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 26 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 35 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 44 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 53 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+26 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/SolarSystem.java
+text:line: 6 column: column:1 
+Missing a Javadoc comment.
+
+text:line: 7 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 8 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 9 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 11 column: column:5 
+'ctor def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 12 column: column:9 
+'ctor def' child has incorrect indentation level 8, expected level should be 4.
+
+text:line: 13 column: column:9 
+'ctor def' child has incorrect indentation level 8, expected level should be 4.
+
+text:line: 14 column: column:5 
+'ctor def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 16 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 17 column: column:9 
+'method def' child has incorrect indentation level 8, expected level should be 4.
+
+text:line: 18 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 20 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 22 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 23 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 25 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 26 column: column:9 
+'method def' child has incorrect indentation level 8, expected level should be 4.
+
+text:line: 27 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 29 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 30 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 31 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 33 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 34 column: column:9 
+'method def' child has incorrect indentation level 8, expected level should be 4.
+
+text:line: 35 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 37 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level should be 2.
+
+text:line: 38 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 39 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level should be 2.
+
+5 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Sun.java
+text:line: 3 column: column:1 
+Missing a Javadoc comment.
+
+text:line: 8 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 9 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 13 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+text:line: 17 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should be 4.
+
+5 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/view/ISolarsystemView.java
+text:line: 3 column: 
+First sentence of Javadoc is missing an ending period.
+
+text:line: 6 column: column:18 
+Abbreviation in name 'ISolarsystemView' must contain no more than '1' consecutive capital letters.
+
+text:line: 8 column: column:3 
+Missing a Javadoc comment.
+
+text:line: 15 column: column:3 
+Missing a Javadoc comment.
+
+text:line: 22 column: column:3 
+Missing a Javadoc comment.
+
+32 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/view/SolarSystemView.java
+text:line: 6 column: column:1 
+Extra separation in import group before 'org.checkerframework.checker.units.qual.m'
+
+text:line: 30 column: column:5 
+'if' is not followed by whitespace.
+
+text:line: 30 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 32 column: column:12 
+'if' is not followed by whitespace.
+
+text:line: 32 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 34 column: column:12 
+'if' is not followed by whitespace.
+
+text:line: 34 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 36 column: column:12 
+'if' is not followed by whitespace.
+
+text:line: 36 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 57 column: column:5 
+'if' is not followed by whitespace.
+
+text:line: 57 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 59 column: column:12 
+'if' is not followed by whitespace.
+
+text:line: 59 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 61 column: column:12 
+'if' is not followed by whitespace.
+
+text:line: 61 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 63 column: column:12 
+'if' is not followed by whitespace.
+
+text:line: 63 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 69 column: column:3 
+Missing a Javadoc comment.
+
+text:line: 75 column: column:5 
+'if' is not followed by whitespace.
+
+text:line: 75 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 77 column: column:12 
+'if' is not followed by whitespace.
+
+text:line: 77 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 99 column: column:5 
+'for' is not followed by whitespace.
+
+text:line: 99 column: column:5 
+WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 134 column: column:5 
+'if' is not followed by whitespace.
+
+text:line: 134 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 145 column: 
+Line is longer than 120 characters (found 148).
+
+text:line: 147 column: column:5 
+'if' is not followed by whitespace.
+
+text:line: 147 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only be represented as {} 
+  when not part of a multi-block statement (4.1.3)
+
+text:line: 149 column: 
+Line is longer than 120 characters (found 146).
+
+text:line: 168 column: column:3 
+Missing a Javadoc comment.
+
+text:line: 203 column: column:3 
+Missing a Javadoc comment.
+
 0 FindBugs Issues in controller/App.java
-0 FindBugs Issues in view/View.java
-0 FindBugs Issues in view/EnglishMemberView.java
-0 FindBugs Issues in view/EnglishView.java
-0 FindBugs Issues in view/SwedishItemView.java
-0 FindBugs Issues in model/Item.java
-0 FindBugs Issues in model/MembersItemList.java
-0 FindBugs Issues in view/SwedishMemberView.java
-0 FindBugs Issues in controller/LendingClub.java
-0 FindBugs Issues in view/MemberView.java
+0 FindBugs Issues in model/Planet.java
+0 FindBugs Issues in model/Moon.java
+0 FindBugs Issues in model/SolarSystem.java
+0 FindBugs Issues in model/Sun.java
+0 FindBugs Issues in view/ISolarsystemView.java
+0 FindBugs Issues in view/SolarSystemView.java
+1 FindBugs Issues in controller/SolarSystemController.java
+text:lines: 12-160 
+new controller.SolarSystemController(SolarSystemView) may expose internal representation by storing 
+  an externally mutable object into SolarSystemController.view 
+May expose internal representation by incorporating reference to mutable object 
+This code stores a reference to an externally mutable object into the internal representation of the 
+  object. If instances are accessed by untrusted code, and unchecked changes to the mutable object 
+  would compromise security or other important properties, you will need to do something different. 
+  Storing a copy of the object is better approach in many situations.
+
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

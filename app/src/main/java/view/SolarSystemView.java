@@ -10,6 +10,7 @@ import org.checkerframework.checker.units.qual.m;
  */
 public class SolarSystemView implements ISolarsystemView {
   private final Scanner input = new Scanner(System.in, "utf-8");
+  private final String hieraricalStringSeperator = "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500";
 
   /**
    * Shows starting menu.
@@ -96,8 +97,13 @@ public class SolarSystemView implements ISolarsystemView {
 
   @Override
   public <T extends model.SolarSystem> void displaySolarSystems(Iterable<T> solarSystems) {
+    int iterator = 0;
     for(model.SolarSystem s : solarSystems) {
-      System.out.println(" Name : " + s.getName());
+      iterator++;
+        System.out.println(" Name : " + s.getName());
+    }
+    if(iterator == 0) {
+      System.out.println("No solarsystems.");
     }
   }
 
@@ -109,16 +115,20 @@ public class SolarSystemView implements ISolarsystemView {
         System.out.println(index + " | " + s.getName());
         index++;
       }
-      System.out.println("Which solarsystem do you want to inspect?");
-      String key = input.nextLine();
-      int intKey = Integer.parseInt(key);
-      index = 0;
-      for (T s : list) {
-        if (index == intKey) {
-          return s;
+      if(index == 0) {
+        System.out.println("No solarsystems.");
+      } else {
+        System.out.println("Which solarsystem do you want to inspect?");
+        String key = input.nextLine();
+        int intKey = Integer.parseInt(key);
+        index = 0;
+        for (T s : list) {
+          if (index == intKey) {
+            return s;
+          }
+          index++;
         }
-        index++;
-      }
+      } 
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -129,7 +139,7 @@ public class SolarSystemView implements ISolarsystemView {
   public <T extends model.SolarSystem> void displaySolarSystemDetails(T solarSystem) {
     System.out.println("Solar System: " + solarSystem.getName());
     model.Sun centralStar = solarSystem.getCentralStar();
-    System.out.println("Central Star: " + centralStar.getName() + ", Radius: " + centralStar.getRadius() + " km");
+    System.out.println(hieraricalStringSeperator + " Central Star: " + centralStar.getName() + ", Radius: " + centralStar.getRadius() + " km");
     List<model.Planet> planets = solarSystem.getPlanets();
     if(planets.size() > 0) {
       for (model.Planet planet : planets) {
@@ -142,11 +152,11 @@ public class SolarSystemView implements ISolarsystemView {
 
   @Override
   public <T extends model.Planet> void displayPlanetAndMoons(T planet) {
-    System.out.println("Planet: " + planet.getName() + ", Radius: " + planet.getRadius() + " km, Orbit Radius: " + planet.getOrbitRadius() + " km");
+    System.out.println(hieraricalStringSeperator + hieraricalStringSeperator + " Planet: " + planet.getName() + ", Radius: " + planet.getRadius() + " km, Orbit Radius: " + planet.getOrbitRadius() + " km");
     List<model.Moon> moons = planet.getMoons();
     if(moons.size() > 0) {
       for (model.Moon moon : moons) {
-        System.out.println("  Moon: " + moon.getName() + ", Radius: " + moon.getRadius() + " km, Orbit Radius: " + moon.getOrbitRadius() + " km");
+        System.out.println(hieraricalStringSeperator + hieraricalStringSeperator + hieraricalStringSeperator + " Moon: " + moon.getName() + ", Radius: " + moon.getRadius() + " km, Orbit Radius: " + moon.getOrbitRadius() + " km");
       }
     } else {
       System.out.println("This planets has no moons.");

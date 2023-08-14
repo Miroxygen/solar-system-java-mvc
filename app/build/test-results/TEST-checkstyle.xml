@@ -1,33 +1,779 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite package="org.checkstyle" time="0" tests="23" errors="2" name="checkstyle">
+<testsuite package="org.checkstyle" time="0" tests="8" errors="204" name="checkstyle">
 <testcase time="0" name="controller/App.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="controller/LendingClub.java" classname="CheckStyle Issues">
-<failure message="issues" ><![CDATA[line: 318 column: column:13 
-'(' has incorrect indentation level 12, expected level should be 14.
-----------------
-line: 320 column: column:13 
-'*' has incorrect indentation level 12, expected level should be 14.
+<failure message="issues" ><![CDATA[line: 6 column: column:1 
+Missing a Javadoc comment.
 ----------------
 ]]></failure>
-</testcase><testcase time="0" name="controller/Member.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/Contract.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/ContractList.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/Item.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/LendingClubDao.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/LendingClubDaoImp.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/Member.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/MemberList.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/MembersItemList.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="model/Time.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/ContractView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/EnglishItemView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/EnglishMemberView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/EnglishView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/ItemView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/MemberView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/SwedishContractView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/SwedishItemView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/SwedishMemberView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/SwedishView.java" classname="CheckStyle Issues">
-</testcase><testcase time="0" name="view/View.java" classname="CheckStyle Issues">
+</testcase><testcase time="0" name="controller/SolarSystemController.java" classname="CheckStyle Issues">
+<failure message="issues" ><![CDATA[line: 7 column: column:1 
+Missing a Javadoc comment.
+----------------
+line: 8 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 9 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 10 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 12 column: column:5 
+'ctor def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 13 column: column:9 
+'ctor def' child has incorrect indentation level 8, expected level should 
+  be 4.
+----------------
+line: 14 column: column:9 
+'ctor def' child has incorrect indentation level 8, expected level should 
+  be 4.
+----------------
+line: 15 column: column:5 
+'ctor def rcurly' has incorrect indentation level 4, expected level should 
+  be 2.
+----------------
+line: 20 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 21 column: column:7 
+'try' has incorrect indentation level 6, expected level should be 4.
+----------------
+line: 22 column: column:9 
+'try' child has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 23 column: column:9 
+'while' has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 23 column: column:9 
+'while' is not followed by whitespace.
+----------------
+line: 23 column: column:9 
+WhitespaceAround: 'while' is not followed by whitespace. Empty blocks may 
+  only be represented as {} when not part of a multi-block statement 
+  (4.1.3)
+----------------
+line: 24 column: column:11 
+'while' child has incorrect indentation level 10, expected level should be 
+  8.
+----------------
+line: 25 column: column:11 
+'switch' has incorrect indentation level 10, expected level should be 8.
+----------------
+line: 26 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 27 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 28 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 29 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 30 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 31 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 32 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 33 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 34 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 35 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 36 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 37 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 37 column: column:13 
+Fall through from previous branch of the switch statement.
+----------------
+line: 38 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 39 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 40 column: column:11 
+'switch rcurly' has incorrect indentation level 10, expected level should 
+  be 8.
+----------------
+line: 41 column: column:9 
+'while rcurly' has incorrect indentation level 8, expected level should be 
+  6.
+----------------
+line: 42 column: column:7 
+'try rcurly' has incorrect indentation level 6, expected level should be 4.
+----------------
+line: 43 column: column:9 
+'catch' child has incorrect indentation level 8, expected level should be 
+  6.
+----------------
+line: 44 column: column:7 
+'catch rcurly' has incorrect indentation level 6, expected level should be 
+  4.
+----------------
+line: 45 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 47 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 48 column: column:7 
+'try' has incorrect indentation level 6, expected level should be 4.
+----------------
+line: 49 column: column:9 
+'try' child has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 50 column: column:9 
+'try' child has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 51 column: column:9 
+'while' has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 52 column: column:11 
+'while' child has incorrect indentation level 10, expected level should be 
+  8.
+----------------
+line: 53 column: column:11 
+'switch' has incorrect indentation level 10, expected level should be 8.
+----------------
+line: 54 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 55 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 56 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 57 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 58 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 59 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 60 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 61 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 62 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 63 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 64 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 65 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 66 column: column:13 
+'case' child has incorrect indentation level 12, expected level should be 
+  10.
+----------------
+line: 67 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 68 column: column:15 
+'block' child has incorrect indentation level 14, expected level should be 
+  12.
+----------------
+line: 69 column: column:11 
+'switch rcurly' has incorrect indentation level 10, expected level should 
+  be 8.
+----------------
+line: 70 column: column:9 
+'while rcurly' has incorrect indentation level 8, expected level should be 
+  6.
+----------------
+line: 71 column: column:7 
+'try rcurly' has incorrect indentation level 6, expected level should be 4.
+----------------
+line: 72 column: column:9 
+'catch' child has incorrect indentation level 8, expected level should be 
+  6.
+----------------
+line: 73 column: column:7 
+'catch rcurly' has incorrect indentation level 6, expected level should be 
+  4.
+----------------
+line: 74 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 76 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 77 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 78 column: column:7 
+'switch' has incorrect indentation level 6, expected level should be 4.
+----------------
+line: 79 column: column:9 
+'case' child has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 80 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 
+  8.
+----------------
+line: 81 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 
+  8.
+----------------
+line: 82 column: column:9 
+'case' child has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 83 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 
+  8.
+----------------
+line: 84 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 
+  8.
+----------------
+line: 85 column: column:9 
+'case' child has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 86 column: column:11 
+'block' child has incorrect indentation level 10, expected level should be 
+  8.
+----------------
+line: 87 column: column:7 
+'switch rcurly' has incorrect indentation level 6, expected level should be 
+  4.
+----------------
+line: 88 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 93 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 94 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 95 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 96 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 103 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 104 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 106 column: column:7 
+'if' has incorrect indentation level 6, expected level should be 4.
+----------------
+line: 106 column: column:7 
+'if' is not followed by whitespace.
+----------------
+line: 106 column: column:7 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 107 column: column:9 
+'if' child has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 108 column: column:7 
+'if rcurly' has incorrect indentation level 6, expected level should be 4.
+----------------
+line: 109 column: column:9 
+'for' has incorrect indentation level 8, expected level should be 6.
+----------------
+line: 110 column: column:11 
+'if' has incorrect indentation level 10, expected level should be 8.
+----------------
+line: 111 column: column:15 
+'if' child has incorrect indentation level 14, expected level should be 10.
+----------------
+line: 112 column: column:15 
+'if' child has incorrect indentation level 14, expected level should be 10.
+----------------
+line: 113 column: column:11 
+'if rcurly' has incorrect indentation level 10, expected level should be 8.
+----------------
+line: 114 column: column:15 
+'for' has incorrect indentation level 14, expected level should be 10.
+----------------
+line: 115 column: column:19 
+'if' has incorrect indentation level 18, expected level should be 12.
+----------------
+line: 116 column: column:23 
+'if' child has incorrect indentation level 22, expected level should be 14.
+----------------
+line: 117 column: column:23 
+'if' child has incorrect indentation level 22, expected level should be 14.
+----------------
+line: 118 column: column:19 
+'if rcurly' has incorrect indentation level 18, expected level should be 
+  12.
+----------------
+line: 119 column: column:15 
+'for rcurly' has incorrect indentation level 14, expected level should be 
+  10.
+----------------
+line: 120 column: column:13 
+'else rcurly' has incorrect indentation level 12, expected level should be 
+  8.
+----------------
+line: 121 column: column:11 
+'for rcurly' has incorrect indentation level 10, expected level should be 
+  6.
+----------------
+line: 122 column: column:7 
+'else rcurly' has incorrect indentation level 6, expected level should be 
+  4.
+----------------
+line: 123 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 128 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 129 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 130 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 137 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 138 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 139 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 144 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 145 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 146 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 153 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 154 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 155 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 157 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 158 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 159 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 160 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+]]></failure>
+</testcase><testcase time="0" name="model/Moon.java" classname="CheckStyle Issues">
+<failure message="issues" ><![CDATA[line: 3 column: column:1 
+Missing a Javadoc comment.
+----------------
+line: 8 column: column:3 
+Missing a Javadoc comment.
+----------------
+line: 9 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 10 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 11 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 15 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 19 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 23 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+]]></failure>
+</testcase><testcase time="0" name="model/Planet.java" classname="CheckStyle Issues">
+<failure message="issues" ><![CDATA[line: 23 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 24 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 25 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 26 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 35 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 44 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 53 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+]]></failure>
+</testcase><testcase time="0" name="model/SolarSystem.java" classname="CheckStyle Issues">
+<failure message="issues" ><![CDATA[line: 6 column: column:1 
+Missing a Javadoc comment.
+----------------
+line: 7 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 8 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 9 column: column:5 
+'member def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 11 column: column:5 
+'ctor def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 12 column: column:9 
+'ctor def' child has incorrect indentation level 8, expected level should 
+  be 4.
+----------------
+line: 13 column: column:9 
+'ctor def' child has incorrect indentation level 8, expected level should 
+  be 4.
+----------------
+line: 14 column: column:5 
+'ctor def rcurly' has incorrect indentation level 4, expected level should 
+  be 2.
+----------------
+line: 16 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 17 column: column:9 
+'method def' child has incorrect indentation level 8, expected level should 
+  be 4.
+----------------
+line: 18 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 20 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 22 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 23 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 25 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 26 column: column:9 
+'method def' child has incorrect indentation level 8, expected level should 
+  be 4.
+----------------
+line: 27 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 29 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 30 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 31 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 33 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 34 column: column:9 
+'method def' child has incorrect indentation level 8, expected level should 
+  be 4.
+----------------
+line: 35 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 37 column: column:5 
+'method def modifier' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+line: 38 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 39 column: column:5 
+'method def rcurly' has incorrect indentation level 4, expected level 
+  should be 2.
+----------------
+]]></failure>
+</testcase><testcase time="0" name="model/Sun.java" classname="CheckStyle Issues">
+<failure message="issues" ><![CDATA[line: 3 column: column:1 
+Missing a Javadoc comment.
+----------------
+line: 8 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 9 column: column:7 
+'ctor def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 13 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+line: 17 column: column:7 
+'method def' child has incorrect indentation level 6, expected level should 
+  be 4.
+----------------
+]]></failure>
+</testcase><testcase time="0" name="view/ISolarsystemView.java" classname="CheckStyle Issues">
+<failure message="issues" ><![CDATA[line: 3 column: 
+First sentence of Javadoc is missing an ending period.
+----------------
+line: 6 column: column:18 
+Abbreviation in name 'ISolarsystemView' must contain no more than '1' 
+  consecutive capital letters.
+----------------
+line: 8 column: column:3 
+Missing a Javadoc comment.
+----------------
+line: 15 column: column:3 
+Missing a Javadoc comment.
+----------------
+line: 22 column: column:3 
+Missing a Javadoc comment.
+----------------
+]]></failure>
+</testcase><testcase time="0" name="view/SolarSystemView.java" classname="CheckStyle Issues">
+<failure message="issues" ><![CDATA[line: 6 column: column:1 
+Extra separation in import group before 
+  'org.checkerframework.checker.units.qual.m'
+----------------
+line: 30 column: column:5 
+'if' is not followed by whitespace.
+----------------
+line: 30 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 32 column: column:12 
+'if' is not followed by whitespace.
+----------------
+line: 32 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 34 column: column:12 
+'if' is not followed by whitespace.
+----------------
+line: 34 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 36 column: column:12 
+'if' is not followed by whitespace.
+----------------
+line: 36 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 57 column: column:5 
+'if' is not followed by whitespace.
+----------------
+line: 57 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 59 column: column:12 
+'if' is not followed by whitespace.
+----------------
+line: 59 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 61 column: column:12 
+'if' is not followed by whitespace.
+----------------
+line: 61 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 63 column: column:12 
+'if' is not followed by whitespace.
+----------------
+line: 63 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 69 column: column:3 
+Missing a Javadoc comment.
+----------------
+line: 75 column: column:5 
+'if' is not followed by whitespace.
+----------------
+line: 75 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 77 column: column:12 
+'if' is not followed by whitespace.
+----------------
+line: 77 column: column:12 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 99 column: column:5 
+'for' is not followed by whitespace.
+----------------
+line: 99 column: column:5 
+WhitespaceAround: 'for' is not followed by whitespace. Empty blocks may 
+  only be represented as {} when not part of a multi-block statement 
+  (4.1.3)
+----------------
+line: 134 column: column:5 
+'if' is not followed by whitespace.
+----------------
+line: 134 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 145 column: 
+Line is longer than 120 characters (found 148).
+----------------
+line: 147 column: column:5 
+'if' is not followed by whitespace.
+----------------
+line: 147 column: column:5 
+WhitespaceAround: 'if' is not followed by whitespace. Empty blocks may only 
+  be represented as {} when not part of a multi-block statement (4.1.3)
+----------------
+line: 149 column: 
+Line is longer than 120 characters (found 146).
+----------------
+line: 168 column: column:3 
+Missing a Javadoc comment.
+----------------
+line: 203 column: column:3 
+Missing a Javadoc comment.
+----------------
+]]></failure>
 </testcase></testsuite>
