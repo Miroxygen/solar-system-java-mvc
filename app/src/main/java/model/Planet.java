@@ -11,6 +11,7 @@ public class Planet {
   private int radius;
   private int orbitRadius;
   private List<Moon> moons;
+  private List<String> usedNames;
 
   /**
    * Constructor.
@@ -24,6 +25,7 @@ public class Planet {
       this.radius = radius;
       this.orbitRadius = orbitRadius;
       moons = new ArrayList<>();
+      usedNames = new ArrayList<>();
   }
 
   /**
@@ -68,9 +70,19 @@ public class Planet {
    * @param moon Object.
    */
   public void addMoon(Moon moon) {
-    moons.add(moon);
+    if(usedNames.contains(moon.getName())) {
+      throw new IllegalArgumentException("Moon name already exists.");
+    } else {
+      moons.add(moon);
+      usedNames.add(moon.getName());
+    }
   }
 
+  /**
+   * Deletes a moon.
+   *
+   * @param moon Object.
+   */
   public void deleteMoon(Moon moon) {
     moons.remove(moon);
   }

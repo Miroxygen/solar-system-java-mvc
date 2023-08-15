@@ -7,10 +7,12 @@ public class SolarSystem {
     private String name;
     private Sun centralStar;
     private List<Planet> planets;
+    List<String> usedNames;
 
     public SolarSystem(String name) {
         this.name = name;
         planets = new ArrayList<>();
+        usedNames = new ArrayList<>();
     }
 
     public String getName() {
@@ -31,7 +33,12 @@ public class SolarSystem {
     }
 
     public void addPlanet(Planet planet) {
+      if(usedNames.contains(planet.getName())) {
+        throw new IllegalArgumentException("Planet name already exists.");
+      } else {
+        usedNames.add(planet.getName());
         planets.add(planet);
+      }
     }
 
     public void deletePlanet(Planet planet) {

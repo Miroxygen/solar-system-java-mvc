@@ -44,6 +44,9 @@ public class SolarSystemController {
       }
     }
 
+    /**
+     * Menu for individual solarsystem.
+     */
     private void solarSystemMenu() {
       try {
         Boolean running = true;
@@ -55,7 +58,8 @@ public class SolarSystemController {
           view.SolarSystemView.SolarSystemMenu action = view.showSolarSystemMenu();
           switch (action) {
             case View:
-              displaySolarSystemDetails(currentSolarSystem);
+              view.SolarSystemView.ListMenu listAction = view.showListMenu();
+              displaySolarSystemDetails(currentSolarSystem, listAction);
               break;
             case Add:
               addMemberMenu();
@@ -79,6 +83,9 @@ public class SolarSystemController {
       }
     }
 
+    /**
+     * Menu for adding a member.
+     */
     private void addMemberMenu() {
       view.SolarSystemView.AddMemberMenu action = view.showAddMemberMenu();
       switch (action) {
@@ -159,8 +166,17 @@ public class SolarSystemController {
     /**
      * Displays details of one solarsystem.
      */
-    private void displaySolarSystemDetails(model.SolarSystem solarSystem) {
-      view.displaySolarSystemDetails(solarSystem);
+    private void displaySolarSystemDetails(model.SolarSystem solarSystem, view.SolarSystemView.ListMenu type) {
+      switch (type) {
+        case Size:
+          view.displaySolarSystemDetails(solarSystem);
+          break;
+        case Orbit:
+          view.displaySolarSystemDetails(solarSystem);
+          break;
+        default:
+          break;
+      }
     }
 
     /**
@@ -169,12 +185,18 @@ public class SolarSystemController {
      * @return Planet object.
      */
     private void createPlanet() {
-      currentSolarSystem.addPlanet(view.createPlanet());
+      model.Sun sun = currentSolarSystem.getCentralStar();
+      currentSolarSystem.addPlanet(view.createPlanet(sun.getRadius()));
     }
 
+    /**
+     * Creates a moon.
+     */
     private void createMoon() {
       model.Planet planet = view.selectPlanet(currentSolarSystem.getPlanets());
-      planet.addMoon(view.createMoon());
+      if(planet != null) {
+        planet.addMoon(view.createMoon(planet.getRadius()));
+      }
     }
 }
 

@@ -1,6 +1,5 @@
 package controller;
 
-import model.SolarSystem;
 import view.SolarSystemView;
 
 public class App {

@@ -24,6 +24,11 @@ public interface ISolarsystemView {
     Moon
   }
 
+  static enum ListMenu {
+    Size,
+    Orbit
+  }
+
   <T extends model.SolarSystem> void displaySolarSystems(Iterable<T> solarSystems);
 
   model.SolarSystem createSolarSystem();
@@ -42,11 +47,11 @@ public interface ISolarsystemView {
 
   <T extends model.Planet>  void displayPlanetAndMoons(T planet);
 
-  model.Planet createPlanet();
+  model.Planet createPlanet(int sunRadius);
 
   <T extends model.Planet> T selectPlanet(Iterable<T> list);
 
-  model.Moon createMoon();
+  model.Moon createMoon(int planetRadius);
 
   String deleteMember();
 
