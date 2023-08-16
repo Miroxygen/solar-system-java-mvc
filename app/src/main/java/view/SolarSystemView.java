@@ -1,5 +1,6 @@
 package view;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -207,6 +208,7 @@ public class SolarSystemView implements ISolarsystemView {
   public <T extends model.Planet> void displayPlanetAndMoons(T planet) {
     System.out.println(hieraricalStringSeperator + hieraricalStringSeperator + " Planet: " + planet.getName() + ", Radius: " + planet.getRadius() + " km, Orbit Radius: " + planet.getOrbitRadius() + " km");
     List<model.Moon> moons = planet.getMoons();
+    moons.sort(Comparator.comparing(model.Moon::getRadius));
     if(moons.size() > 0) {
       for (model.Moon moon : moons) {
         System.out.println(hieraricalStringSeperator + hieraricalStringSeperator + hieraricalStringSeperator + " Moon: " + moon.getName() + ", Radius: " + moon.getRadius() + " km, Orbit Radius: " + moon.getOrbitRadius() + " km");
@@ -252,7 +254,7 @@ public class SolarSystemView implements ISolarsystemView {
               if(planetRadius >= 1000 && planetRadius <= (sunRadius / 10)) {
                 break;
               } else {
-                System.out.println("Invalid input. Planet radius must be at least 10.000 km and 10x less than it's suns radius of " + sunRadius);
+                System.out.println("Invalid input. Planet radius must be at least 1.000 km and 10x less than it's suns radius of " + sunRadius);
               }
           } catch (NumberFormatException e) {
               System.out.println("Invalid input. Please enter a valid integer.");
@@ -268,7 +270,6 @@ public class SolarSystemView implements ISolarsystemView {
               } else {
                 System.out.println("Invalid input. Planet orbit radius must be 10x larger than it's suns radius of " + sunRadius);
               }
-              break;
           } catch (NumberFormatException e) {
               System.out.println("Invalid input. Please enter a valid integer.");
           }
