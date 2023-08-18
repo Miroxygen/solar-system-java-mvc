@@ -192,23 +192,13 @@ public class SolarSystemView implements ISolarsystemView {
     System.out.println("Solar System: " + solarSystem.getName());
     model.Sun centralStar = solarSystem.getCentralStar();
     System.out.println(hieraricalStringSeperator + " Central Star: " + centralStar.getName() + ", Radius: " + centralStar.getRadius() + " km");
-    List<model.Planet> planets = solarSystem.getPlanets();
-    if(planets.size() > 0) {
-      for (model.Planet planet : planets) {
-        displayPlanetAndMoons(planet);
-      } 
-    } else {
-      System.out.println("No planets.");
-    }
   }
 
   /**
    * For displaying planets and moons.
    */
-  public <T extends model.Planet> void displayPlanetAndMoons(T planet) {
+  public <T extends model.Planet> void displayPlanetAndMoons(T planet, List<? extends model.Moon> moons) {
     System.out.println(hieraricalStringSeperator + hieraricalStringSeperator + " Planet: " + planet.getName() + ", Radius: " + planet.getRadius() + " km, Orbit Radius: " + planet.getOrbitRadius() + " km");
-    List<model.Moon> moons = planet.getMoons();
-    moons.sort(Comparator.comparing(model.Moon::getRadius));
     if(moons.size() > 0) {
       for (model.Moon moon : moons) {
         System.out.println(hieraricalStringSeperator + hieraricalStringSeperator + hieraricalStringSeperator + " Moon: " + moon.getName() + ", Radius: " + moon.getRadius() + " km, Orbit Radius: " + moon.getOrbitRadius() + " km");

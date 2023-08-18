@@ -1,5 +1,7 @@
 package view;
 
+import java.util.List;
+
 /**
  * Interface for SolarSystemView
  */
@@ -45,7 +47,7 @@ public interface ISolarsystemView {
 
   <T extends model.SolarSystem>  void displaySolarSystemDetails(T solarSystem);
 
-  <T extends model.Planet>  void displayPlanetAndMoons(T planet);
+  <T extends model.Planet>  void displayPlanetAndMoons(T planet, List<? extends model.Moon> moons);
 
   model.Planet createPlanet(int sunRadius);
 

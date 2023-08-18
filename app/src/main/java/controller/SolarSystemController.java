@@ -62,8 +62,6 @@ public class SolarSystemController {
           view.SolarSystemView.SolarSystemMenu action = view.showSolarSystemMenu();
           switch (action) {
             case View:
-              SortCriteria criteria = chooseSortCriteria();
-              sortPlanetsAndMoons(criteria);
               displaySolarSystemDetails(currentSolarSystem);
               break;
             case Add:
@@ -151,13 +149,14 @@ public class SolarSystemController {
      *
      * @param sortCriteria Enum.
      */
-    private void sortPlanetsAndMoons(SortCriteria sortCriteria) {
+    private List<Planet> getSortedPlanetsAndMoons(SortCriteria sortCriteria) {
       List<model.Planet> planets = currentSolarSystem.getPlanets();
       Comparator<Planet> planetComparator = sortCriteria.getPlanetComparator();
       planets.sort(planetComparator);
       for (model.Planet planet : planets) {
         sortMoons(sortCriteria, planet);
       }
+      return planets;
     }
 
     /**
@@ -166,10 +165,11 @@ public class SolarSystemController {
      * @param sortCriteria Enum
      * @param planet Object.
      */
-    private void sortMoons(SortCriteria sortCriteria, model.Planet planet) {
+    private List<model.Moon> sortMoons(SortCriteria sortCriteria, model.Planet planet) {
       List<model.Moon> moons = planet.getMoons();
       Comparator<Moon> moonComparator = sortCriteria.getComparatorForMoons();
       moons.sort(moonComparator);
+      return moons;
     }
 
     /**
@@ -239,7 +239,17 @@ public class SolarSystemController {
      * Displays details of one solarsystem.
      */
     private void displaySolarSystemDetails(model.SolarSystem solarSystem) {
+      SortCriteria criteria = chooseSortCriteria();
+      List<model.Planet> planets = getSortedPlanetsAndMoons(criteria);
       view.displaySolarSystemDetails(solarSystem);
+      if(planets.size() > 0) {
+        for (model.Planet planet : planets) {
+          List<model.Moon> moons = sortMoons(criteria, planet);
+          view.displayPlanetAndMoons(planet, moons);
+        } 
+      } else {
+        view.showMessage("No planets.");
+      }
     }
 
     /**
