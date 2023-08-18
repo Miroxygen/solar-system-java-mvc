@@ -2,7 +2,6 @@ package controller;
 
 import java.util.Comparator;
 import java.util.List;
-
 import model.Moon;
 import model.Planet;
 import view.ISolarsystemView.ListMenu;
@@ -22,29 +21,33 @@ public class SolarSystemController {
      * Starting point of application.
      */
     public void startApp() {
-      try {
-        Boolean running = true;
-        while(running) {
+      boolean running = true;
+      while (running) {
+        try {
           view.SolarSystemView.Menu action = view.showMenu();
-          switch (action) {
-            case List:
-              displaySolarSystem();
-              break;
-            case Add:
-              createSolarSystem();
-              break;
-            case Inspect:
-              solarSystemMenu();
-              break;
-            case Quit:
-              running = false;
-            default:
-              running = false;
-              break;
+          if (action == null) {
+            throw new Exception("Invalid input. Please choose a valid option.");
           }
+          switch (action) {
+              case List:
+                  displaySolarSystem();
+                  break;
+              case Add:
+                  createSolarSystem();
+                  break;
+              case Inspect:
+                  solarSystemMenu();
+                  break;
+              case Quit:
+                  running = false;
+                  break;
+              default:
+                  System.out.println("Invalid input. Please choose a valid menu option.");
+                  break;
+          }
+        } catch (Exception e) {
+            view.showMessage(e.getMessage());
         }
-      } catch (Exception e) {
-        view.showMessage(e.getMessage());
       }
     }
 
@@ -52,78 +55,40 @@ public class SolarSystemController {
      * Menu for individual solarsystem.
      */
     private void solarSystemMenu() {
-      try {
-        Boolean running = true;
+      Boolean running = true;
+      currentSolarSystem = selectSpecificSolarSystem();
+      while(currentSolarSystem == null) {
         currentSolarSystem = selectSpecificSolarSystem();
-        if(currentSolarSystem == null) {
-          running = false;
-        }
+      }
         while (running) {
-          view.SolarSystemView.SolarSystemMenu action = view.showSolarSystemMenu();
-          switch (action) {
-            case View:
-              displaySolarSystemDetails(currentSolarSystem);
-              break;
-            case Add:
-              addMemberMenu();
-              break;
-            case Delete:
-              Boolean centralStarRemoved = deleteMemberOfSolarSystem(currentSolarSystem);
-              if(centralStarRemoved) {
+          try {
+            view.SolarSystemView.SolarSystemMenu action = view.showSolarSystemMenu();
+            if (action == null) {
+              throw new Exception("Invalid input. Please choose a valid menu option.");
+            }
+            switch (action) {
+              case View:
+                displaySolarSystemDetails(currentSolarSystem);
+                break;
+              case Add:
+                addMemberMenu();
+                break;
+              case Delete:
+                Boolean centralStarRemoved = deleteMemberOfSolarSystem(currentSolarSystem);
+                if(centralStarRemoved) {
+                  running = false;
+                }
+                break;
+              case Back:
                 running = false;
-              }
-              break;
-            case Back:
-              running = false;
-              break;
-            default:
-              running = false;
-              break;
+                break;
+              default:
+                view.showMessage("Invalid input. Please choose a valid menu option.");
+                break;
+            }
+          } catch (Exception e) {
+            view.showMessage(e.getMessage());
           }
-        }
-      } catch (Exception e) {
-        view.showMessage(e.getMessage());
-      }
-    }
-
-    /**
-     * Menu for adding a member.
-     */
-    private void addMemberMenu() {
-      view.SolarSystemView.AddMemberMenu action = view.showAddMemberMenu();
-      switch (action) {
-        case Planet:
-          createPlanet();
-          break;
-        case Moon:
-          createMoon();
-          break;
-        default:
-          break;
-      }
-    }
-
-    /**
-     * For selecting sortcriteria for listing.
-     */
-    private enum SortCriteria {
-      Size(Comparator.comparingInt(model.Planet::getRadius), Comparator.comparingInt(model.Moon::getRadius)),
-      OrbitRadius(Comparator.comparingInt(model.Planet::getOrbitRadius), Comparator.comparingInt(model.Moon::getOrbitRadius));
-
-      private final Comparator<model.Planet> planetComparator;
-      private final Comparator<model.Moon> moonComparator;
-
-      SortCriteria(Comparator<model.Planet> planetComparator, Comparator<model.Moon> moonComparator) {
-          this.planetComparator = planetComparator;
-          this.moonComparator = moonComparator;
-      }
-
-      private Comparator<Planet> getPlanetComparator() {
-          return planetComparator;
-      }
-
-      private Comparator<Moon> getComparatorForMoons() {
-          return moonComparator;
       }
     }
 
@@ -133,43 +98,49 @@ public class SolarSystemController {
      * @return Enum.
      */
     private SortCriteria chooseSortCriteria() {
-      ListMenu menuChoice = view.showListMenu();
-      switch (menuChoice) {
-          case Size:
-              return SortCriteria.Size;
-          case Orbit:
-              return SortCriteria.OrbitRadius;
+      try {
+        ListMenu menuChoice = view.showListMenu();
+        if (menuChoice == null) {
+              throw new Exception("Invalid input. Please choose a valid menu option.");
+            }
+        switch (menuChoice) {
+            case Size:
+                return SortCriteria.Size;
+            case Orbit:
+                return SortCriteria.OrbitRadius;
+            default:
+                view.showMessage("Invalid input. Please choose a valid menu option.");
+                return null;
+        }
+      } catch (Exception e) {
+        view.showMessage(e.getMessage());
+      }
+      return null;
+    }
+
+    /**
+     * Menu for adding a member.
+     */
+    private void addMemberMenu() {
+      try {
+        view.SolarSystemView.AddMemberMenu action = view.showAddMemberMenu();
+        if (action == null) {
+              throw new Exception("Invalid input. Please choose a valid menu option.");
+            }
+        switch (action) {
+          case Planet:
+            createPlanet();
+            break;
+          case Moon:
+            createMoon();
+            break;
           default:
-              return null;
+            view.showMessage("Invalid input. Please choose a valid menu option.");
+            break;
+        }
+      } catch (Exception e) {
+        view.showMessage(e.getMessage());
       }
-    }
-
-    /**
-     * Sorts planets and moons.
-     *
-     * @param sortCriteria Enum.
-     */
-    private List<Planet> getSortedPlanetsAndMoons(SortCriteria sortCriteria) {
-      List<model.Planet> planets = currentSolarSystem.getPlanets();
-      Comparator<Planet> planetComparator = sortCriteria.getPlanetComparator();
-      planets.sort(planetComparator);
-      for (model.Planet planet : planets) {
-        sortMoons(sortCriteria, planet);
-      }
-      return planets;
-    }
-
-    /**
-     * Sorts moons.
-     *
-     * @param sortCriteria Enum
-     * @param planet Object.
-     */
-    private List<model.Moon> sortMoons(SortCriteria sortCriteria, model.Planet planet) {
-      List<model.Moon> moons = planet.getMoons();
-      Comparator<Moon> moonComparator = sortCriteria.getComparatorForMoons();
-      moons.sort(moonComparator);
-      return moons;
     }
 
     /**
@@ -180,6 +151,40 @@ public class SolarSystemController {
       solarSystemList.add(newSolarSystem);
     }
 
+    /**
+     * Creates a planet.
+     *
+     * @return Planet object.
+     */
+    private void createPlanet() {
+      try {
+        model.Sun sun = currentSolarSystem.getCentralStar();
+        currentSolarSystem.addPlanet(view.createPlanet(sun.getRadius()));
+      } catch (Exception e) {
+        view.showMessage("Error creating planet.");
+      }
+      
+    }
+
+    /**
+     * Creates a moon.
+     */
+    private void createMoon() {
+      try {
+        model.Planet planet = view.selectPlanet(currentSolarSystem.getPlanets());
+        if(planet != null) {
+          planet.addMoon(view.createMoon(planet.getRadius()));
+        }
+      } catch (Exception e) {
+        view.showMessage("Error creating moon.");
+      }
+    }
+
+    /**
+     * Deletes solarsystem from controller.
+     *
+     * @param solarSystem Object.
+     */
     private void deleteSolarSystem(model.SolarSystem solarSystem) {
       this.solarSystemList.remove(solarSystem);
     }
@@ -232,7 +237,21 @@ public class SolarSystemController {
      * @return Solarsystem object.
      */
     private model.SolarSystem selectSpecificSolarSystem() {
-      return view.selectSolarSystem(solarSystemList);
+      try {
+        if(solarSystemList.size() != 0) {
+          model.SolarSystem selectedSolarSystem = view.selectSolarSystem(solarSystemList);
+          if(selectedSolarSystem != null) {
+            return selectedSolarSystem;
+          } else {
+            throw new Exception("Please select an available solarsystem.");
+          }
+        } else {
+          view.showMessage("No available solarsystems.");
+        }
+      } catch (Exception e) {
+        view.showMessage(e.getMessage());
+      }
+      return null;
     }
 
     /**
@@ -253,23 +272,54 @@ public class SolarSystemController {
     }
 
     /**
-     * Creates a planet.
-     *
-     * @return Planet object.
+     * For selecting sortcriteria for listing.
      */
-    private void createPlanet() {
-      model.Sun sun = currentSolarSystem.getCentralStar();
-      currentSolarSystem.addPlanet(view.createPlanet(sun.getRadius()));
+    private enum SortCriteria {
+      Size(Comparator.comparingInt(model.Planet::getRadius), Comparator.comparingInt(model.Moon::getRadius)),
+      OrbitRadius(Comparator.comparingInt(model.Planet::getOrbitRadius), Comparator.comparingInt(model.Moon::getOrbitRadius));
+      private final Comparator<model.Planet> planetComparator;
+      private final Comparator<model.Moon> moonComparator;
+
+      SortCriteria(Comparator<model.Planet> planetComparator, Comparator<model.Moon> moonComparator) {
+          this.planetComparator = planetComparator;
+          this.moonComparator = moonComparator;
+      }
+
+      private Comparator<Planet> getPlanetComparator() {
+          return planetComparator;
+      }
+
+      private Comparator<Moon> getComparatorForMoons() {
+          return moonComparator;
+      }
     }
 
     /**
-     * Creates a moon.
+     * Sorts planets and moons.
+     *
+     * @param sortCriteria Enum.
      */
-    private void createMoon() {
-      model.Planet planet = view.selectPlanet(currentSolarSystem.getPlanets());
-      if(planet != null) {
-        planet.addMoon(view.createMoon(planet.getRadius()));
+    private List<Planet> getSortedPlanetsAndMoons(SortCriteria sortCriteria) {
+      List<model.Planet> planets = currentSolarSystem.getPlanets();
+      Comparator<Planet> planetComparator = sortCriteria.getPlanetComparator();
+      planets.sort(planetComparator);
+      for (model.Planet planet : planets) {
+        sortMoons(sortCriteria, planet);
       }
+      return planets;
+    }
+
+    /**
+     * Sorts moons.
+     *
+     * @param sortCriteria Enum
+     * @param planet Object.
+     */
+    private List<model.Moon> sortMoons(SortCriteria sortCriteria, model.Planet planet) {
+      List<model.Moon> moons = planet.getMoons();
+      Comparator<Moon> moonComparator = sortCriteria.getComparatorForMoons();
+      moons.sort(moonComparator);
+      return moons;
     }
 }
 

@@ -1,6 +1,5 @@
 package view;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -104,41 +103,89 @@ public class SolarSystemView implements ISolarsystemView {
     return null;
   }
 
+  /**
+   * Input validation for string.
+   *
+   * @param prompt String
+   * @return Input value.
+   */
+  private String getNonEmptyInput(String prompt) {
+    while (true) {
+        System.out.println(prompt);
+        String value = input.nextLine().trim();
+        if (!value.isEmpty()) {
+            return value;
+        }
+        System.out.println("Invalid input. Please enter a non-empty value.");
+    }
+}
+
+/**
+ * Input validation for integer.
+ *
+ * @param prompt String.
+ * @return Input in integer.
+ */
+private int getIntegerInput(String prompt) {
+  while (true) {
+      try {
+          System.out.println(prompt);
+          return Integer.parseInt(input.nextLine());
+      } catch (NumberFormatException e) {
+          System.out.println("Invalid input. Please enter a valid integer.");
+      }
+  }
+}
+
   
   /**
    * For creating a solarsystem.
    */
   public model.SolarSystem createSolarSystem() {
-    System.out.print("Enter the name of the solar system: ");
-    String solarSystemName = input.nextLine();
-    while(solarSystemName.trim().isEmpty()) {
-      System.out.println("Please enter a non-empty name for the solarsystem.");
-      solarSystemName = input.nextLine();
+    try {
+      String solarSystemName = getNonEmptyInput("Enter the name of the solar system: ");
+      model.SolarSystem newSolarSystem = new model.SolarSystem(solarSystemName);
+      String starName = getNonEmptyInput("Enter the name of the central star: ");
+      int starRadius = getIntegerInput("Enter the radius of the central star (in km): ");
+      model.Sun centralStar = new model.Sun(starName, starRadius);
+      newSolarSystem.setCentralStar(centralStar);
+      return newSolarSystem;
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
-    model.SolarSystem newSolarSystem = new model.SolarSystem(solarSystemName);
-    System.out.print("Enter the name of the central star: ");
-    String starName = input.nextLine();
-    while(starName.trim().isEmpty()) {
-      System.out.println("Please enter a non-empty name for the central star.");
-      starName = input.nextLine();
+    return null; 
+  }
+
+  /**
+   * For creating a planet.
+   */
+  public model.Planet createPlanet(int sunRadius) {
+    try {
+      String planetName = getNonEmptyInput("Enter name of the planet:");
+      int planetRadius = getIntegerInput("Enter radius of planet:");
+      int planetOrbitRadius = getIntegerInput("Enter orbit radius of planet:");
+      model.Planet newPlanet = new model.Planet(planetName, planetRadius, planetOrbitRadius, sunRadius);
+      return newPlanet;
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
-    int starRadius;
-    while (true) {
-          try {
-              System.out.print("Enter the radius of the central star (in km): ");
-              starRadius = Integer.parseInt(input.nextLine());
-              if (starRadius >= 20000) {
-                break;
-              } else {
-                  System.out.println("Invalid input. Star radius must be at least 20000 km.");
-              }
-          } catch (NumberFormatException e) {
-              System.out.println("Invalid input. Please enter a valid integer.");
-          }
-      }
-    model.Sun centralStar = new model.Sun(starName, starRadius);
-    newSolarSystem.setCentralStar(centralStar);
-    return newSolarSystem;
+    return null;
+  }
+
+  /**
+   * For creating a moon.
+   */
+  public model.Moon createMoon(int planetRadius) {
+    try {
+      String moonName = getNonEmptyInput("Enter name of moon :");
+      int moonRadius = getIntegerInput("Enter radius of moon:");
+      int moonOrbitRadius = getIntegerInput("Enter orbit radius of moon:");
+      model.Moon newMoon = new model.Moon(moonName, moonRadius, moonOrbitRadius, planetRadius);
+      return newMoon;
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    return null;
   }
 
   /**
@@ -165,20 +212,14 @@ public class SolarSystemView implements ISolarsystemView {
         System.out.println(index + " | " + s.getName());
         index++;
       }
-      if(index == 0) {
-        System.out.println("No solarsystems.");
-      } else {
-        System.out.println("Which solarsystem do you want to inspect?");
-        String key = input.nextLine();
-        int intKey = Integer.parseInt(key);
-        index = 0;
-        for (T s : list) {
-          if (index == intKey) {
-            return s;
-          }
-          index++;
+      int key = getIntegerInput("Which solarsystem do you want to inspect?");
+      index = 0;
+      for (T s : list) {
+        if (index == key) {
+          return s;
         }
-      } 
+        index++;
+      }
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -226,53 +267,6 @@ public class SolarSystemView implements ISolarsystemView {
   }
 
   /**
-   * For creating a planet.
-   */
-  public model.Planet createPlanet(int sunRadius) {
-    try {
-      System.out.println("Enter name of the planet:");
-      String planetName = input.nextLine();
-      while (planetName.trim().isEmpty()) {
-        System.out.println("Invalid input. Please enter a non-empty name for the planet:");
-        planetName = input.nextLine();
-      }
-      int planetRadius;
-      while (true) {
-          try {
-              System.out.println("Enter radius of planet:");
-              planetRadius = Integer.parseInt(input.nextLine());
-              if(planetRadius >= 1000 && planetRadius <= (sunRadius / 10)) {
-                break;
-              } else {
-                System.out.println("Invalid input. Planet radius must be at least 1.000 km and 10x less than it's suns radius of " + sunRadius);
-              }
-          } catch (NumberFormatException e) {
-              System.out.println("Invalid input. Please enter a valid integer.");
-          }
-      }
-      int planetOrbitRadius;
-      while (true) {
-          try {
-              System.out.println("Enter orbit radius of planet:");
-              planetOrbitRadius = Integer.parseInt(input.nextLine());
-              if(planetOrbitRadius >= (sunRadius * 10)) {
-                break;
-              } else {
-                System.out.println("Invalid input. Planet orbit radius must be 10x larger than it's suns radius of " + sunRadius);
-              }
-          } catch (NumberFormatException e) {
-              System.out.println("Invalid input. Please enter a valid integer.");
-          }
-      }
-      model.Planet newPlanet = new model.Planet(planetName, planetRadius, planetOrbitRadius);
-      return newPlanet;
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-    }
-    return null;
-  }
-
-  /**
    * For selecting a planet.
    */
   public <T extends model.Planet> T selectPlanet(Iterable<T> list) {
@@ -285,64 +279,15 @@ public class SolarSystemView implements ISolarsystemView {
       if(index == 0) {
         System.out.println("No planets available.");
       } else {
-        System.out.println("Which planet do you want to add a moon to?");
-        String key = input.nextLine();
-        int intKey = Integer.parseInt(key);
+        int key = getIntegerInput("Which planet do you want to add a moon to?");
         index = 0;
         for (T s : list) {
-          if (index == intKey) {
+          if (index == key) {
             return s;
           }
           index++;
         }
       }
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-    }
-    return null;
-  }
-
-  /**
-   * For creating a moon.
-   */
-  public model.Moon createMoon(int planetRadius) {
-    try {
-      System.out.println("Enter name of moon :");
-      String moonName = input.nextLine();
-      while(moonName.trim().isEmpty()) {
-        System.out.println("Invalid input. Please enter a non-empty name for the moon:");
-        moonName = input.nextLine();
-      }
-     int moonRadius;
-      while (true) {
-          try {
-              System.out.println("Enter radius of moon:");
-              moonRadius = Integer.parseInt(input.nextLine());
-              if(moonRadius >= 10 && moonRadius <= (planetRadius / 17)) {
-                break;
-              } else {
-                System.out.println("Invalid input. Moons radius must be at least 10 km and 17x less than it's planets radius of " + planetRadius);
-              }
-          } catch (NumberFormatException e) {
-              System.out.println("Invalid input. Please enter a valid integer.");
-          }
-      }
-      int moonOrbitRadius;
-      while (true) {
-          try {
-              System.out.println("Enter orbit radius of moon:");
-              moonOrbitRadius = Integer.parseInt(input.nextLine());
-              if(moonOrbitRadius >= (planetRadius * 5)) {
-                break;
-              } else {
-                System.out.println("Invalid input. Moons radius must be 5x larger than it's planets radius of " + planetRadius);
-              }
-          } catch (NumberFormatException e) {
-              System.out.println("Invalid input. Please enter a valid integer.");
-          }
-      }
-      model.Moon newMoon = new model.Moon(moonName, moonRadius, moonOrbitRadius);
-      return newMoon;
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }

@@ -20,12 +20,12 @@ public class SolarSystem {
     }
 
     public Sun getCentralStar() {
-      //make copy
-      return centralStar;
+      Sun sunCopy = new Sun(centralStar.getName(), centralStar.getRadius());
+      return sunCopy;
     }
 
     public void setCentralStar(Sun centralStar) {
-        this.centralStar = centralStar;
+      this.centralStar = centralStar;
     }
 
     public List<Planet> getPlanets() {
@@ -33,11 +33,13 @@ public class SolarSystem {
     }
 
     public void addPlanet(Planet planet) {
-      if(usedNames.contains(planet.getName())) {
+      if(planet != null) {
+        if(usedNames.contains(planet.getName())) {
         throw new IllegalArgumentException("Planet name already exists.");
       } else {
         usedNames.add(planet.getName());
         planets.add(planet);
+      }
       }
     }
 
