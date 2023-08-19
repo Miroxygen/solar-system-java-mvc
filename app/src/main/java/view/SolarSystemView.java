@@ -8,7 +8,6 @@ import java.util.Scanner;
  */
 public class SolarSystemView implements ISolarsystemView {
   private final Scanner input = new Scanner(System.in, "utf-8");
-  private final String hieraricalStringSeperator = "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500";
 
   /**
    * Shows starting menu.
@@ -26,13 +25,13 @@ public class SolarSystemView implements ISolarsystemView {
     System.out.println("-*-*- " + inspect + " Look at detail information on specific solarsystem");
     System.out.println("-*-*- " + quit + " Quit application.");
     String key = input.nextLine();
-    if(key.equals(list)) {
+    if (key.equals(list)) {
       return Menu.List;
-    } else if(key.equals(add)) {
+    } else if (key.equals(add)) {
       return Menu.Add;
-    } else if(key.equals(inspect)) {
+    } else if (key.equals(inspect)) {
       return Menu.Inspect;
-    } else if(key.equals(quit)) {
+    } else if (key.equals(quit)) {
       return Menu.Quit;
     }
     return null;
@@ -53,13 +52,13 @@ public class SolarSystemView implements ISolarsystemView {
     System.out.println("-*-*- " + delete + " Delete members of solarsystem.");
     System.out.println("-*-*- " + back + " Back to main menu.");
     String key = input.nextLine();
-    if(key.equals(view)) {
+    if (key.equals(view)) {
       return SolarSystemMenu.View;
-    } else if(key.equals(add)) {
+    } else if (key.equals(add)) {
       return SolarSystemMenu.Add;
-    } else if(key.equals(delete)) {
+    } else if (key.equals(delete)) {
       return SolarSystemMenu.Delete;
-    } else if(key.equals(back)) {
+    } else if (key.equals(back)) {
       return SolarSystemMenu.Back;
     }
     return null;
@@ -76,9 +75,9 @@ public class SolarSystemView implements ISolarsystemView {
     System.out.println("-*-*- " + planet + " Add planet.");
     System.out.println("-*-*- " + moon + " Add moon.");
     String key = input.nextLine();
-    if(key.equals(planet)) {
+    if (key.equals(planet)) {
       return AddMemberMenu.Planet;
-    } else if(key.equals(moon)) {
+    } else if (key.equals(moon)) {
       return AddMemberMenu.Moon;
     } 
     return null;
@@ -95,9 +94,9 @@ public class SolarSystemView implements ISolarsystemView {
     System.out.println("-*-*- " + size + " List by size.");
     System.out.println("-*-*- " + orbit + " List by orbitradius.");
     String key = input.nextLine();
-    if(key.equals(size)) {
+    if (key.equals(size)) {
       return ListMenu.Size;
-    } else if(key.equals(orbit)) {
+    } else if (key.equals(orbit)) {
       return ListMenu.Orbit;
     }
     return null;
@@ -111,31 +110,31 @@ public class SolarSystemView implements ISolarsystemView {
    */
   private String getNonEmptyInput(String prompt) {
     while (true) {
-        System.out.println(prompt);
-        String value = input.nextLine().trim();
-        if (!value.isEmpty()) {
-            return value;
-        }
-        System.out.println("Invalid input. Please enter a non-empty value.");
-    }
-}
-
-/**
- * Input validation for integer.
- *
- * @param prompt String.
- * @return Input in integer.
- */
-private int getIntegerInput(String prompt) {
-  while (true) {
-      try {
-          System.out.println(prompt);
-          return Integer.parseInt(input.nextLine());
-      } catch (NumberFormatException e) {
-          System.out.println("Invalid input. Please enter a valid integer.");
+      System.out.println(prompt);
+      String value = input.nextLine().trim();
+      if (!value.isEmpty()) {
+        return value;
       }
+      System.out.println("Invalid input. Please enter a non-empty value.");
+    }
   }
-}
+
+  /**
+   * Input validation for integer.
+   *
+   * @param prompt String.
+   * @return Input in integer.
+   */
+  private int getIntegerInput(String prompt) {
+    while (true) {
+      try {
+        System.out.println(prompt);
+        return Integer.parseInt(input.nextLine());
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid input. Please enter a valid integer.");
+      }
+    }
+  }
 
   
   /**
@@ -143,12 +142,11 @@ private int getIntegerInput(String prompt) {
    */
   public model.SolarSystem createSolarSystem() {
     try {
-      String solarSystemName = getNonEmptyInput("Enter the name of the solar system: ");
-      model.SolarSystem newSolarSystem = new model.SolarSystem(solarSystemName);
       String starName = getNonEmptyInput("Enter the name of the central star: ");
       int starRadius = getIntegerInput("Enter the radius of the central star (in km): ");
       model.Sun centralStar = new model.Sun(starName, starRadius);
-      newSolarSystem.setCentralStar(centralStar);
+      String solarSystemName = getNonEmptyInput("Enter the name of the solar system: ");
+      model.SolarSystem newSolarSystem = new model.SolarSystem(solarSystemName, centralStar);
       return newSolarSystem;
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -193,11 +191,11 @@ private int getIntegerInput(String prompt) {
    */
   public <T extends model.SolarSystem> void displaySolarSystems(Iterable<T> solarSystems) {
     int iterator = 0;
-    for(model.SolarSystem s : solarSystems) {
+    for (model.SolarSystem s : solarSystems) {
       iterator++;
-        System.out.println(" Name : " + s.getName());
+      System.out.println(" Name : " + s.getName());
     }
-    if(iterator == 0) {
+    if (iterator == 0) {
       System.out.println("No solarsystems.");
     }
   }
@@ -232,17 +230,20 @@ private int getIntegerInput(String prompt) {
   public <T extends model.SolarSystem> void displaySolarSystemDetails(T solarSystem) {
     System.out.println("Solar System: " + solarSystem.getName());
     model.Sun centralStar = solarSystem.getCentralStar();
-    System.out.println(hieraricalStringSeperator + " Central Star: " + centralStar.getName() + ", Radius: " + centralStar.getRadius() + " km");
+    System.out.println("-*-*- Central Star: " 
+        + centralStar.getName() + ", Radius: " + centralStar.getRadius() + " km");
   }
 
   /**
    * For displaying planets and moons.
    */
   public <T extends model.Planet> void displayPlanetAndMoons(T planet, List<? extends model.Moon> moons) {
-    System.out.println(hieraricalStringSeperator + hieraricalStringSeperator + " Planet: " + planet.getName() + ", Radius: " + planet.getRadius() + " km, Orbit Radius: " + planet.getOrbitRadius() + " km");
-    if(moons.size() > 0) {
+    System.out.println("-*-*--*-*- Planet: " + planet.getName() + ", Radius: " 
+        + planet.getRadius() + " km, Orbit Radius: " + planet.getOrbitRadius() + " km");
+    if (moons.size() > 0) {
       for (model.Moon moon : moons) {
-        System.out.println(hieraricalStringSeperator + hieraricalStringSeperator + hieraricalStringSeperator + " Moon: " + moon.getName() + ", Radius: " + moon.getRadius() + " km, Orbit Radius: " + moon.getOrbitRadius() + " km");
+        System.out.println("-*-*--*-*--*-*- Moon: " + moon.getName() + ", Radius: " + moon.getRadius()
+            + " km, Orbit Radius: " + moon.getOrbitRadius() + " km");
       }
     } else {
       System.out.println("This planets has no moons.");
@@ -276,7 +277,7 @@ private int getIntegerInput(String prompt) {
         System.out.println(index + " | " + p.getName());
         index++;
       }
-      if(index == 0) {
+      if (index == 0) {
         System.out.println("No planets available.");
       } else {
         int key = getIntegerInput("Which planet do you want to add a moon to?");

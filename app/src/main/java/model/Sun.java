@@ -7,6 +7,12 @@ public class Sun {
   private String name;
   private int radius;
 
+  /**
+   * Constructor.
+   *
+   * @param name String.
+   * @param radius Integer.
+   */
   public Sun(String name, int radius) {
     setName(name);
     setRadius(radius);
@@ -18,7 +24,7 @@ public class Sun {
    * @return String.
    */
   public String getName() {
-      return name;
+    return name;
   }
 
   /**
@@ -27,10 +33,10 @@ public class Sun {
    * @param name String.
    */
   private void setName(String name) {
-    if(name != null && !name.isEmpty()) {
-        this.name = name;
+    if (name != null && !name.isEmpty()) {
+      this.name = name;
     } else {
-        throw new IllegalArgumentException("Name cannot be null or empty.");
+      throw new IllegalArgumentException("Name cannot be null or empty.");
     }
   }
 
@@ -40,7 +46,7 @@ public class Sun {
    * @return Integer.
    */
   public int getRadius() {
-      return radius;
+    return radius;
   }
 
   /**
@@ -49,11 +55,27 @@ public class Sun {
    * @param radius Integer.
    */
   private void setRadius(int radius) {
-    if(radius <= 20000) {
-            throw new IllegalArgumentException("Sun radius must be larger than 20,000 km");
-        } else {
-            this.radius = radius;
-        }
+    if (radius <= 20000) {
+      throw new IllegalArgumentException("Sun radius must be larger than 20,000 km");
+    } else {
+      this.radius = radius;
+    }
+  }
+
+  /**
+   * Mutable version of Sun.
+   */
+  public static class MutableSun extends Sun {
+
+    /**
+     * Constructor.
+     *
+     * @param sun Object.
+     */
+    public MutableSun(Sun sun) {
+      super(sun.getName(), sun.getRadius());
+    }
+    
   }
 }
 

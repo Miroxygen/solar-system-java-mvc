@@ -3,10 +3,13 @@ package view;
 import java.util.List;
 
 /**
- * Interface for SolarSystemView
+ * Interface for SolarSystemView.
  */
 public interface ISolarsystemView {
   
+  /**
+   * For showing menu.
+   */
   static enum Menu {
     List,
     Add,
@@ -14,6 +17,9 @@ public interface ISolarsystemView {
     Quit
   }
 
+  /**
+   * For showing menu.
+   */
   static enum SolarSystemMenu {
     View,
     Add,
@@ -21,11 +27,17 @@ public interface ISolarsystemView {
     Back,
   }
 
+  /**
+   * For showing menu.
+   */
   static enum AddMemberMenu {
     Planet,
     Moon
   }
 
+  /**
+   * For showing menu.
+   */
   static enum ListMenu {
     Size,
     Orbit

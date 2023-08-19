@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.Moon.MutableMoon;
 
 /**
  * Planet class.
@@ -22,12 +23,36 @@ public class Planet {
    * @param orbitRadius Planets orbitradius.
    */
   public Planet(String name, int radius, int orbitRadius, int sunRadius) {
-      this.sunRadius = sunRadius;
-      setName(name);
-      setOrbitRadius(orbitRadius);
-      setRadius(radius);
-      moons = new ArrayList<>();
-      usedNames = new ArrayList<>();
+    this.sunRadius = sunRadius;
+    setName(name);
+    setOrbitRadius(orbitRadius);
+    setRadius(radius);
+    moons = new ArrayList<>();
+    usedNames = new ArrayList<>();
+  }
+
+  /**
+   * Constructor for child.
+   *
+   * @param planet Object.
+   */
+  private Planet(Planet planet) {
+    this.sunRadius = planet.getSunRadius();
+    this.name = planet.getName();
+    this.radius = planet.getRadius();
+    this.orbitRadius = planet.getOrbitRadius();
+    this.moons = planet.getRealMoons();
+    this.usedNames = planet.getUsedNames();
+  }
+
+  /**
+   * For getting used names.
+   *
+   * @return List of strings.
+   */
+  private List<String> getUsedNames() {
+    List<String> usedNamesCopy = new ArrayList<>(usedNames);
+    return usedNamesCopy;
   }
 
   /**
@@ -36,7 +61,7 @@ public class Planet {
    * @return String.
    */
   public String getName() {
-      return name;
+    return name;
   }
 
   /**
@@ -47,9 +72,9 @@ public class Planet {
   private void setName(String name) {
     if (name != null && !name.isEmpty()) {
       this.name = name;
-  } else {
+    } else {
       throw new IllegalArgumentException("Name cannot be null or empty.");
-  }
+    }
   }
 
   /**
@@ -69,9 +94,9 @@ public class Planet {
   private void setRadius(int radius) {
     int maxPlanetRadius = sunRadius / 10;
     if (radius > 1000 && radius < maxPlanetRadius) {
-        this.radius = radius;
+      this.radius = radius;
     } else {
-        throw new IllegalArgumentException("Planet must be larger than 1000km and 10x less than the sun radius.");
+      throw new IllegalArgumentException("Planet must be larger than 1000km and 10x less than the sun radius.");
     }
   }
 
@@ -81,7 +106,7 @@ public class Planet {
    * @return Integer.
    */
   public int getOrbitRadius() {
-      return orbitRadius;
+    return orbitRadius;
   }
 
   /**
@@ -91,18 +116,40 @@ public class Planet {
    */
   private void setOrbitRadius(int orbitRadius) {
     if (orbitRadius > 10 * sunRadius) {
-        this.orbitRadius = orbitRadius;
-      } else {
-        throw new IllegalArgumentException("Planet's orbit radius must be larger than 10x the sun radius.");
-      }
+      this.orbitRadius = orbitRadius;
+    } else {
+      throw new IllegalArgumentException("Planet's orbit radius must be larger than 10x the sun radius.");
+    }
   }
 
   /**
-   * Gets planets moons.
+   * Gets mutable version of planets moons, to sort etc.
    *
    * @return Arraylist.
    */
-  public List<Moon> getMoons() {
+  public List<MutableMoon> getMutableMoons() {
+    List<Moon.MutableMoon> mutableMoons = new ArrayList<>();
+    for (Moon m : moons) {
+      mutableMoons.add(new MutableMoon(m));
+    }
+    return mutableMoons;
+  }
+
+  /**
+   * Return a list for iteration purposes.
+   *
+   * @return Iterable.
+   */
+  public Iterable<Moon> getMoons() {
+    return new ArrayList<>(moons);
+  }
+
+  /**
+   * Gets nonmutable for child constructor.
+   *
+   * @return List of object.
+   */
+  private List<Moon> getRealMoons() {
     return new ArrayList<>(moons);
   }
 
@@ -112,14 +159,23 @@ public class Planet {
    * @param moon Object.
    */
   public void addMoon(Moon moon) {
-    if(moon != null) {
-      if(usedNames.contains(moon.getName())) {
-      throw new IllegalArgumentException("Moon name already exists.");
-    } else {
-      moons.add(moon);
-      usedNames.add(moon.getName());
+    if (moon != null) {
+      if (usedNames.contains(moon.getName())) {
+        throw new IllegalArgumentException("Moon name already exists.");
+      } else {
+        moons.add(moon);
+        usedNames.add(moon.getName());
+      }
     }
-    }
+  }
+
+  /**
+   * Gets the suns radius.
+   *
+   * @return Integer.
+   */
+  private int getSunRadius() {
+    return sunRadius;
   }
 
   /**
@@ -129,6 +185,17 @@ public class Planet {
    */
   public void deleteMoon(Moon moon) {
     moons.remove(moon);
+  }
+
+  /**
+   * Mutable planet.
+   */
+  public static class MutablePlanet extends Planet {
+
+    public MutablePlanet(Planet planet) {
+      super(planet);
+    }
+    
   }
 }
 
