@@ -10,13 +10,13 @@ The application uses the model-view-controller (MVC) architectural pattern. The 
 ### Class Diagram
 Please provide at least one class diagram according to the assignment requirments.
 
-![my class diagram](img/lccd.jpeg)
+![my class diagram](img/class-diagram-solarsystem.jpeg)
 
 ### Sequence Diagram
 Please provide at least one sequence diagram according to the assignment requirments.
 
-![sequence diagram create member](img/secuence.png)
-![sequence diagram create item](img/createitem.png)
+![sequence diagram create member](img/sequence-solarsystem.png)
+![sequence diagram create item](img/object-diagram-solarsystem.jpeg)
 
 ### Object Diagram
 
