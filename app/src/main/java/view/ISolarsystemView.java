@@ -56,7 +56,6 @@ public interface ISolarsystemView {
    */
   <T extends model.SolarSystem> T selectSolarSystem(Iterable<T> list);
 
-
   <T extends model.SolarSystem>  void displaySolarSystemDetails(T solarSystem);
 
   <T extends model.Planet>  void displayPlanetAndMoons(T planet, List<? extends model.Moon> moons);

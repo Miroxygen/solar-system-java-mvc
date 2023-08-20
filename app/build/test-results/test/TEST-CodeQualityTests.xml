@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CodeQualityTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-08-19T18:33:17" hostname="DESKTOP-KTRK0FO" time="0.064">
+<testsuite name="CodeQualityTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-08-20T12:41:36" hostname="DESKTOP-KTRK0FO" time="0.069">
   <properties/>
-  <testcase name="codeQuality()" classname="CodeQualityTests" time="0.064"/>
+  <testcase name="codeQuality()" classname="CodeQualityTests" time="0.069"/>
   <system-out><![CDATA[0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/App.java
 0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/SolarSystemController.java
 0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/SolarSystemCreator.java

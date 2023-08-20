@@ -171,7 +171,9 @@ public class SolarSystemController {
   private void createSolarSystem() {
     try {
       model.SolarSystem newSolarSystem = view.createSolarSystem();
-      solarSystemList.add(new model.SolarSystem.MutableSolarSystem(newSolarSystem));
+      if (newSolarSystem != null) {
+        solarSystemList.add(new model.SolarSystem.MutableSolarSystem(newSolarSystem));
+      }
     } catch (Exception e) {
       view.showMessage(e.getMessage());
     }
@@ -186,6 +188,7 @@ public class SolarSystemController {
     try {
       model.Sun.MutableSun sun = currentSolarSystem.getCentralStar();
       currentSolarSystem.addPlanet(view.createPlanet(sun.getRadius()));
+      view.showMessage("Planet added to " + sun.getName() + ".");
     } catch (Exception e) {
       view.showMessage("Error creating planet.");
     }
@@ -197,9 +200,14 @@ public class SolarSystemController {
    */
   private void createMoon() {
     try {
-      model.Planet planet = view.selectPlanet(currentSolarSystem.getMutablePlanets());
-      if (planet != null) {
-        planet.addMoon(view.createMoon(planet.getRadius()));
+      if (currentSolarSystem.getMutablePlanets().isEmpty()) {
+        view.showMessage("No available planets.");
+      } else {
+        model.Planet planet = view.selectPlanet(currentSolarSystem.getPlanets());
+        if (planet != null) {
+          planet.addMoon(view.createMoon(planet.getRadius()));
+          view.showMessage("Moon added to " + planet.getName() + ".");
+        }
       }
     } catch (Exception e) {
       view.showMessage("Error creating moon.");
@@ -289,7 +297,7 @@ public class SolarSystemController {
       if (criteria == null) {
         throw new Exception("Please choose a valid menu option.");
       }
-      List<model.Planet.MutablePlanet> planets = getSortedPlanetsAndMoons(criteria);
+      List<model.Planet.MutablePlanet> planets = getSortedPlanets(criteria);
       view.displaySolarSystemDetails(solarSystem);
       if (planets.size() > 0) {
         for (model.Planet planet : planets) {
@@ -333,13 +341,10 @@ public class SolarSystemController {
    *
    * @param sortCriteria Enum.
    */
-  private List<model.Planet.MutablePlanet> getSortedPlanetsAndMoons(SortCriteria sortCriteria) {
+  private List<model.Planet.MutablePlanet> getSortedPlanets(SortCriteria sortCriteria) {
     List<model.Planet.MutablePlanet> planets = currentSolarSystem.getMutablePlanets();
     Comparator<model.Planet> planetComparator = sortCriteria.getPlanetComparator();
     planets.sort(planetComparator);
-    for (model.Planet planet : planets) {
-      sortMoons(sortCriteria, planet);
-    }
     return planets;
   }
 

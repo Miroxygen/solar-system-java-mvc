@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SolarSystemTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-08-19T18:33:17" hostname="DESKTOP-KTRK0FO" time="0.006">
+<testsuite name="SolarSystemTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-08-20T12:41:36" hostname="DESKTOP-KTRK0FO" time="0.006">
   <properties/>
-  <testcase name="testSetOrbitRadiusThrowsException()" classname="SolarSystemTests" time="0.004"/>
+  <testcase name="testSetOrbitRadiusThrowsException()" classname="SolarSystemTests" time="0.003"/>
   <testcase name="testMoonNamesAreUniqueWithinPlanet()" classname="SolarSystemTests" time="0.002"/>
   <testcase name="testDeletePlanetRemovesMoons()" classname="SolarSystemTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

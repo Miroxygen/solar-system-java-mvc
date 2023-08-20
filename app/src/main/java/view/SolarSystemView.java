@@ -277,17 +277,13 @@ public class SolarSystemView implements ISolarsystemView {
         System.out.println(index + " | " + p.getName());
         index++;
       }
-      if (index == 0) {
-        System.out.println("No planets available.");
-      } else {
-        int key = getIntegerInput("Which planet do you want to add a moon to?");
-        index = 0;
-        for (T s : list) {
-          if (index == key) {
-            return s;
-          }
-          index++;
+      int key = getIntegerInput("Which planet do you want to add a moon to?");
+      index = 0;
+      for (T s : list) {
+        if (index == key) {
+          return s;
         }
+        index++;
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
