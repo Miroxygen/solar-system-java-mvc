@@ -1,52 +1,21 @@
-t0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/App.java
-|2 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/LendingClub.java
-#text:line: 318 column: column:13 
-F'(' has incorrect indentation level 12, expected level should be 14.
+Ä0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/App.java
+í0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/SolarSystemController.java
+è0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/SolarSystemCreator.java
+|0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Moon.java
+~0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Planet.java
+É0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/SolarSystem.java
+{0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Sun.java
+á1 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/view/ISolarsystemView.java
+!text:line: 8 column: column:18 
+dAbbreviation in name 'ISolarsystemView' must contain no more than '1' consecutive capital letters.
 
-#text:line: 320 column: column:13 
-F'*' has incorrect indentation level 12, expected level should be 14.
-
-w0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/Member.java
-t0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Contract.java
-x0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/ContractList.java
-p0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Item.java
-z0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/LendingClubDao.java
-}0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/LendingClubDaoImp.java
-r0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Member.java
-v0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/MemberList.java
-{0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/MembersItemList.java
-p0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Time.java
-w0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/ContractView.java
-z0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishItemView.java
-|0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishMemberView.java
-v0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishView.java
-s0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/ItemView.java
-u0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/MemberView.java
-~0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishContractView.java
-z0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishItemView.java
-|0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishMemberView.java
-v0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishView.java
-o0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/View.java
-&0 FindBugs Issues in model/Time.java
-,0 FindBugs Issues in view/SwedishView.java
-*0 FindBugs Issues in model/Contract.java
-.0 FindBugs Issues in model/ContractList.java
--0 FindBugs Issues in view/ContractView.java
-00 FindBugs Issues in model/LendingClubDao.java
-00 FindBugs Issues in view/EnglishItemView.java
-30 FindBugs Issues in model/LendingClubDaoImp.java
-,0 FindBugs Issues in model/MemberList.java
--0 FindBugs Issues in controller/Member.java
-40 FindBugs Issues in view/SwedishContractView.java
-(0 FindBugs Issues in model/Member.java
-)0 FindBugs Issues in view/ItemView.java
+Ü0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/view/SolarSystemView.java
 *0 FindBugs Issues in controller/App.java
-%0 FindBugs Issues in view/View.java
-20 FindBugs Issues in view/EnglishMemberView.java
-,0 FindBugs Issues in view/EnglishView.java
-00 FindBugs Issues in view/SwedishItemView.java
-&0 FindBugs Issues in model/Item.java
-10 FindBugs Issues in model/MembersItemList.java
-20 FindBugs Issues in view/SwedishMemberView.java
-20 FindBugs Issues in controller/LendingClub.java
-+0 FindBugs Issues in view/MemberView.java
+(0 FindBugs Issues in model/Planet.java
+&0 FindBugs Issues in model/Moon.java
+-0 FindBugs Issues in model/SolarSystem.java
+90 FindBugs Issues in controller/SolarSystemCreator.java
+%0 FindBugs Issues in model/Sun.java
+10 FindBugs Issues in view/ISolarsystemView.java
+00 FindBugs Issues in view/SolarSystemView.java
+<0 FindBugs Issues in controller/SolarSystemController.java

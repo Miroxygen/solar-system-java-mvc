@@ -1,20 +1,81 @@
 package model;
 
+/**
+ * Implements a sun.
+ */
 public class Sun {
   private String name;
   private int radius;
 
+  /**
+   * Constructor.
+   *
+   * @param name String.
+   * @param radius Integer.
+   */
   public Sun(String name, int radius) {
-      this.name = name;
-      this.radius = radius;
+    setName(name);
+    setRadius(radius);
   }
 
+  /**
+   * Gets name.
+   *
+   * @return String.
+   */
   public String getName() {
-      return name;
+    return name;
   }
 
+  /**
+   * Sets suns name.
+   *
+   * @param name String.
+   */
+  private void setName(String name) {
+    if (name != null && !name.isEmpty()) {
+      this.name = name;
+    } else {
+      throw new IllegalArgumentException("Name cannot be null or empty.");
+    }
+  }
+
+  /**
+   * Gets radius.
+   *
+   * @return Integer.
+   */
   public int getRadius() {
-      return radius;
+    return radius;
+  }
+
+  /**
+   * Sets suns radius.
+   *
+   * @param radius Integer.
+   */
+  private void setRadius(int radius) {
+    if (radius <= 20000) {
+      throw new IllegalArgumentException("Sun radius must be larger than 20,000 km");
+    } else {
+      this.radius = radius;
+    }
+  }
+
+  /**
+   * Mutable version of Sun.
+   */
+  public static class MutableSun extends Sun {
+
+    /**
+     * Constructor.
+     *
+     * @param sun Object.
+     */
+    public MutableSun(Sun sun) {
+      super(sun.getName(), sun.getRadius());
+    }
+    
   }
 }
 

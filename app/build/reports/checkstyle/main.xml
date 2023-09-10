@@ -1,51 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.38">
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\controller\App.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\controller\App.java">
 </file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\controller\LendingClub.java">
-<error line="318" column="13" severity="warning" message="&apos;(&apos; has incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
-<error line="320" column="13" severity="warning" message="&apos;*&apos; has incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\controller\SolarSystemController.java">
 </file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\controller\Member.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\controller\SolarSystemCreator.java">
 </file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\Contract.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\model\Moon.java">
 </file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\ContractList.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\model\Planet.java">
 </file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\Item.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\model\SolarSystem.java">
 </file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\LendingClubDao.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\model\Sun.java">
 </file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\LendingClubDaoImp.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\view\ISolarsystemView.java">
+<error line="8" column="18" severity="warning" message="Abbreviation in name &apos;ISolarsystemView&apos; must contain no more than &apos;1&apos; consecutive capital letters." source="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
 </file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\Member.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\MemberList.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\MembersItemList.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\model\Time.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\ContractView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\EnglishItemView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\EnglishMemberView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\EnglishView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\ItemView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\MemberView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\SwedishContractView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\SwedishItemView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\SwedishMemberView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\SwedishView.java">
-</file>
-<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\a2\app\src\main\java\view\View.java">
+<file name="C:\Users\Greattech\Documents\Skola\Java\Assignment\Solarsystem\a2\app\src\main\java\view\SolarSystemView.java">
 </file>
 </checkstyle>

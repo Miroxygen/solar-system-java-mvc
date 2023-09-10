@@ -1,59 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CodeQualityTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-05-08T11:58:07" hostname="DESKTOP-KTRK0FO" time="0.076">
+<testsuite name="CodeQualityTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-08-20T12:41:36" hostname="DESKTOP-KTRK0FO" time="0.069">
   <properties/>
-  <testcase name="codeQuality()" classname="CodeQualityTests" time="0.076"/>
-  <system-out><![CDATA[0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/App.java
-2 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/LendingClub.java
-text:line: 318 column: column:13 
-'(' has incorrect indentation level 12, expected level should be 14.
+  <testcase name="codeQuality()" classname="CodeQualityTests" time="0.069"/>
+  <system-out><![CDATA[0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/App.java
+0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/SolarSystemController.java
+0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/controller/SolarSystemCreator.java
+0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Moon.java
+0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Planet.java
+0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/SolarSystem.java
+0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/model/Sun.java
+1 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/view/ISolarsystemView.java
+text:line: 8 column: column:18 
+Abbreviation in name 'ISolarsystemView' must contain no more than '1' consecutive capital letters.
 
-text:line: 320 column: column:13 
-'*' has incorrect indentation level 12, expected level should be 14.
-
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/controller/Member.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Contract.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/ContractList.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Item.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/LendingClubDao.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/LendingClubDaoImp.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Member.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/MemberList.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/MembersItemList.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/model/Time.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/ContractView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishItemView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishMemberView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/EnglishView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/ItemView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/MemberView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishContractView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishItemView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishMemberView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/SwedishView.java
-0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/a2/app/src/main/java/view/View.java
-0 FindBugs Issues in model/Time.java
-0 FindBugs Issues in view/SwedishView.java
-0 FindBugs Issues in model/Contract.java
-0 FindBugs Issues in model/ContractList.java
-0 FindBugs Issues in view/ContractView.java
-0 FindBugs Issues in model/LendingClubDao.java
-0 FindBugs Issues in view/EnglishItemView.java
-0 FindBugs Issues in model/LendingClubDaoImp.java
-0 FindBugs Issues in model/MemberList.java
-0 FindBugs Issues in controller/Member.java
-0 FindBugs Issues in view/SwedishContractView.java
-0 FindBugs Issues in model/Member.java
-0 FindBugs Issues in view/ItemView.java
+0 CheckStyle Issues in C:/Users/Greattech/Documents/Skola/Java/Assignment/Solarsystem/a2/app/src/main/java/view/SolarSystemView.java
 0 FindBugs Issues in controller/App.java
-0 FindBugs Issues in view/View.java
-0 FindBugs Issues in view/EnglishMemberView.java
-0 FindBugs Issues in view/EnglishView.java
-0 FindBugs Issues in view/SwedishItemView.java
-0 FindBugs Issues in model/Item.java
-0 FindBugs Issues in model/MembersItemList.java
-0 FindBugs Issues in view/SwedishMemberView.java
-0 FindBugs Issues in controller/LendingClub.java
-0 FindBugs Issues in view/MemberView.java
+0 FindBugs Issues in model/Planet.java
+0 FindBugs Issues in model/Moon.java
+0 FindBugs Issues in model/SolarSystem.java
+0 FindBugs Issues in controller/SolarSystemCreator.java
+0 FindBugs Issues in model/Sun.java
+0 FindBugs Issues in view/ISolarsystemView.java
+0 FindBugs Issues in view/SolarSystemView.java
+0 FindBugs Issues in controller/SolarSystemController.java
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
