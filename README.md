@@ -1,44 +1,51 @@
-# A2
+# Solar System Management System
 
-Project for Assignment 2
+A Java-based application utilizing Gradle to manage, display, and interact with solar systems, planets, and moons through a console interface.
 
-A project template based on gradle and a gitlab pipeline. You should always build and run the application using gradle regularely.
+## Overview
 
-[design.md](design.md) contains the prescribed architectural design of the application.
+This project is a Java-based application designed to manage, display, and interact with solar systems, planets, and moons. Users can add, inspect, and delete members of a solar system through a console-based interface. The project uses Gradle for build automation.
 
-## Building
-The build must pass by running console command:  
-`./gradlew build`  
-Note that you should get a report over the quality like:
-```
-CodeQualityTests > codeQuality() STANDARD_OUT
-    0 CheckStyle Issues in controller/App.java
-    0 CheckStyle Issues in controller/Simple.java
-    0 CheckStyle Issues in model/Simple.java
-    0 CheckStyle Issues in view/Simple.java
-    0 FindBugs Issues in controller/App.java
-    0 FindBugs Issues in model/Simple.java
-    0 FindBugs Issues in view/Simple.java
-    0 FindBugs Issues in controller/Simple.java
-```
+## Features 
 
-Removing or manipulating the code quality checks results in an immediate assignment **Fail**. 
+- List Solar Systems: Display all solar systems.
+- Add Solar System: Create a new solar system.
+- Inspect Solar System: View details of a specific solar system, including its planets and moons.
+- Add Planet/Moon: Add planets to solar systems and moons to planets.
+- Delete Member: Remove a member (sun, planet, or moon) from a solar system.
 
-## Running
-The application should start by running console command:  
-`./gradlew run -q --console=plain`
+### Technologies used 
 
-## Adding Your Own Code
-The `Simple` classes project should likely be removed do not forget to also remove the test case associated to `model.Simple`.  
+- Java: Core programming language.
+- Gradle: Build automation tool.
+- JUnit: Framework for unit testing.
 
-Add your own code to the packages respectively and feel free to add automatic test cases for your own code. A good process is to design a little - code a little - test a little one feature at a time and then iterate.
+## Getting started
 
-## Versioning
+### Prerequisites 
 
-Adhere to the git versioning instructions according to the assignment.
+- Java JDK (version 8 or higher)
+- Gradle
 
-## System test
-Adhere to the instructions according to the assigment.
+### Installation
 
-## Handing In
-Adhere to the instructions according to the assigment.
+1. Clone the repository
+2. Build using Gradle: "gradle build"
+3. Run the application using: "gradle run"
+
+- To run the unit tests, use: "gradle test"
+
+## Usage
+
+Upon running the application, the user is presented with a menu to manage solar systems. The user can list existing solar systems, create a new one, inspect details of a specific solar system, add planets or moons, and delete members of a solar system.
+Example Commands
+
+ -   List all solar systems
+ -   Create a new solar system
+ -   Inspect a specific solar system
+ -   Add a planet or moon
+ -   Delete a member from a solar system
+
+## License
+
+This project is licensed under the MIT License.
