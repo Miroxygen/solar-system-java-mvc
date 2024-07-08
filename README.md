@@ -1,7 +1,5 @@
 # Solar System Management System
 
-A Java-based application utilizing Gradle to manage, display, and interact with solar systems, planets, and moons through a console interface.
-
 ## Overview
 
 This project is a Java-based application designed to manage, display, and interact with solar systems, planets, and moons. Users can add, inspect, and delete members of a solar system through a console-based interface. The project uses Gradle for build automation.
